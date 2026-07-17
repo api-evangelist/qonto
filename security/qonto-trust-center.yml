@@ -1,0 +1,37 @@
+generated: '2026-07-17'
+method: searched
+probe: true
+source: https://qonto.com/en/security
+url: https://qonto.com/en/security
+regulatory:
+- statement: >-
+    Qonto SA is a licensed payment institution authorized by the French Autorite
+    de Controle Prudentiel et de Resolution (ACPR), registration number 16958,
+    granted on 2018-06-21. The licence is EU-passported.
+  regulator: ACPR (France)
+  registrationNumber: '16958'
+fundSafeguarding:
+- Deposit protection up to EUR 100,000 per client via the Fonds de Garantie des Depots et de Resolution (FGDR).
+- Remaining funds covered by stand-alone guarantees from Credit Agricole CIB and BNP Paribas.
+securityFeatures:
+- Strong Customer Authentication (SCA) on critical operations (PSD2).
+- Verification of Payee (VoP) to confirm payee name matches bank account.
+- AI-powered fraud detection (machine learning + GenAI agents).
+- Device and session protection with adaptive monitoring.
+- Virtual cards with automatic per-transaction number renewal.
+certifications:
+- GDPR
+notes: >-
+  As of the review date the public security page emphasizes regulatory status
+  (ACPR payment institution), fund safeguarding (FGDR + bank guarantees), PSD2
+  SCA, and GDPR/EU data protection. It does not publicly enumerate PCI DSS, ISO
+  27001, or SOC 2 on this page; do not assert those without a primary source.
+evidence:
+- source: https://qonto.com/en/security
+  keywords:
+  - payment institution
+  - ACPR
+  - registration number 16958
+  - Strong Customer Authentication
+  - Verification of Payee
+  - FGDR

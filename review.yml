@@ -1,0 +1,75 @@
+aid: qonto
+name: Qonto
+review:
+  question: Does Qonto expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-17'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was created. Qonto's Business API and Onboarding API are
+    HTTP REST only. Real-time delivery is provided through outbound HTTP webhooks
+    (signed callbacks to a subscriber-registered URL), not a streaming or
+    WebSocket transport. Under API Evangelist scope, HTTP Server-Sent Events (SSE)
+    is in-scope for AsyncAPI modeling but Qonto documents no SSE stream either, so
+    no AsyncAPI artifact applies.
+findings:
+  summary: |
+    Qonto does not publish a documented public WebSocket API. The Business API
+    (base https://thirdparty.qonto.com/v2, sandbox
+    https://thirdparty-sandbox.staging.qonto.co/v2) and the Onboarding API expose
+    only HTTPS REST endpoints. Real-time notifications are delivered via webhooks
+    - Qonto POSTs signed event payloads to a callback URL you register through the
+    webhook_subscriptions endpoints - which is an outbound HTTP callback pattern,
+    not a bidirectional or server-push socket. No ws:// or wss:// endpoint is
+    documented anywhere in the API reference, getting-started guides, or SDK docs.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://thirdparty.qonto.com/v2
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      note: >-
+        Outbound signed HTTP POST callbacks to a subscriber URL for events such as
+        v1/transactions, v1/cards, v1/client-invoices, v1/sepa-direct-debit-*,
+        v1/payment-links, v1/terminal-payments, v1/memberships, v1/consent-revocations.
+        This is a server-to-client HTTP callback, not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: >-
+        No WebSocket endpoint is documented in the Qonto Business API, Onboarding
+        API, webhooks pages, or Embed SDK docs as of the review date.
+  endpointsConfirmedRest:
+    - POST   https://thirdparty.qonto.com/oauth2/token
+    - GET    https://thirdparty.qonto.com/v2/organization
+    - GET    https://thirdparty.qonto.com/v2/transactions
+    - GET    https://thirdparty.qonto.com/v2/transactions/{id}
+    - POST   https://thirdparty.qonto.com/v2/sepa/transfers
+    - GET    https://thirdparty.qonto.com/v2/sepa/transfers
+    - GET    https://thirdparty.qonto.com/v2/cards
+    - POST   https://thirdparty.qonto.com/v2/cards
+    - GET    https://thirdparty.qonto.com/v2/webhook_subscriptions
+    - POST   https://thirdparty.qonto.com/v2/webhook_subscriptions
+sources:
+  - url: https://docs.qonto.com/api-reference/introduction
+    type: Documentation
+    note: API reference overview; all resources are HTTPS REST.
+  - url: https://docs.qonto.com/api-reference/business-api/webhooks/overview
+    type: Documentation
+    note: Real-time delivery is via outbound HTTP webhooks, not WebSocket.
+  - url: https://docs.qonto.com/get-started/business-api/authentication/api-key
+    type: Documentation
+    note: Auth via Authorization header (login:secret-key) or OAuth 2.0; REST only.
+  - url: https://docs.qonto.com/get-started/general/rate-limitations
+    type: Documentation
+    note: Rate limits expressed per IP over HTTP; 429 on breach. No socket transport.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: false
+  reason: |
+    No WebSocket or SSE surface exists. Real-time is webhook-based (outbound HTTP
+    callbacks), which is documented in the REST API reference and does not warrant
+    a separate AsyncAPI artifact under current scope.

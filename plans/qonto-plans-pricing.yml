@@ -1,0 +1,138 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Qonto
+providerId: qonto
+created: '2026-07-17'
+modified: '2026-07-17'
+reconciled: true
+tags:
+- Business Banking
+- Fintech
+- Payments
+- Plans
+currency: EUR
+description: >-
+  Qonto monetizes via monthly business-account subscription plans (priced in EUR,
+  excluding VAT), not via metered API pricing. API access and integrations are
+  included across all plans - the Business API and OAuth apps let customers connect
+  Qonto to third-party tools. Freelancer/solo plans are Basic, Smart, and Premium;
+  company/team plans are Essential, Business, and Enterprise. Individual actions
+  (extra SEPA transfers beyond plan allowance, cards, cash deposits, instant
+  transfers, international/FX transfers) may carry per-use fees on top of the
+  subscription.
+notes: >-
+  Prices confirmed from the Qonto pricing page on 2026-07-17 (EUR, excl. VAT) and
+  vary by country market. Verify current allowances and per-action fees on the
+  live pricing page during reconciliation.
+sources:
+- https://qonto.com/en/pricing
+- https://docs.qonto.com/get-started/business-api/overview
+plans:
+- id: qonto-basic
+  name: Basic
+  type: subscription
+  description: Entry solo/freelancer plan. Includes API integrations.
+  entries:
+  - label: Monthly subscription
+    name: basic_monthly
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: eu
+    unit: 1
+    price: EUR 9 / month (excl. VAT)
+    userMultiplied: false
+  elements:
+  - name: API integrations
+  - name: External account syncing
+- id: qonto-smart
+  name: Smart
+  type: subscription
+  description: Mid-tier solo/freelancer plan. Includes API integrations.
+  entries:
+  - label: Monthly subscription
+    name: smart_monthly
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: eu
+    unit: 1
+    price: EUR 19 / month (excl. VAT)
+    userMultiplied: false
+  elements:
+  - name: API integrations
+- id: qonto-premium
+  name: Premium
+  type: subscription
+  description: Top solo/freelancer plan. Includes API integrations.
+  entries:
+  - label: Monthly subscription
+    name: premium_monthly
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: eu
+    unit: 1
+    price: EUR 39 / month (excl. VAT)
+    userMultiplied: false
+  elements:
+  - name: API integrations
+- id: qonto-essential
+  name: Essential
+  type: subscription
+  description: Entry company/team plan. Includes API integrations.
+  entries:
+  - label: Monthly subscription
+    name: essential_monthly
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: eu
+    unit: 1
+    price: EUR 49 / month (excl. VAT)
+    userMultiplied: false
+  elements:
+  - name: API integrations
+- id: qonto-business
+  name: Business
+  type: subscription
+  description: Mid-tier company/team plan. Includes API integrations.
+  entries:
+  - label: Monthly subscription
+    name: business_monthly
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: eu
+    unit: 1
+    price: EUR 99 / month (excl. VAT)
+    userMultiplied: false
+  elements:
+  - name: API integrations
+- id: qonto-enterprise
+  name: Enterprise
+  type: subscription
+  description: Top company/team plan. Includes API integrations and advanced controls.
+  entries:
+  - label: Monthly subscription
+    name: enterprise_monthly
+    type: flat
+    metric: subscription
+    limit: 1
+    timeFrame: month
+    geo: eu
+    unit: 1
+    price: EUR 199 / month (excl. VAT)
+    userMultiplied: false
+  elements:
+  - name: API integrations
+  - name: External account syncing
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

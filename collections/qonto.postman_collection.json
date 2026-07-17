@@ -1,0 +1,233 @@
+{
+  "info": {
+    "_postman_id": "b7c1e0a2-9d3f-4b21-8e6a-qonto0000001",
+    "name": "Qonto Business API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Qonto Business API - business banking endpoints for organizations, transactions, SEPA and international transfers, cards, invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Base URL production https://thirdparty.qonto.com/v2 (sandbox https://thirdparty-sandbox.staging.qonto.co/v2). Auth via 'Authorization: {sign-in}:{secret-key}' API key or OAuth 2.0 bearer token. Modeled from public documentation (docs.qonto.com).",
+      "type": "text/plain"
+    }
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "key", "value": "Authorization", "type": "string" },
+      { "key": "value", "value": "{{login}}:{{secretKey}}", "type": "string" },
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://thirdparty.qonto.com/v2", "type": "string" },
+    { "key": "login", "value": "your-organization-slug-1234", "type": "string" },
+    { "key": "secretKey", "value": "your-secret-key", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Organizations & Accounts",
+      "item": [
+        {
+          "name": "Retrieve the authenticated organization and list bank accounts",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/organization", "host": ["{{baseUrl}}"], "path": ["organization"] }
+          }
+        },
+        {
+          "name": "List memberships",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/memberships", "host": ["{{baseUrl}}"], "path": ["memberships"] }
+          }
+        },
+        {
+          "name": "List labels",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/labels", "host": ["{{baseUrl}}"], "path": ["labels"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transactions & Statements",
+      "item": [
+        {
+          "name": "List transactions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": {
+              "raw": "{{baseUrl}}/transactions?bank_account_id=&status[]=completed&current_page=1&per_page=100",
+              "host": ["{{baseUrl}}"],
+              "path": ["transactions"],
+              "query": [
+                { "key": "bank_account_id", "value": "" },
+                { "key": "status[]", "value": "completed" },
+                { "key": "current_page", "value": "1" },
+                { "key": "per_page", "value": "100" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Retrieve a transaction",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/transactions/:id", "host": ["{{baseUrl}}"], "path": ["transactions", ":id"], "variable": [{ "key": "id", "value": "" }] }
+          }
+        },
+        {
+          "name": "List statements",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/statements", "host": ["{{baseUrl}}"], "path": ["statements"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "SEPA Transfers",
+      "item": [
+        {
+          "name": "List SEPA transfers",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/sepa/transfers", "host": ["{{baseUrl}}"], "path": ["sepa", "transfers"] }
+          }
+        },
+        {
+          "name": "Create a SEPA transfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "{{login}}:{{secretKey}}" },
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "X-Qonto-Idempotency-Key", "value": "{{$guid}}" },
+              { "key": "X-Qonto-Sca-Session-Token", "value": "" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"debit_iban\": \"FR7616958000010000000000123\",\n  \"beneficiary_id\": \"<beneficiary-uuid>\",\n  \"amount\": \"100.00\",\n  \"currency\": \"EUR\",\n  \"reference\": \"Invoice 2026-001\",\n  \"instant\": false\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": { "raw": "{{baseUrl}}/sepa/transfers", "host": ["{{baseUrl}}"], "path": ["sepa", "transfers"] }
+          }
+        },
+        {
+          "name": "List SEPA beneficiaries",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/beneficiaries", "host": ["{{baseUrl}}"], "path": ["beneficiaries"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "International Transfers",
+      "item": [
+        {
+          "name": "Get available currencies",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/international_transfers/currencies", "host": ["{{baseUrl}}"], "path": ["international_transfers", "currencies"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cards",
+      "item": [
+        {
+          "name": "List cards",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/cards", "host": ["{{baseUrl}}"], "path": ["cards"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        {
+          "name": "List client invoices",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/client_invoices", "host": ["{{baseUrl}}"], "path": ["client_invoices"] }
+          }
+        },
+        {
+          "name": "List supplier invoices",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/supplier_invoices", "host": ["{{baseUrl}}"], "path": ["supplier_invoices"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Webhooks",
+      "item": [
+        {
+          "name": "List webhook subscriptions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "{{login}}:{{secretKey}}" }],
+            "url": { "raw": "{{baseUrl}}/webhook_subscriptions", "host": ["{{baseUrl}}"], "path": ["webhook_subscriptions"] }
+          }
+        },
+        {
+          "name": "Create a webhook subscription",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "{{login}}:{{secretKey}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"https://example.com/qonto/webhooks\",\n  \"events\": [\"v1/transactions\"]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": { "raw": "{{baseUrl}}/webhook_subscriptions", "host": ["{{baseUrl}}"], "path": ["webhook_subscriptions"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "OAuth",
+      "item": [
+        {
+          "name": "Create or refresh tokens",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/x-www-form-urlencoded" }],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                { "key": "grant_type", "value": "authorization_code" },
+                { "key": "client_id", "value": "{{clientId}}" },
+                { "key": "client_secret", "value": "{{clientSecret}}" },
+                { "key": "code", "value": "{{authorizationCode}}" },
+                { "key": "redirect_uri", "value": "{{redirectUri}}" }
+              ]
+            },
+            "url": { "raw": "https://thirdparty.qonto.com/oauth2/token", "protocol": "https", "host": ["thirdparty", "qonto", "com"], "path": ["oauth2", "token"] }
+          }
+        }
+      ]
+    }
+  ]
+}

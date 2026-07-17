@@ -1,0 +1,325 @@
+aid: qonto
+url: https://raw.githubusercontent.com/api-evangelist/qonto/refs/heads/main/apis.yml
+name: Qonto
+kind: company
+description: Qonto is a European business banking / neobank platform for freelancers
+  and SMEs, founded in Paris in 2016 and operating on an EU-passported payment institution
+  licence. Its Business API and Onboarding API give programmatic access to business
+  accounts, EUR transactions, SEPA and international transfers, cards, client and supplier
+  invoices, SEPA Direct Debit, payment links, terminals, webhooks, and partner-led
+  company onboarding, authenticated by a login+secret-key API key or OAuth 2.0.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Business Banking
+- Neobank
+- Fintech
+- Payments
+- SEPA
+- Open Banking
+- EUR
+- Europe
+created: '2026-07-17'
+modified: '2026-07-17'
+specificationVersion: '0.19'
+apis:
+- aid: qonto:qonto-business-api
+  name: Qonto Business API
+  tags:
+  - Organizations
+  - Accounts
+  - Memberships
+  - Teams
+  - Labels
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/get-started/business-api/overview
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/introduction
+    type: Documentation
+  - url: https://docs.qonto.com/api-reference/business-api/accounts-organizations/organizations/retrieve-the-authenticated-organization-and-list-bank-accounts
+    type: APIReference
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Core Business API surface for retrieving the authenticated organization
+    and its bank accounts, plus memberships, teams, labels, and the current subscription
+    plan.
+- aid: qonto:qonto-transactions-statements-api
+  name: Qonto Transactions & Statements API
+  tags:
+  - Transactions
+  - Statements
+  - Cash Flow
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/transactions-statements/transactions/list-transactions
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/transactions-statements/transactions/list-transactions
+    type: APIReference
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: List and retrieve account transactions with rich filtering (status,
+    dates, side, operation type), account statements, and cash flow category assignment.
+- aid: qonto:qonto-sepa-transfers-api
+  name: Qonto SEPA Transfers API
+  tags:
+  - SEPA
+  - Transfers
+  - Payments
+  - Beneficiaries
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-transfers/sepa-transfers/create
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-transfers/introduction
+    type: Documentation
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Create single, bulk, and recurring SEPA credit transfers in EUR (standard
+    or instant), manage SEPA beneficiaries, and run Verification of Payee (VoP) checks.
+    Sensitive operations require Strong Customer Authentication (SCA).
+- aid: qonto:qonto-international-transfers-api
+  name: Qonto International Transfers API
+  tags:
+  - International
+  - FX
+  - Cross Border
+  - Beneficiaries
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/payments-transfers/international-transfers/introduction
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/payments-transfers/international-transfers/introduction
+    type: Documentation
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Check eligibility, list available currencies, create quotes, manage
+    international beneficiaries, and initiate non-EUR / cross-border transfers.
+- aid: qonto:qonto-internal-transfers-api
+  name: Qonto Internal Transfers API
+  tags:
+  - Internal Transfers
+  - Accounts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/payments-transfers/internal-transfers/create-an-internal-transfer
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/payments-transfers/internal-transfers/create-an-internal-transfer
+    type: APIReference
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Move funds between the organization's own Qonto bank accounts.
+- aid: qonto:qonto-cards-api
+  name: Qonto Cards API
+  tags:
+  - Cards
+  - Virtual Cards
+  - Physical Cards
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/cards/list-cards
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/cards/list-cards
+    type: APIReference
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Issue single or bulk virtual and physical cards, set and update limits,
+    lock/unlock, discard, report lost/stolen, manage options and restrictions, and
+    retrieve a card iframe URL.
+- aid: qonto:qonto-client-invoices-api
+  name: Qonto Client Invoices & Quotes API
+  tags:
+  - Invoicing
+  - Accounts Receivable
+  - Quotes
+  - Credit Notes
+  - Factur-X
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/expense-management/client-quotes-notes/client-invoices/list-client-invoices
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/expense-management/client-quotes-notes/introduction-factur-x
+    type: Documentation
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Create, finalize, send, and manage client (customer) invoices, quotes,
+    and credit notes, including bulk import, e-invoicing dispatch, and Factur-X PDF
+    generation. Manage clients (customers) and products.
+- aid: qonto:qonto-supplier-invoices-api
+  name: Qonto Supplier Invoices API
+  tags:
+  - Invoicing
+  - Accounts Payable
+  - Attachments
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/expense-management/supplier-invoices/list-supplier-invoices
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/expense-management/supplier-invoices/list-supplier-invoices
+    type: APIReference
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Bulk-create, list, retrieve, and mark supplier (vendor) invoices as
+    paid or rejected, and attach supporting documents to transactions.
+- aid: qonto:qonto-sepa-direct-debit-api
+  name: Qonto SEPA Direct Debit API
+  tags:
+  - SEPA Direct Debit
+  - SDD
+  - Collections
+  - Mandates
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-direct-debit/introduction
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-direct-debit/introduction
+    type: Documentation
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Collect EUR payments from customers via SEPA Direct Debit - manage mandates,
+    one-off collections, and recurring subscriptions.
+- aid: qonto:qonto-payment-links-api
+  name: Qonto Payment Links API
+  tags:
+  - Payment Links
+  - Checkout
+  - Getting Paid
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/payments-transfers/payment-links/introduction
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/payments-transfers/payment-links/introduction
+    type: Documentation
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Connect a payment links provider and create, list, and deactivate secure
+    customizable payment links, with available payment methods and per-link payments.
+- aid: qonto:qonto-terminals-api
+  name: Qonto Terminals API
+  tags:
+  - Terminals
+  - In-Person Payments
+  - POS
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/terminals/introduction
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/terminals/introduction
+    type: Documentation
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Push payments from your POS system directly to physical Qonto payment
+    terminals and retrieve terminal payment status.
+- aid: qonto:qonto-webhooks-api
+  name: Qonto Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Real Time
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/webhooks/overview
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/business-api/webhooks/overview
+    type: Documentation
+  - url: https://docs.qonto.com/api-reference/business-api/webhooks/supported-webhooks/v1-transactions
+    type: APIReference
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Create, list, update, and delete webhook subscriptions to receive real-time
+    signed HTTP callbacks for transactions, cards, invoices, SEPA Direct Debit, payment
+    links, terminals, memberships, and consent revocations.
+- aid: qonto:qonto-onboarding-api
+  name: Qonto Onboarding API
+  tags:
+  - Onboarding
+  - KYC
+  - Company Creation
+  - Partners
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/get-started/onboarding-api/overview
+  baseURL: https://thirdparty.qonto.com
+  properties:
+  - url: https://docs.qonto.com/api-reference/onboarding-api/endpoints/registrations/create-a-registration
+    type: APIReference
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Partner-facing API to create and track organization registrations (including
+    company creation flows), upload and manage KYC files, and subscribe to onboarding
+    webhook events.
+- aid: qonto:qonto-embed-sdk-api
+  name: Qonto Embed SDK & Hosted Pages API
+  tags:
+  - Embedded Finance
+  - Embed SDK
+  - Hosted Pages
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.qonto.com/api-reference/business-api/endpoints/embed-auth-links/introduction
+  baseURL: https://thirdparty.qonto.com/v2
+  properties:
+  - url: https://docs.qonto.com/api-reference/sdk-libraries/doc-pages/overview
+    type: Documentation
+  - url: https://docs.qonto.com/api-reference/business-api/endpoints/encoded-requests/introduction
+    type: APIReference
+  - url: openapi/qonto-openapi.yml
+    type: OpenAPI
+  - url: collections/qonto.postman_collection.json
+    type: PostmanCollection
+  description: Create Embed Auth Links to authenticate end customers into Qonto Hosted
+    Pages and proxy encoded API requests dispatched by the Embed SDK for embedded banking
+    experiences.
+common:
+- type: AgenticAccess
+  url: agentic-access/qonto-agentic-access.yml
+- type: TrustCenter
+  url: security/qonto-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/qonto-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/qonto-domain-security.yml
+- type: Authentication
+  url: authentication/qonto-authentication.yml
+- type: GitHubOrganization
+  url: https://github.com/qonto
+- type: LinkedIn
+  url: https://www.linkedin.com/company/qonto
+- type: Website
+  url: https://qonto.com/
+- type: Documentation
+  url: https://docs.qonto.com/
+- type: Plans
+  url: plans/qonto-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/qonto-rate-limits.yml
+- type: FinOps
+  url: finops/qonto-finops.yml
+- url: https://qonto.com/en/blog
+  type: Blog
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

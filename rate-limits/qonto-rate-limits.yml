@@ -1,0 +1,62 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Qonto
+providerId: qonto
+created: '2026-07-17'
+modified: '2026-07-17'
+reconciled: true
+tags:
+- Business Banking
+- Fintech
+- Payments
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Qonto applies request rate limitations per IP address across its Business API.
+  Exceeding them returns HTTP 429 Too Many Requests. There is an additional
+  throttle when too many authentication failures occur, which is why Qonto
+  recommends proactively refreshing OAuth access tokens before expiry rather than
+  reacting to 401 errors, and preferring webhooks over polling.
+notes: >-
+  Values confirmed verbatim from the Qonto rate-limitations documentation page on
+  2026-07-17.
+sources:
+- https://docs.qonto.com/get-started/general/rate-limitations
+- https://docs.qonto.com/api-reference/business-api/authentication/oauth2/create_tokens
+responseCodes:
+  throttled: 429
+limits:
+- name: Short-window request limit
+  scope: ip
+  metric: requests
+  limit: 1000
+  timeFrame: 10 seconds
+  notes: 1,000 requests per 10 seconds per IP address.
+- name: Long-window request limit
+  scope: ip
+  metric: requests
+  limit: 10000
+  timeFrame: 10 minutes
+  notes: 10,000 requests per 10 minutes per IP address.
+- name: Authentication-failure throttle
+  scope: ip
+  metric: requests_401
+  limit: 200
+  timeFrame: 1 hour
+  notes: >-
+    Throttling is applied if more than 200 requests returning HTTP 401 occur
+    within 1 hour. Refresh OAuth access tokens proactively to avoid this.
+policies:
+- name: Per-IP enforcement
+  description: Rate limitations are applied per IP address, not per token or per organization.
+- name: Proactive token refresh
+  description: >-
+    Check access-token expiry and refresh before making calls instead of waiting
+    for a 401, to avoid the authentication-failure throttle.
+- name: Prefer webhooks over polling
+  description: Subscribe to webhook events for real-time updates instead of polling endpoints.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

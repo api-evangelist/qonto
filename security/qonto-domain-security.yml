@@ -1,0 +1,32 @@
+generated: '2026-07-17'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + docs/API hosts
+hosts:
+- host: qonto.com
+  https: true
+  tls_version: TLSv1.3
+  server: CloudFront
+  hsts: null
+  note: Marketing site fronted by CloudFront; redirects (301) to canonical host.
+- host: thirdparty.qonto.com
+  https: true
+  http_version: HTTP/2
+  tls_version: TLSv1.2
+  server: cloudflare
+  hsts: true
+  hsts_max_age: 315360000
+  hsts_include_subdomains: true
+  hsts_preload: true
+  note: Production Business API host; unauthenticated request returns HTTP 400.
+- host: docs.qonto.com
+  https: true
+  tls_version: TLSv1.3
+  hsts: null
+  note: Developer documentation (Mintlify-style, llms.txt published).
+domains:
+- domain: qonto.com
+  spf: true
+  spf_record: v=spf1 include:_spf.google.com include:sendgrid.net include:amazonses.com include:_spf.salesforce.com include:mail.zendesk.com ~all
+  dmarc: true
+  dmarc_policy: reject
+  dmarc_record: v=DMARC1; p=reject; rua=mailto:dmarc_agg@vali.email

@@ -1,0 +1,438 @@
+generated: '2026-07-17'
+method: generated
+source: openapi/qonto-openapi.yml
+description: >-
+  Recommended x-agentic-access execution contracts, classified heuristically from
+  the modeled OpenAPI. A governance starting point for exposing this business-banking
+  API to AI agents - review and bind audience per deployment. Money-movement
+  operations (SEPA/internal/international transfers, SDD collection mandates, card
+  issuance, terminal payments) are marked human-in-the-loop required because they
+  move real funds and are subject to PSD2 Strong Customer Authentication (SCA).
+  See research/curity/agentic-governance/.
+summary:
+  operations: 33
+  by_action_class:
+    acting: 16
+    connected: 17
+  by_consequence:
+    write: 16
+    read: 17
+  human_in_the_loop_required: 7
+operations:
+- path: /oauth2/token
+  method: post
+  operationId: createOrRefreshTokens
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 3600
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+    audit: required
+- path: /v2/organization
+  method: get
+  operationId: getOrganization
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/memberships
+  method: get
+  operationId: listMemberships
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/memberships
+  method: post
+  operationId: createMembership
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/labels
+  method: get
+  operationId: listLabels
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/teams
+  method: get
+  operationId: listTeams
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/teams
+  method: post
+  operationId: createTeam
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+    audit: required
+- path: /v2/transactions
+  method: get
+  operationId: listTransactions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/transactions/{id}
+  method: get
+  operationId: getTransaction
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/statements
+  method: get
+  operationId: listStatements
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/cards
+  method: get
+  operationId: listCards
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/cards
+  method: post
+  operationId: createCard
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - always
+    audit: required
+- path: /v2/sepa/transfers
+  method: get
+  operationId: listSepaTransfers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/sepa/transfers
+  method: post
+  operationId: createSepaTransfer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - always
+    sca: required
+    audit: required
+- path: /v2/sepa/bulk_transfers
+  method: post
+  operationId: createSepaBulkTransfer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - always
+    sca: required
+    audit: required
+- path: /v2/beneficiaries
+  method: get
+  operationId: listBeneficiaries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/internal_transfers
+  method: post
+  operationId: createInternalTransfer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - always
+    audit: required
+- path: /v2/international_transfers/currencies
+  method: get
+  operationId: listInternationalCurrencies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/international_transfers
+  method: post
+  operationId: createInternationalTransfer
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - always
+    sca: required
+    audit: required
+- path: /v2/client_invoices
+  method: get
+  operationId: listClientInvoices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/client_invoices
+  method: post
+  operationId: createClientInvoice
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/supplier_invoices
+  method: get
+  operationId: listSupplierInvoices
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/supplier_invoices
+  method: post
+  operationId: createSupplierInvoices
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/attachments
+  method: post
+  operationId: uploadAttachment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+    audit: required
+- path: /v2/sepa/direct_debit_collections/mandates
+  method: post
+  operationId: createSddMandate
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - always
+    audit: required
+- path: /v2/sepa/direct_debit_collections
+  method: get
+  operationId: listSddCollections
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/payment_links
+  method: get
+  operationId: listPaymentLinks
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/payment_links
+  method: post
+  operationId: createPaymentLink
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v2/terminals
+  method: get
+  operationId: listTerminals
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/terminal_payments
+  method: post
+  operationId: createTerminalPayment
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: required
+      triggers:
+      - always
+    audit: required
+- path: /v2/webhook_subscriptions
+  method: get
+  operationId: listWebhookSubscriptions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v2/webhook_subscriptions
+  method: post
+  operationId: createWebhookSubscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+    audit: required
+- path: /v2/webhook_subscriptions/{id}
+  method: delete
+  operationId: deleteWebhookSubscription
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+    audit: required

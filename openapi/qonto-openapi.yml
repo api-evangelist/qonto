@@ -1,0 +1,499 @@
+# Provenance: MODELED-FROM-DOCS (2026-07-17).
+# Qonto publishes a first-party OpenAPI 3.x document at
+# https://api-doc.qonto.com/docs/business-api/reference/openapi_v2.yml and per-endpoint
+# OpenAPI fragments under https://docs.qonto.com/api-reference/ . Those hosts are served
+# behind Cloudflare and returned HTTP 403 to automated fetches during authoring, so this
+# document was MODELED from the public documentation index (https://docs.qonto.com/llms.txt),
+# the per-endpoint markdown fragments, and the getting-started auth/rate-limit pages.
+# Base URLs, security schemes, and the /v2/transactions and /v2/sepa/transfers paths were
+# confirmed verbatim from the docs; the remaining paths are modeled from documented
+# resource operations and should be reconciled against the first-party spec when reachable.
+openapi: 3.1.0
+info:
+  title: Qonto Business API
+  description: >-
+    Business banking API for Qonto - programmatic access to business accounts, EUR
+    transactions, SEPA and international transfers, cards, client and supplier invoices,
+    SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a
+    login+secret-key API key or OAuth 2.0. Modeled from public documentation.
+  version: v2
+  contact:
+    name: Qonto Developers
+    url: https://docs.qonto.com/
+  termsOfService: https://qonto.com/en/legal
+servers:
+  - url: https://thirdparty.qonto.com
+    description: Production
+  - url: https://thirdparty-sandbox.staging.qonto.co
+    description: Sandbox
+tags:
+  - name: OAuth
+  - name: Organizations & Accounts
+  - name: Transactions & Statements
+  - name: SEPA Transfers
+  - name: International Transfers
+  - name: Internal Transfers
+  - name: Cards
+  - name: Client Invoices
+  - name: Supplier Invoices
+  - name: SEPA Direct Debit
+  - name: Payment Links
+  - name: Terminals
+  - name: Webhooks
+paths:
+  /oauth2/token:
+    post:
+      operationId: createOrRefreshTokens
+      tags: [OAuth]
+      summary: Create or refresh OAuth 2.0 tokens
+      description: >-
+        Exchange an authorization code (or a refresh token) for an access token
+        (valid 1 hour), plus a refresh token (valid 90 days) when offline_access is
+        requested and an ID token when openid is requested. Must be called from your
+        backend so the client secret is never exposed.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              required: [grant_type, client_id, client_secret]
+              properties:
+                grant_type:
+                  type: string
+                  enum: [authorization_code, refresh_token]
+                client_id: { type: string }
+                client_secret: { type: string }
+                code: { type: string }
+                refresh_token: { type: string }
+                redirect_uri: { type: string, format: uri }
+      responses:
+        '200':
+          description: Token set
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/TokenSet' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+  /v2/organization:
+    get:
+      operationId: getOrganization
+      tags: [Organizations & Accounts]
+      summary: Retrieve the authenticated organization and list bank accounts
+      description: 'OAuth scope: organization.read'
+      responses:
+        '200': { description: Organization with bank accounts }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /v2/memberships:
+    get:
+      operationId: listMemberships
+      tags: [Organizations & Accounts]
+      summary: List memberships
+      description: 'OAuth scope: organization.read'
+      parameters:
+        - { $ref: '#/components/parameters/CurrentPage' }
+        - { $ref: '#/components/parameters/PerPage' }
+      responses:
+        '200': { description: A paginated list of memberships }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+    post:
+      operationId: createMembership
+      tags: [Organizations & Accounts]
+      summary: Create a membership
+      description: 'OAuth scope: membership.write'
+      responses:
+        '201': { description: Membership created }
+  /v2/labels:
+    get:
+      operationId: listLabels
+      tags: [Organizations & Accounts]
+      summary: List labels
+      description: 'OAuth scope: organization.read'
+      responses:
+        '200': { description: A list of labels }
+  /v2/teams:
+    get:
+      operationId: listTeams
+      tags: [Organizations & Accounts]
+      summary: List teams
+      description: 'OAuth scope: team.read'
+      responses:
+        '200': { description: A list of teams }
+    post:
+      operationId: createTeam
+      tags: [Organizations & Accounts]
+      summary: Create a team
+      description: 'OAuth scope: team.write'
+      responses:
+        '201': { description: Team created }
+  /v2/transactions:
+    get:
+      operationId: listTransactions
+      tags: [Transactions & Statements]
+      summary: List transactions
+      description: 'OAuth scope: organization.read'
+      parameters:
+        - { name: bank_account_id, in: query, schema: { type: string } }
+        - { name: iban, in: query, schema: { type: string } }
+        - name: status[]
+          in: query
+          schema: { type: array, items: { type: string, enum: [pending, declined, completed] } }
+        - { name: updated_at_from, in: query, schema: { type: string, format: date-time } }
+        - { name: settled_at_from, in: query, schema: { type: string, format: date-time } }
+        - name: includes[]
+          in: query
+          schema: { type: array, items: { type: string } }
+        - { $ref: '#/components/parameters/CurrentPage' }
+        - { $ref: '#/components/parameters/PerPage' }
+      responses:
+        '200': { description: A paginated list of transactions }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '429': { $ref: '#/components/responses/TooManyRequests' }
+  /v2/transactions/{id}:
+    get:
+      operationId: getTransaction
+      tags: [Transactions & Statements]
+      summary: Retrieve a transaction
+      description: 'OAuth scope: organization.read'
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        '200': { description: A single transaction }
+        '404': { description: Not found }
+  /v2/statements:
+    get:
+      operationId: listStatements
+      tags: [Transactions & Statements]
+      summary: List statements
+      description: 'OAuth scope: organization.read'
+      responses:
+        '200': { description: A list of account statements }
+  /v2/cards:
+    get:
+      operationId: listCards
+      tags: [Cards]
+      summary: List cards
+      description: 'OAuth scope: card.read'
+      responses:
+        '200': { description: A paginated list of cards }
+    post:
+      operationId: createCard
+      tags: [Cards]
+      summary: Create a card
+      description: 'OAuth scope: card.write. Issues a virtual or physical card.'
+      parameters:
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+      responses:
+        '201': { description: Card created }
+  /v2/sepa/transfers:
+    get:
+      operationId: listSepaTransfers
+      tags: [SEPA Transfers]
+      summary: List SEPA transfers
+      description: 'OAuth scope: organization.read'
+      responses:
+        '200': { description: A paginated list of SEPA transfers }
+    post:
+      operationId: createSepaTransfer
+      tags: [SEPA Transfers]
+      summary: Create a SEPA transfer
+      description: >-
+        OAuth scope: payment.write. Creates a single SEPA credit transfer in EUR
+        (standard or instant). Sensitive; requires Strong Customer Authentication (SCA)
+        unless the beneficiary is trusted (Embed partners only).
+      parameters:
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+        - { $ref: '#/components/parameters/ScaSessionToken' }
+        - { $ref: '#/components/parameters/MfaHeader' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/SepaTransferRequest' }
+      responses:
+        '201': { description: Transfer created }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '422': { description: Validation error (e.g. insufficient limits) }
+  /v2/sepa/bulk_transfers:
+    post:
+      operationId: createSepaBulkTransfer
+      tags: [SEPA Transfers]
+      summary: Create a bulk SEPA transfer
+      description: 'OAuth scope: payment.write'
+      parameters:
+        - { $ref: '#/components/parameters/ScaSessionToken' }
+      responses:
+        '201': { description: Bulk transfer created }
+  /v2/beneficiaries:
+    get:
+      operationId: listBeneficiaries
+      tags: [SEPA Transfers]
+      summary: List SEPA beneficiaries
+      description: 'OAuth scope: organization.read'
+      responses:
+        '200': { description: A list of SEPA beneficiaries }
+  /v2/internal_transfers:
+    post:
+      operationId: createInternalTransfer
+      tags: [Internal Transfers]
+      summary: Create an internal transfer
+      description: 'OAuth scope: internal_transfer.write'
+      parameters:
+        - { $ref: '#/components/parameters/IdempotencyKey' }
+      responses:
+        '201': { description: Internal transfer created }
+  /v2/international_transfers/currencies:
+    get:
+      operationId: listInternationalCurrencies
+      tags: [International Transfers]
+      summary: Get available currencies for international transfers
+      description: 'OAuth scope: organization.read'
+      responses:
+        '200': { description: A list of supported currencies }
+  /v2/international_transfers:
+    post:
+      operationId: createInternationalTransfer
+      tags: [International Transfers]
+      summary: Create an international transfer
+      description: 'OAuth scope: international_transfer.write'
+      parameters:
+        - { $ref: '#/components/parameters/ScaSessionToken' }
+      responses:
+        '201': { description: International transfer created }
+  /v2/client_invoices:
+    get:
+      operationId: listClientInvoices
+      tags: [Client Invoices]
+      summary: List client invoices
+      description: 'OAuth scope: client_invoices.read'
+      responses:
+        '200': { description: A paginated list of client invoices }
+    post:
+      operationId: createClientInvoice
+      tags: [Client Invoices]
+      summary: Create a client invoice
+      description: 'OAuth scope: client_invoice.write'
+      responses:
+        '201': { description: Client invoice created }
+  /v2/supplier_invoices:
+    get:
+      operationId: listSupplierInvoices
+      tags: [Supplier Invoices]
+      summary: List supplier invoices
+      description: 'OAuth scope: supplier_invoice.read'
+      responses:
+        '200': { description: A paginated list of supplier invoices }
+    post:
+      operationId: createSupplierInvoices
+      tags: [Supplier Invoices]
+      summary: Create supplier invoices
+      description: 'OAuth scope: supplier_invoice.write'
+      responses:
+        '201': { description: Supplier invoices created }
+  /v2/attachments:
+    post:
+      operationId: uploadAttachment
+      tags: [Supplier Invoices]
+      summary: Upload an attachment
+      description: 'OAuth scope: attachment.write'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file: { type: string, format: binary }
+      responses:
+        '201': { description: Attachment uploaded }
+  /v2/sepa/direct_debit_collections/mandates:
+    post:
+      operationId: createSddMandate
+      tags: [SEPA Direct Debit]
+      summary: Create a SEPA Direct Debit mandate
+      description: 'OAuth scope: sepa_direct_debit.write'
+      responses:
+        '201': { description: Mandate created }
+  /v2/sepa/direct_debit_collections:
+    get:
+      operationId: listSddCollections
+      tags: [SEPA Direct Debit]
+      summary: List SEPA Direct Debit collections
+      description: 'OAuth scope: sepa_direct_debit.read'
+      responses:
+        '200': { description: A list of SDD collections }
+  /v2/payment_links:
+    get:
+      operationId: listPaymentLinks
+      tags: [Payment Links]
+      summary: List payment links
+      description: 'OAuth scope: payment_link.read'
+      responses:
+        '200': { description: A list of payment links }
+    post:
+      operationId: createPaymentLink
+      tags: [Payment Links]
+      summary: Create a payment link
+      description: 'OAuth scope: payment_link.write'
+      responses:
+        '201': { description: Payment link created }
+  /v2/terminals:
+    get:
+      operationId: listTerminals
+      tags: [Terminals]
+      summary: List terminals
+      description: 'OAuth scope: terminal.read'
+      responses:
+        '200': { description: A list of terminals }
+  /v2/terminal_payments:
+    post:
+      operationId: createTerminalPayment
+      tags: [Terminals]
+      summary: Create a terminal payment
+      description: 'OAuth scope: terminal.write'
+      responses:
+        '201': { description: Terminal payment created }
+  /v2/webhook_subscriptions:
+    get:
+      operationId: listWebhookSubscriptions
+      tags: [Webhooks]
+      summary: List webhook subscriptions
+      description: 'OAuth scope: webhook'
+      responses:
+        '200': { description: A list of webhook subscriptions }
+    post:
+      operationId: createWebhookSubscription
+      tags: [Webhooks]
+      summary: Create a webhook subscription
+      description: 'OAuth scope: webhook (plus the scope required for each subscribed event)'
+      responses:
+        '201': { description: Webhook subscription created }
+  /v2/webhook_subscriptions/{id}:
+    delete:
+      operationId: deleteWebhookSubscription
+      tags: [Webhooks]
+      summary: Delete a webhook subscription
+      description: 'OAuth scope: webhook'
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        '204': { description: Deleted }
+components:
+  securitySchemes:
+    SecretKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        Qonto API key. Value is the organization sign-in and secret key concatenated
+        with a colon - "Authorization: {sign-in}:{secret-key}". This resembles HTTP
+        Basic auth but is NOT - the value is not Base64 encoded.
+    OAuth:
+      type: oauth2
+      description: >-
+        OAuth 2.0 authorization code flow. Access tokens are valid 1 hour; refresh
+        tokens 90 days (offline_access). Bearer access token sent in the Authorization
+        header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.qonto.com/oauth2/auth
+          tokenUrl: https://thirdparty.qonto.com/oauth2/token
+          scopes:
+            openid: OpenID Connect ID token
+            offline_access: Issue a refresh token
+            organization.read: Read organization, accounts, memberships, labels, transactions
+            membership.read: Read the authenticated membership
+            membership.write: Create memberships
+            team.read: Read teams
+            team.write: Create teams
+            subscription.read: Read the organization subscription plan
+            card.read: Read cards
+            card.write: Manage cards
+            payment.write: Create SEPA transfers and manage beneficiaries
+            internal_transfer.write: Create internal transfers
+            international_transfer.write: Create international transfers and beneficiaries
+            beneficiary.trust: Trust SEPA beneficiaries
+            attachment.read: Read attachments
+            attachment.write: Upload attachments
+            client.read: Read clients (customers)
+            client.write: Manage clients (customers)
+            client_invoices.read: Read client invoices, quotes, credit notes
+            client_invoice.write: Manage client invoices, quotes, credit notes
+            supplier_invoice.read: Read supplier invoices
+            supplier_invoice.write: Manage supplier invoices
+            product.read: Read products
+            product.write: Manage products
+            sepa_direct_debit.read: Read SEPA Direct Debit collections/mandates
+            sepa_direct_debit.write: Manage SEPA Direct Debit mandates/subscriptions
+            payment_link.read: Read payment links
+            payment_link.write: Manage payment links
+            terminal.read: Read terminals and terminal payments
+            terminal.write: Create terminal payments
+            einvoicing.read: Read e-invoicing settings
+            insurance_contract.read: Read insurance contracts
+            insurance_contract.write: Manage insurance contracts
+            embed_auth_link.write: Create Embed Auth Links
+            webhook: Manage webhook subscriptions
+  parameters:
+    CurrentPage:
+      name: current_page
+      in: query
+      schema: { type: integer, minimum: 1, default: 1 }
+    PerPage:
+      name: per_page
+      in: query
+      schema: { type: integer, minimum: 1, maximum: 100, default: 100 }
+    IdempotencyKey:
+      name: X-Qonto-Idempotency-Key
+      in: header
+      description: Client-generated key to safely retry create requests without duplication.
+      schema: { type: string }
+    ScaSessionToken:
+      name: X-Qonto-Sca-Session-Token
+      in: header
+      description: Strong Customer Authentication (SCA) session token for sensitive operations.
+      schema: { type: string }
+    MfaHeader:
+      name: X-Qonto-MFA
+      in: header
+      description: Multi-factor authentication challenge header for sensitive operations.
+      schema: { type: string }
+    StagingToken:
+      name: X-Qonto-Staging-Token
+      in: header
+      description: Sandbox-only staging token.
+      schema: { type: string }
+  responses:
+    Unauthorized:
+      description: Missing or invalid authentication
+    TooManyRequests:
+      description: >-
+        Rate limit exceeded (1000 req/10s or 10000 req/10min per IP; or more than
+        200 requests returning 401 within 1 hour).
+  schemas:
+    TokenSet:
+      type: object
+      properties:
+        access_token: { type: string }
+        token_type: { type: string, example: bearer }
+        expires_in: { type: integer, example: 3600 }
+        refresh_token: { type: string }
+        id_token: { type: string }
+        scope: { type: string }
+    SepaTransferRequest:
+      type: object
+      required: [debit_iban, amount, currency]
+      properties:
+        debit_iban: { type: string }
+        beneficiary_id: { type: string }
+        amount: { type: string, example: '100.00' }
+        currency: { type: string, enum: [EUR], default: EUR }
+        reference: { type: string }
+        instant: { type: boolean, default: false }
+        scheduled_date: { type: string, format: date }
+        attachment_ids:
+          type: array
+          items: { type: string }
+security:
+  - SecretKey: []
+  - OAuth: []
