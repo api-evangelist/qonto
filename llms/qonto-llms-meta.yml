@@ -1,0 +1,9 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.qonto.com/llms.txt
+status: 200
+file: qonto-llms.txt
+note: >-
+  Qonto publishes an llms.txt documentation index at https://docs.qonto.com/llms.txt.
+  Saved verbatim. A companion /llms-full.txt was probed but not published as a
+  distinct full-text export at author time.

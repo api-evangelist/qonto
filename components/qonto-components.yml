@@ -1,0 +1,26 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.qonto.com/api-reference/sdk-libraries/doc-pages/overview
+note: >-
+  Qonto ships client-side embeddable surfaces distinct from the server-side
+  Business API: the JavaScript Embed SDK and hosted "Doc Pages" that render Qonto
+  banking flows inside a partner application (embedded finance). Loaded via the
+  @qonto/embed-sdk npm package (see packages/qonto-packages.yml).
+families:
+- name: Embed SDK
+  loader: "@qonto/embed-sdk"
+  registry: npm
+  description: >-
+    Lightweight, tree-shakable JavaScript SDK exposing namespaced flows the
+    partner app imports and mounts. Example namespace: `cards`
+    (import { cards } from '@qonto/embed-sdk/cards') to run card-ordering flows.
+    Authenticated through Embed Auth Links minted server-side.
+  namespaces:
+  - cards
+  docs: https://docs.qonto.com/api-reference/sdk-libraries/doc-pages/overview
+- name: Hosted Pages (Doc Pages)
+  description: >-
+    Qonto-hosted pages that authenticate an end customer via an Embed Auth Link
+    and present prebuilt Qonto banking screens inside the embedding experience.
+  docs: https://docs.qonto.com/api-reference/business-api/endpoints/embed-auth-links/introduction
+related_api: qonto:qonto-embed-sdk-api

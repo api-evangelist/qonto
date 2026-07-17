@@ -1,0 +1,37 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/qonto-openapi.yml
+format: json
+note: >-
+  Derived from the 4xx/5xx responses declared across the Business API OpenAPI.
+  Qonto returns JSON error bodies (a top-level `errors` array of code/detail
+  objects), not RFC 9457 application/problem+json, so `format: json`. Titles and
+  remediation are taken from the operation responses and the getting-started auth
+  and rate-limit documentation.
+envelope:
+  shape: '{ "errors": [ { "code": "...", "detail": "..." } ] }'
+problems:
+- status: 401
+  title: Unauthorized
+  detail: Missing or invalid authentication (API key or OAuth access token).
+  remediation: >-
+    Send a valid Authorization header. Note more than 200 responses of 401 within
+    one hour is itself rate-limited.
+  source_operation: openapi/qonto-openapi.yml#Unauthorized
+- status: 404
+  title: Not found
+  detail: The requested resource does not exist or is not visible to the caller.
+  source_operation: openapi/qonto-openapi.yml#getTransaction
+- status: 422
+  title: Unprocessable entity
+  detail: >-
+    Validation error - the request was well-formed but could not be processed
+    (e.g. insufficient transfer limits, invalid beneficiary, SCA required).
+  source_operation: openapi/qonto-openapi.yml#createSepaTransfer
+- status: 429
+  title: Too many requests
+  detail: >-
+    Rate limit exceeded (1000 req/10s or 10000 req/10min per IP; or more than 200
+    responses of 401 within 1 hour).
+  remediation: Back off and retry; respect any Retry-After signaling.
+  source_operation: openapi/qonto-openapi.yml#TooManyRequests

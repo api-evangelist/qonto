@@ -1,0 +1,25 @@
+generated: '2026-07-17'
+method: generated
+source: >-
+  Packaged Agent Skills generated from the Qonto Business API OpenAPI. Every step
+  is grounded in an operationId verified verbatim in openapi/qonto-openapi.yml;
+  cross-cutting rules cite conventions/qonto-conventions.yml and
+  errors/qonto-problem-types.yml. Qonto's own github.com/qonto/skills repo was a
+  hackathon placeholder (no published skills) at author time.
+skills:
+- file: qonto-list-and-reconcile-transactions.md
+  name: List and reconcile Qonto transactions
+  api: openapi/qonto-openapi.yml
+  operations: [getOrganization, listTransactions, getTransaction, listStatements]
+- file: qonto-create-sepa-transfer.md
+  name: Create a Qonto SEPA transfer
+  api: openapi/qonto-openapi.yml
+  operations: [getOrganization, listBeneficiaries, createSepaTransfer]
+- file: qonto-issue-card.md
+  name: Issue a Qonto card
+  api: openapi/qonto-openapi.yml
+  operations: [getOrganization, listCards, createCard]
+- file: qonto-send-client-invoice.md
+  name: Create and list Qonto client invoices
+  api: openapi/qonto-openapi.yml
+  operations: [createClientInvoice, listClientInvoices]

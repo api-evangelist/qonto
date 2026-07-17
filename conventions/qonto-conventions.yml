@@ -1,0 +1,66 @@
+generated: '2026-07-17'
+method: searched
+source: >-
+  https://docs.qonto.com/get-started/general/idempotent-requests,
+  https://docs.qonto.com/get-started/general/versioning, and the request/response
+  shapes in openapi/qonto-openapi.yml
+description: >-
+  Cross-cutting request/response semantics that apply across the Qonto Business
+  API - authentication, idempotency, pagination, Strong Customer Authentication,
+  versioning, and error handling. Captured from the docs and derived from the
+  OpenAPI where the docs are thin.
+base_url: https://thirdparty.qonto.com
+api_style: REST over HTTPS, JSON request/response bodies
+
+authentication:
+  schemes: [API key (login:secret-key), OAuth 2.0 authorization code, PSD2 QSealC mTLS]
+  header: Authorization
+  detail: authentication/qonto-authentication.yml
+  scopes: scopes/qonto-scopes.yml
+  docs: https://docs.qonto.com/get-started/business-api/authentication/api-key
+
+idempotency:
+  supported: true
+  mechanism: X-Qonto-Idempotency-Key request header
+  applies_to: >-
+    Mutating (create/update) endpoints where documented - e.g. create card,
+    create SEPA transfer, create internal transfer. GET requests are inherently
+    idempotent.
+  key_format: A V4 UUID or another random string with sufficient entropy to prevent collisions.
+  retention: Idempotency keys expire after 30 minutes.
+  docs: https://docs.qonto.com/get-started/general/idempotent-requests
+
+strong_customer_authentication:
+  required_for: [SEPA transfers, bulk transfers, international transfers]
+  headers: [X-Qonto-Sca-Session-Token, X-Qonto-MFA, X-Qonto-2fa-Preference]
+  bypass: Trusted beneficiaries (Embed partners only) can skip per-transfer SCA.
+  docs: https://docs.qonto.com/api-reference/business-api/authentication/sca/sca-flows
+
+pagination:
+  style: page-number
+  request_params:
+    current_page: Page number, minimum 1, default 1.
+    per_page: Items per page, minimum 1, maximum 100, default 100.
+  response: >-
+    List responses include a meta/pagination object with the current page, next
+    and previous page, total pages, and total count.
+
+versioning:
+  scheme: uri-path
+  current: v2
+  detail: lifecycle/qonto-lifecycle.yml
+  docs: https://docs.qonto.com/get-started/general/versioning
+
+rate_limiting:
+  detail: rate-limits/qonto-rate-limits.yml
+  summary: >-
+    1000 requests / 10s and 10000 requests / 10min per IP; more than 200
+    responses of 401 within 1 hour is also throttled. 429 on breach.
+
+errors:
+  envelope: JSON error body with a top-level errors array (code/detail).
+  detail: errors/qonto-problem-types.yml
+
+webhooks:
+  detail: asyncapi/qonto-webhooks.yml
+  signing: Signed HTTP callbacks; verify the signature before trusting the payload.

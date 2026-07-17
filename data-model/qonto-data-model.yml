@@ -1,0 +1,52 @@
+generated: '2026-07-17'
+method: derived
+source: openapi/qonto-openapi.yml
+docs: https://docs.qonto.com/api-reference/introduction
+notation: >-
+  relationships use has_one / has_many / belongs_to with the reference field
+  name; direction is from the entity that owns the reference. Derived from the
+  Business API resource operations and id-reference fields.
+entities:
+- {name: Organization, domain: core, description: The authenticated business; owns bank accounts, members, and teams.}
+- {name: BankAccount, domain: core, description: A EUR bank account under the organization (has an IBAN).}
+- {name: Membership, domain: core, description: A user member of the organization.}
+- {name: Team, domain: core, description: A group of memberships.}
+- {name: Label, domain: core, description: A tag applied to transactions.}
+- {name: Transaction, domain: money, description: A movement on a bank account (pending/declined/completed).}
+- {name: Statement, domain: money, description: A periodic account statement.}
+- {name: Beneficiary, domain: payments, description: A saved SEPA/international payee.}
+- {name: SepaTransfer, domain: payments, description: A EUR SEPA credit transfer (standard or instant).}
+- {name: InternalTransfer, domain: payments, description: A transfer between the org's own accounts.}
+- {name: InternationalTransfer, domain: payments, description: A non-EUR cross-border transfer.}
+- {name: Card, domain: cards, description: A virtual or physical card.}
+- {name: Client, domain: receivables, description: A customer the org invoices.}
+- {name: ClientInvoice, domain: receivables, description: A customer invoice (Factur-X capable).}
+- {name: Quote, domain: receivables, description: A quote/estimate to a client.}
+- {name: CreditNote, domain: receivables, description: A credit note against a client invoice.}
+- {name: Product, domain: receivables, description: A catalog product/service line item.}
+- {name: SupplierInvoice, domain: payables, description: A vendor invoice to be paid.}
+- {name: Attachment, domain: payables, description: A document attached to a transaction/invoice.}
+- {name: SddMandate, domain: sdd, description: A SEPA Direct Debit mandate authorizing collection.}
+- {name: SddCollection, domain: sdd, description: A SEPA Direct Debit collection against a mandate.}
+- {name: PaymentLink, domain: getting-paid, description: A hosted, shareable payment link.}
+- {name: Terminal, domain: getting-paid, description: A physical POS payment terminal.}
+- {name: WebhookSubscription, domain: events, description: A subscription to real-time signed event callbacks.}
+- {name: Registration, domain: onboarding, description: A partner-created organization registration (company creation / KYC).}
+relationships:
+- {from: BankAccount, to: Organization, kind: belongs_to, via: organization}
+- {from: Membership, to: Organization, kind: belongs_to, via: organization}
+- {from: Team, to: Membership, kind: has_many, via: memberships}
+- {from: Transaction, to: BankAccount, kind: belongs_to, via: bank_account_id}
+- {from: Transaction, to: Label, kind: has_many, via: label_ids}
+- {from: Statement, to: BankAccount, kind: belongs_to, via: bank_account_id}
+- {from: SepaTransfer, to: Beneficiary, kind: belongs_to, via: beneficiary_id}
+- {from: SepaTransfer, to: BankAccount, kind: belongs_to, via: debit_iban}
+- {from: InternationalTransfer, to: Beneficiary, kind: belongs_to, via: beneficiary_id}
+- {from: ClientInvoice, to: Client, kind: belongs_to, via: client}
+- {from: ClientInvoice, to: Product, kind: has_many, via: items}
+- {from: Quote, to: Client, kind: belongs_to, via: client}
+- {from: CreditNote, to: ClientInvoice, kind: belongs_to, via: invoice}
+- {from: SupplierInvoice, to: Attachment, kind: has_many, via: attachments}
+- {from: SddCollection, to: SddMandate, kind: belongs_to, via: mandate}
+- {from: PaymentLink, to: BankAccount, kind: belongs_to, via: bank_account}
+- {from: WebhookSubscription, to: Organization, kind: belongs_to, via: organization}

@@ -1,0 +1,29 @@
+generated: '2026-07-17'
+method: searched
+source: >-
+  https://docs.qonto.com/get-started/general/versioning and
+  https://status.qonto.com/
+versioning:
+  scheme: uri-path
+  current: v2
+  pattern: https://thirdparty.qonto.com/<api-version>
+  docs: https://docs.qonto.com/get-started/general/versioning
+  breaking_change_policy: >-
+    A new API version is released for each breaking change. Non-breaking changes
+    (new endpoints, new response fields, new optional parameters, expanded enums,
+    reordered elements, changed identifier formats) may ship within a version at
+    any time.
+deprecation:
+  policy_url: https://docs.qonto.com/get-started/general/versioning
+  sunset_header: false
+  note: >-
+    Breaking changes are handled by versioning rather than a documented Sunset /
+    Deprecation (RFC 8594) header contract. No explicit sunset-header policy is
+    published.
+status_page: https://status.qonto.com/
+status_components:
+- Business API
+sla:
+  url: https://status.qonto.com/
+  note: Public status page tracks up/warn/down/maintenance across components; no numeric SLA published.
+deprecated_operations: []

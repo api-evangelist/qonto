@@ -1,0 +1,53 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.qonto.com/api-reference/sdk-libraries/doc-pages/getting-started
+note: >-
+  Qonto publishes one official client library, the JavaScript Embed SDK
+  (@qonto/embed-sdk), which powers the Embed SDK / Hosted Pages embedded-banking
+  experience (see components/qonto-components.yml). It is not a full Business API
+  server SDK. The remaining libraries below are community-maintained wrappers of
+  the Business API (official: false).
+packages:
+- language: javascript
+  registry: npm
+  name: "@qonto/embed-sdk"
+  url: https://www.npmjs.com/package/@qonto/embed-sdk
+  install: npm install @qonto/embed-sdk
+  official: true
+  latest: 0.69.0
+  note: >-
+    Official lightweight, tree-shakable JS SDK for Qonto Hosted Pages / Embed SDK
+    embedded-banking flows (namespaces such as `cards`). Node.js and browser.
+- language: python
+  registry: github
+  name: qodevai/qonto-api
+  url: https://github.com/qodevai/qonto-api
+  install: pip install qonto-api
+  official: false
+  note: Async, type-safe Python client covering ~40 Business API methods.
+- language: python
+  registry: pypi
+  name: qonto-client
+  url: https://pypi.org/project/qonto-client/
+  install: pip install qonto-client
+  official: false
+- language: ruby
+  registry: rubygems
+  name: qonto
+  url: https://www.rubydoc.info/gems/qonto
+  install: gem install qonto
+  official: false
+  note: Community Ruby client (scharrier/qonto-ruby), tracks Business API v2.
+- language: kotlin
+  registry: github
+  name: BoD/klibqonto
+  url: https://github.com/BoD/klibqonto
+  install: implementation("org.jraf:klibqonto")
+  official: false
+  note: Kotlin/Java/multiplatform client library.
+- language: javascript
+  registry: github
+  name: bottomatik/qonto-api
+  url: https://github.com/bottomatik/qonto-api
+  official: false
+  note: Community Node.js Business API client.

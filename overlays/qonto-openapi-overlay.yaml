@@ -1,0 +1,33 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Qonto Business API
+  version: 1.0.0
+extends: openapi/qonto-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-enrichment:
+      round: '2026-07-17'
+      artifacts:
+        authentication: authentication/qonto-authentication.yml
+        scopes: scopes/qonto-scopes.yml
+        conventions: conventions/qonto-conventions.yml
+        errors: errors/qonto-problem-types.yml
+        lifecycle: lifecycle/qonto-lifecycle.yml
+        conformance: conformance/qonto-conformance.yml
+        data_model: data-model/qonto-data-model.yml
+        webhooks: asyncapi/qonto-webhooks.yml
+        mcp: mcp/qonto-mcp.yml
+        sandbox: sandbox/qonto-sandbox.yml
+      standards: [oauth2, oidc, psd2, sca, gdpr, idempotency]
+- target: $.info
+  update:
+    x-idempotency:
+      header: X-Qonto-Idempotency-Key
+      retention: 30 minutes
+      applies_to: mutating create/update operations
+- target: $.servers
+  update:
+    x-apievangelist-note: >-
+      Sandbox host is https://thirdparty-sandbox.staging.qonto.co and requires an
+      X-Qonto-Staging-Token header (see sandbox/qonto-sandbox.yml).

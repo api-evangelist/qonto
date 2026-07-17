@@ -1,0 +1,229 @@
+generated: '2026-07-17'
+method: searched
+source: openapi/qonto-openapi.yml
+docs: https://docs.qonto.com/get-started/business-api/authentication/oauth/available-scopes
+note: >-
+  Scopes derived from the OpenAPI oauth2 flow and confirmed against Qonto's
+  published "Available scopes" reference. Qonto uses per-resource scopes of the
+  form <resource>.<read|write> (e.g. organization.read, payment.write,
+  card.write, sepa_direct_debit.write, webhook).
+schemes:
+- name: OAuth
+  source: openapi/qonto-openapi.yml
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://oauth.qonto.com/oauth2/auth
+    tokenUrl: https://thirdparty.qonto.com/oauth2/token
+  description: OAuth 2.0 authorization code flow. Access tokens are valid 1 hour; refresh tokens
+    90 days (offline_access). Bearer access token sent in the Authorization header.
+scopes:
+- scope: attachment.read
+  description: Read attachments
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: attachment.write
+  description: Upload attachments
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: beneficiary.trust
+  description: Trust SEPA beneficiaries
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: card.read
+  description: Read cards
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: card.write
+  description: Manage cards
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: client.read
+  description: Read clients (customers)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: client.write
+  description: Manage clients (customers)
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: client_invoice.write
+  description: Manage client invoices, quotes, credit notes
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: client_invoices.read
+  description: Read client invoices, quotes, credit notes
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: einvoicing.read
+  description: Read e-invoicing settings
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: embed_auth_link.write
+  description: Create Embed Auth Links
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: insurance_contract.read
+  description: Read insurance contracts
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: insurance_contract.write
+  description: Manage insurance contracts
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: internal_transfer.write
+  description: Create internal transfers
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: international_transfer.write
+  description: Create international transfers and beneficiaries
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: membership.read
+  description: Read the authenticated membership
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: membership.write
+  description: Create memberships
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: offline_access
+  description: Issue a refresh token
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: openid
+  description: OpenID Connect ID token
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: organization.read
+  description: Read organization, accounts, memberships, labels, transactions
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: payment.write
+  description: Create SEPA transfers and manage beneficiaries
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: payment_link.read
+  description: Read payment links
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: payment_link.write
+  description: Manage payment links
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: product.read
+  description: Read products
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: product.write
+  description: Manage products
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: sepa_direct_debit.read
+  description: Read SEPA Direct Debit collections/mandates
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: sepa_direct_debit.write
+  description: Manage SEPA Direct Debit mandates/subscriptions
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: subscription.read
+  description: Read the organization subscription plan
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: supplier_invoice.read
+  description: Read supplier invoices
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: supplier_invoice.write
+  description: Manage supplier invoices
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: team.read
+  description: Read teams
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: team.write
+  description: Create teams
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: terminal.read
+  description: Read terminals and terminal payments
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: terminal.write
+  description: Create terminal payments
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml
+- scope: webhook
+  description: Manage webhook subscriptions
+  flows:
+  - authorizationCode
+  sources:
+  - openapi/qonto-openapi.yml

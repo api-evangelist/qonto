@@ -1,0 +1,44 @@
+generated: '2026-07-17'
+method: derived
+source: >-
+  openapi/qonto-openapi.yml, authentication/qonto-authentication.yml, and
+  https://qonto.com/en/security
+note: >-
+  Which cross-cutting standards the Qonto Business API conforms to, derived from
+  the OpenAPI security schemes and conventions and from Qonto's published
+  regulatory/security posture. Compliance program claims (GDPR, PSD2/SCA) are
+  captured in security/qonto-trust-center.yml.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: OpenAPI declares an oauth2 authorizationCode security scheme with 35 scopes.
+- id: oidc
+  conforms: true
+  evidence: openid scope issues an ID token; supportsOpenIdConnect noted in the auth profile.
+- id: psd2
+  conforms: true
+  evidence: >-
+    EU-passported payment institution (ACPR 16958); PSD2 Strong Customer
+    Authentication enforced on money movement; QSealC certificate identification
+    for regulated TPPs.
+- id: sca
+  conforms: true
+  evidence: X-Qonto-Sca-Session-Token / X-Qonto-MFA required on SEPA and international transfers.
+- id: gdpr
+  conforms: true
+  evidence: GDPR / EU data-protection posture published on qonto.com/en/security.
+- id: idempotency
+  conforms: true
+  evidence: X-Qonto-Idempotency-Key header on mutating operations (30-minute retention).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a JSON `errors` array, not application/problem+json.
+- id: fhir-r4
+  conforms: false
+- id: fapi
+  conforms: false
+  evidence: OAuth2/OIDC + mTLS present but no published FAPI conformance claim.
+- id: scim
+  conforms: false
+- id: odata
+  conforms: false

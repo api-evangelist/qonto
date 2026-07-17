@@ -1,0 +1,31 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.qonto.com/api-reference/business-api/webhooks/overview
+spec_type: Webhooks
+note: >-
+  Qonto documents a webhook event surface but does not publish an AsyncAPI
+  document. Consumers create webhook subscriptions (POST /v2/webhook_subscriptions)
+  and receive signed HTTP callbacks; verify the signature before trusting a
+  payload. Event types below are from the supported-webhooks reference; the
+  catalog is representative of the documented families, not exhaustive.
+delivery:
+  transport: HTTPS POST callback
+  signing: Signed HTTP callbacks (verify signature)
+  management_operations:
+    create: openapi/qonto-openapi.yml#createWebhookSubscription
+    list: openapi/qonto-openapi.yml#listWebhookSubscriptions
+    delete: openapi/qonto-openapi.yml#deleteWebhookSubscription
+event_families:
+- name: transactions
+  docs: https://docs.qonto.com/api-reference/business-api/webhooks/supported-webhooks/v1-transactions
+- name: cards
+- name: client_invoices
+- name: supplier_invoices
+- name: sepa_direct_debit
+- name: payment_links
+- name: terminals
+- name: memberships
+- name: consent_revocations
+scopes_note: >-
+  A webhook subscription requires the `webhook` scope plus the read scope for
+  each subscribed event family.

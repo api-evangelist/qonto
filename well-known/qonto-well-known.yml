@@ -1,0 +1,39 @@
+generated: '2026-07-17'
+method: searched
+note: >-
+  Probed the /.well-known/ discovery surface on the API host
+  (thirdparty.qonto.com), the corporate host (qonto.com), and the OAuth host
+  (oauth.qonto.com). Only the RFC 9116 security.txt on qonto.com returned 200;
+  it is saved verbatim as qonto-security.txt. OAuth/OIDC discovery documents are
+  not published at the standard well-known paths (the token/authorize URLs are
+  documented in the API reference instead).
+hosts:
+- host: https://qonto.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: qonto-security.txt
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 403
+- host: https://thirdparty.qonto.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://oauth.qonto.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 404

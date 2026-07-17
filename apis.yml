@@ -294,24 +294,86 @@ apis:
     Pages and proxy encoded API requests dispatched by the Embed SDK for embedded banking
     experiences.
 common:
+- type: OAuthScopes
+  url: scopes/qonto-scopes.yml
 - type: AgenticAccess
   url: agentic-access/qonto-agentic-access.yml
 - type: TrustCenter
   url: security/qonto-trust-center.yml
 - type: VulnerabilityDisclosure
   url: security/qonto-vulnerability-disclosure.yml
+- type: Security
+  url: https://qonto.com/en/security
+- type: Compliance
+  url: security/qonto-trust-center.yml
 - type: DomainSecurity
   url: security/qonto-domain-security.yml
 - type: Authentication
   url: authentication/qonto-authentication.yml
+- type: Conventions
+  url: conventions/qonto-conventions.yml
+- type: Idempotency
+  url: conventions/qonto-conventions.yml
+- type: ErrorCatalog
+  url: errors/qonto-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/qonto-lifecycle.yml
+- type: StatusPage
+  url: https://status.qonto.com/
+- type: ChangeLog
+  url: changelog/qonto-changelog.yml
+- type: Conformance
+  url: conformance/qonto-conformance.yml
+- type: DataModel
+  url: data-model/qonto-data-model.yml
+- type: Webhooks
+  url: asyncapi/qonto-webhooks.yml
+- type: MCPServer
+  url: mcp/qonto-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Packages
+  url: packages/qonto-packages.yml
+- type: SDKs
+  url: packages/qonto-packages.yml
+- type: Components
+  url: components/qonto-components.yml
+- type: Sandbox
+  url: sandbox/qonto-sandbox.yml
+- type: Overlay
+  url: overlays/qonto-openapi-overlay.yaml
+- type: LLMsTxt
+  url: llms/qonto-llms.txt
+- type: WellKnown
+  url: well-known/qonto-well-known.yml
+- type: SecurityTxt
+  url: well-known/qonto-security.txt
 - type: GitHubOrganization
   url: https://github.com/qonto
 - type: LinkedIn
   url: https://www.linkedin.com/company/qonto
 - type: Website
   url: https://qonto.com/
+- type: DeveloperPortal
+  url: https://docs.qonto.com/
 - type: Documentation
   url: https://docs.qonto.com/
+- type: APIReference
+  url: https://docs.qonto.com/api-reference/introduction
+- type: GettingStarted
+  url: https://docs.qonto.com/get-started/business-api/overview
+- type: Support
+  url: https://help.qonto.com/
+- type: Postman
+  url: collections/qonto.postman_collection.json
+- type: Pricing
+  url: https://qonto.com/en/pricing
+- type: SignUp
+  url: https://app.qonto.com/signup
+- type: TermsOfService
+  url: https://legal.qonto.com/en
+- type: PrivacyPolicy
+  url: https://legal.qonto.com/en
 - type: Plans
   url: plans/qonto-plans-pricing.yml
 - type: RateLimits

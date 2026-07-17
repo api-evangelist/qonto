@@ -1,0 +1,27 @@
+generated: '2026-07-17'
+method: searched
+source: https://docs.qonto.com/introduction/welcome
+note: >-
+  Qonto provides a dedicated Sandbox environment, separate from Production, to
+  build and test integrations before going live. Credentials for the Sandbox are
+  minted from the Developer Portal by creating an app. Qonto documents no public
+  "magic" test values (test cards / test IBANs) verbatim; those are provisioned
+  per Sandbox organization. Nothing below is invented.
+environments:
+- name: production
+  base_url: https://thirdparty.qonto.com
+  oauth_authorize_url: https://oauth.qonto.com/oauth2/auth
+  oauth_token_url: https://thirdparty.qonto.com/oauth2/token
+- name: sandbox
+  base_url: https://thirdparty-sandbox.staging.qonto.co
+  description: >-
+    Isolated staging environment for building and testing integrations. Obtain
+    Sandbox credentials by creating an app in the Developer Portal.
+  extra_header:
+    name: X-Qonto-Staging-Token
+    description: Sandbox-only staging token used to authenticate against the staging environment.
+credentialing:
+  how: Create an app in the Qonto Developer Portal to receive Sandbox API credentials.
+  docs: https://docs.qonto.com/introduction/welcome
+separation:
+  model: Distinct Sandbox host + staging token; Production and Sandbox do not share data or credentials.

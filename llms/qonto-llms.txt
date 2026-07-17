@@ -1,0 +1,72 @@
+# Qonto Documentation Index
+
+This comprehensive resource catalog documents Qonto's banking and financial APIs, SDKs, and developer tools.
+
+## Core API Categories
+
+**Authentication & Security**
+- OAuth 2.0 flows with scope-based permissions
+- API key authentication methods
+- Strong Customer Authentication (SCA) sessions
+- PSD2 QSeal certificate identification
+
+**Account Management**
+- Business account creation, updates, and closure
+- Organization and membership administration
+- Team configuration and label management
+- Subscription plan retrieval
+
+**Payment & Transfer Services**
+- SEPA transfers with beneficiary verification
+- International transfers with multi-currency support
+- Internal account transfers
+- Bulk transfer operations
+- SEPA Direct Debit collections and mandates
+- Payment link generation and tracking
+- Terminal payment processing
+
+**Card Operations**
+- Physical and virtual card creation
+- Card locking, unlocking, and restrictions
+- Bulk card issuance
+- Card appearance customization
+- Card limit and option management
+
+**Expense Management**
+- Client and supplier invoice handling
+- Quote and credit note generation
+- Product catalog management
+- Insurance contract documentation
+- Attachment uploads for transactions
+- Expense request workflows with approvals
+
+**Financial Data**
+- Transaction listing and retrieval
+- Bank statement access
+- Cash flow category management
+- Child transaction linking
+
+**Webhooks & Events**
+- Real-time event subscriptions across 15+ event types
+- Signature verification and retry handling
+- Testing via webhook.site
+
+## Developer Tools
+
+**SDK Libraries** offering customizable UI components for:
+- Transaction displays
+- Transfer creation flows
+- Card management interfaces
+- Beneficiary administration
+
+**Onboarding API** facilitating:
+- Company registration workflows
+- Document file management
+- Registration progress tracking
+- Webhook event notifications
+
+**MCP Server** providing AI assistant integration with 50+ tools across banking, invoicing, and business operations.
+
+## Rate Limits & Best Practices
+
+The platform implements rate limiting and encourages idempotent request design. Pagination supports efficient data retrieval. Sandbox environment testing precedes production deployment.

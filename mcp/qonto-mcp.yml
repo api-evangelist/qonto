@@ -1,0 +1,49 @@
+generated: '2026-07-17'
+method: searched
+status: published
+source: https://docs.qonto.com/mcp/overview
+server:
+  name: qonto
+  transport: streamable-http
+  url: https://mcp.qonto.com/mcp
+  auth: oauth2
+  description: >-
+    Officially supported, actively maintained Qonto MCP server. Lets an AI
+    assistant read and act on Qonto business-banking data through a curated set
+    of tools. Built on top of the Qonto Business API and calls its endpoints
+    downstream. Every tool call is authenticated as the user via an OAuth access
+    token; it cannot act outside what the user's role and the organization's
+    price plan allow. The server exposes only a curated subset of the Business
+    API - read endpoints plus a vetted set of write operations - and does NOT
+    (yet) cover SEPA transfers from a beneficiary, international transfers,
+    webhooks, terminals, or onboarding.
+supported_clients:
+- Claude Desktop
+- Claude Code
+- Cursor
+- VS Code
+- ChatGPT
+- Mistral Le Chat
+tool_categories:
+- name: Read-Only Insights
+  description: >-
+    Access transactions, statements, attachments, invoices, quotes, clients,
+    cards, requests, and labels.
+- name: Card Management
+  description: Create virtual/physical cards, adjust limits, and modify card status.
+- name: Invoicing
+  description: Draft, send, and manage client invoices, quotes, and credit notes.
+- name: Request Triage
+  description: List, create, or decline card and multi-transfer requests.
+legacy_server:
+  repo: https://github.com/qonto/qonto-mcp-server
+  runtime: python
+  install: [docker, uv]
+  transports: [stdio, streamable-http]
+  auth: API key + organization ID (QONTO_API_KEY, QONTO_ORGANIZATION_ID)
+  note: >-
+    Earlier self-hosted local MCP server on GitHub, no longer actively
+    maintained. The docs recommend the hosted https://mcp.qonto.com/mcp server.
+docs:
+- https://docs.qonto.com/mcp/overview
+- https://support-nl.qonto.com/hc/en-us/articles/47636766575889-How-do-I-connect-and-use-the-Qonto-MCP-server
