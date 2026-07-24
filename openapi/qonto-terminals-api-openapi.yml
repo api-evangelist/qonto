@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Qonto Business Cards Terminals API
+  description: Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.
+  version: v2
+  contact:
+    name: Qonto Developers
+    url: https://docs.qonto.com/
+  termsOfService: https://qonto.com/en/legal
+servers:
+- url: https://thirdparty.qonto.com
+  description: Production
+- url: https://thirdparty-sandbox.staging.qonto.co
+  description: Sandbox
+security:
+- SecretKey: []
+- OAuth: []
+tags:
+- name: Terminals
+paths:
+  /v2/terminals:
+    get:
+      operationId: listTerminals
+      tags:
+      - Terminals
+      summary: List terminals
+      description: 'OAuth scope: terminal.read'
+      responses:
+        '200':
+          description: A list of terminals
+  /v2/terminal_payments:
+    post:
+      operationId: createTerminalPayment
+      tags:
+      - Terminals
+      summary: Create a terminal payment
+      description: 'OAuth scope: terminal.write'
+      responses:
+        '201':
+          description: Terminal payment created
+components:
+  securitySchemes:
+    SecretKey:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Qonto API key. Value is the organization sign-in and secret key concatenated with a colon - "Authorization: {sign-in}:{secret-key}". This resembles HTTP Basic auth but is NOT - the value is not Base64 encoded.'
+    OAuth:
+      type: oauth2
+      description: OAuth 2.0 authorization code flow. Access tokens are valid 1 hour; refresh tokens 90 days (offline_access). Bearer access token sent in the Authorization header.
+      flows:
+        authorizationCode:
+          authorizationUrl: https://oauth.qonto.com/oauth2/auth
+          tokenUrl: https://thirdparty.qonto.com/oauth2/token
+          scopes:
+            openid: OpenID Connect ID token
+            offline_access: Issue a refresh token
+            organization.read: Read organization, accounts, memberships, labels, transactions
+            membership.read: Read the authenticated membership
+            membership.write: Create memberships
+            team.read: Read teams
+            team.write: Create teams
+            subscription.read: Read the organization subscription plan
+            card.read: Read cards
+            card.write: Manage cards
+            payment.write: Create SEPA transfers and manage beneficiaries
+            internal_transfer.write: Create internal transfers
+            international_transfer.write: Create international transfers and beneficiaries
+            beneficiary.trust: Trust SEPA beneficiaries
+            attachment.read: Read attachments
+            attachment.write: Upload attachments
+            client.read: Read clients (customers)
+            client.write: Manage clients (customers)
+            client_invoices.read: Read client invoices, quotes, credit notes
+            client_invoice.write: Manage client invoices, quotes, credit notes
+            supplier_invoice.read: Read supplier invoices
+            supplier_invoice.write: Manage supplier invoices
+            product.read: Read products
+            product.write: Manage products
+            sepa_direct_debit.read: Read SEPA Direct Debit collections/mandates
+            sepa_direct_debit.write: Manage SEPA Direct Debit mandates/subscriptions
+            payment_link.read: Read payment links
+            payment_link.write: Manage payment links
+            terminal.read: Read terminals and terminal payments
+            terminal.write: Create terminal payments
+            einvoicing.read: Read e-invoicing settings
+            insurance_contract.read: Read insurance contracts
+            insurance_contract.write: Manage insurance contracts
+            embed_auth_link.write: Create Embed Auth Links
+            webhook: Manage webhook subscriptions
