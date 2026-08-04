@@ -1,0 +1,278 @@
+{
+  "info": {
+    "_postman_id": "7dc11022-3ece-4b2e-bb4a-12313c3ae7da",
+    "name": "Qonto Business Cards Supplier Invoices API",
+    "description": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:30.000Z",
+    "updatedAt": "2026-07-28T02:42:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7dc11022-3ece-4b2e-bb4a-12313c3ae7da"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "supplier_invoices",
+          "item": [
+            {
+              "name": "List supplier invoices",
+              "id": "ab0c5a27-52c5-4e09-9456-145a884cebd7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/supplier_invoices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "supplier_invoices"
+                  ]
+                },
+                "description": "OAuth scope: supplier_invoice.read"
+              },
+              "response": [
+                {
+                  "id": "83385d59-72fa-476c-8967-e5b6e3f34657",
+                  "name": "A paginated list of supplier invoices",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/supplier_invoices",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "supplier_invoices"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:30.000Z",
+                  "updatedAt": "2026-07-28T02:42:30.000Z",
+                  "uid": "35240-83385d59-72fa-476c-8967-e5b6e3f34657"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:30.000Z",
+              "updatedAt": "2026-07-28T02:42:30.000Z",
+              "uid": "35240-ab0c5a27-52c5-4e09-9456-145a884cebd7"
+            },
+            {
+              "name": "Create supplier invoices",
+              "id": "a8e2c729-4343-49b9-b311-aa8f20dca02a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/supplier_invoices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "supplier_invoices"
+                  ]
+                },
+                "description": "OAuth scope: supplier_invoice.write"
+              },
+              "response": [
+                {
+                  "id": "7fb17262-cad2-44a6-b411-6d86b25d2d10",
+                  "name": "Supplier invoices created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/supplier_invoices",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "supplier_invoices"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:30.000Z",
+                  "updatedAt": "2026-07-28T02:42:30.000Z",
+                  "uid": "35240-7fb17262-cad2-44a6-b411-6d86b25d2d10"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:30.000Z",
+              "updatedAt": "2026-07-28T02:42:30.000Z",
+              "uid": "35240-a8e2c729-4343-49b9-b311-aa8f20dca02a"
+            }
+          ],
+          "id": "29119838-f028-47fd-93bc-8ef01c4e9592",
+          "createdAt": "2026-07-28T02:42:30.000Z",
+          "updatedAt": "2026-07-28T02:42:30.000Z",
+          "uid": "35240-29119838-f028-47fd-93bc-8ef01c4e9592"
+        },
+        {
+          "name": "attachments",
+          "item": [
+            {
+              "name": "Upload an attachment",
+              "id": "cd150112-3f04-4b3c-97a8-929bee5bcc21",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "multipart/form-data"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "file",
+                      "type": "file",
+                      "value": null
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/attachments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "attachments"
+                  ]
+                },
+                "description": "OAuth scope: attachment.write"
+              },
+              "response": [
+                {
+                  "id": "e46f5777-72dd-4921-a84e-61e5acc9a3f6",
+                  "name": "Attachment uploaded",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "file",
+                          "type": "file"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/attachments",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "attachments"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:30.000Z",
+                  "updatedAt": "2026-07-28T02:42:30.000Z",
+                  "uid": "35240-e46f5777-72dd-4921-a84e-61e5acc9a3f6"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:30.000Z",
+              "updatedAt": "2026-07-28T02:42:30.000Z",
+              "uid": "35240-cd150112-3f04-4b3c-97a8-929bee5bcc21"
+            }
+          ],
+          "id": "781b44ac-ed13-4a6a-878f-44cd0a54b59f",
+          "createdAt": "2026-07-28T02:42:30.000Z",
+          "updatedAt": "2026-07-28T02:42:30.000Z",
+          "uid": "35240-781b44ac-ed13-4a6a-878f-44cd0a54b59f"
+        }
+      ],
+      "id": "0d640d00-50fc-4f02-b1aa-56e92870fc9b",
+      "createdAt": "2026-07-28T02:42:30.000Z",
+      "updatedAt": "2026-07-28T02:42:30.000Z",
+      "uid": "35240-0d640d00-50fc-4f02-b1aa-56e92870fc9b"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thirdparty.qonto.com"
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "info": {
+    "_postman_id": "0a1656e4-b06b-4c27-baf0-cdc42eef710e",
+    "name": "Qonto Business Cards OAuth API",
+    "description": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:25.000Z",
+    "updatedAt": "2026-07-28T02:42:25.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0a1656e4-b06b-4c27-baf0-cdc42eef710e"
+  },
+  "item": [
+    {
+      "name": "oauth2",
+      "item": [
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Create or refresh OAuth 2.0 tokens",
+              "id": "edcf2d23-1552-4f45-ac63-6d16c85f6a87",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/x-www-form-urlencoded"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "description": "(Required) ",
+                      "key": "grant_type",
+                      "value": "refresh_token"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "client_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "(Required) ",
+                      "key": "client_secret",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "refresh_token",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "redirect_uri",
+                      "value": "<uri>"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/oauth2/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth2",
+                    "token"
+                  ]
+                },
+                "description": "Exchange an authorization code (or a refresh token) for an access token (valid 1 hour), plus a refresh token (valid 90 days) when offline_access is requested and an ID token when openid is requested. Must be called from your backend so the client secret is never exposed."
+              },
+              "response": [
+                {
+                  "id": "d413f63c-95cf-42f5-93cf-ba97f9138541",
+                  "name": "Token set",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "refresh_token"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "code",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "<uri>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"refresh_token\": \"<string>\",\n  \"id_token\": \"<string>\",\n  \"scope\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:42:25.000Z",
+                  "updatedAt": "2026-07-28T02:42:25.000Z",
+                  "uid": "35240-d413f63c-95cf-42f5-93cf-ba97f9138541"
+                },
+                {
+                  "id": "2401b1d7-3257-4cf1-a788-847af7181a0f",
+                  "name": "Missing or invalid authentication",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/x-www-form-urlencoded"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "urlencoded",
+                      "urlencoded": [
+                        {
+                          "description": "(Required) ",
+                          "key": "grant_type",
+                          "value": "refresh_token"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "client_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "(Required) ",
+                          "key": "client_secret",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "code",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "refresh_token",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "redirect_uri",
+                          "value": "<uri>"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth2/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth2",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:25.000Z",
+                  "updatedAt": "2026-07-28T02:42:25.000Z",
+                  "uid": "35240-2401b1d7-3257-4cf1-a788-847af7181a0f"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:25.000Z",
+              "updatedAt": "2026-07-28T02:42:25.000Z",
+              "uid": "35240-edcf2d23-1552-4f45-ac63-6d16c85f6a87"
+            }
+          ],
+          "id": "770358d2-bc5f-4007-8c73-37d1a8218512",
+          "createdAt": "2026-07-28T02:42:25.000Z",
+          "updatedAt": "2026-07-28T02:42:25.000Z",
+          "uid": "35240-770358d2-bc5f-4007-8c73-37d1a8218512"
+        }
+      ],
+      "id": "308f6b97-31cc-4651-a2f4-25833556bd59",
+      "createdAt": "2026-07-28T02:42:25.000Z",
+      "updatedAt": "2026-07-28T02:42:25.000Z",
+      "uid": "35240-308f6b97-31cc-4651-a2f4-25833556bd59"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thirdparty.qonto.com"
+    }
+  ]
+}

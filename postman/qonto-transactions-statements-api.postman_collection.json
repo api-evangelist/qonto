@@ -1,0 +1,526 @@
+{
+  "info": {
+    "_postman_id": "fa0ff125-8331-416b-9580-89b9d116ec77",
+    "name": "Qonto Business Cards Transactions & Statements API",
+    "description": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:32.000Z",
+    "updatedAt": "2026-07-28T02:42:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fa0ff125-8331-416b-9580-89b9d116ec77"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "transactions",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Retrieve a transaction",
+                  "id": "a0e94d59-8ba4-4ef4-8a71-92c893665d48",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/transactions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "transactions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1ef5113f-115e-4ac2-a97f-76b71e5020ae",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "OAuth scope: organization.read"
+                  },
+                  "response": [
+                    {
+                      "id": "9a37cb28-fa3a-4a1d-8d4f-5f3f675ff744",
+                      "name": "A single transaction",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/transactions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "transactions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:32.000Z",
+                      "updatedAt": "2026-07-28T02:42:32.000Z",
+                      "uid": "35240-9a37cb28-fa3a-4a1d-8d4f-5f3f675ff744"
+                    },
+                    {
+                      "id": "5295ec64-c630-4332-91c5-313bb25b8155",
+                      "name": "Not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/transactions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "transactions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:32.000Z",
+                      "updatedAt": "2026-07-28T02:42:32.000Z",
+                      "uid": "35240-5295ec64-c630-4332-91c5-313bb25b8155"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:42:32.000Z",
+                  "updatedAt": "2026-07-28T02:42:32.000Z",
+                  "uid": "35240-a0e94d59-8ba4-4ef4-8a71-92c893665d48"
+                }
+              ],
+              "id": "d5af8c67-25eb-4cda-8c88-73789d312585",
+              "createdAt": "2026-07-28T02:42:32.000Z",
+              "updatedAt": "2026-07-28T02:42:32.000Z",
+              "uid": "35240-d5af8c67-25eb-4cda-8c88-73789d312585"
+            },
+            {
+              "name": "List transactions",
+              "id": "3a5eb195-3585-4fb9-a611-6e25d9537ad3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/transactions?bank_account_id=<string>&iban=<string>&status[]=completed&status[]=pending&updated_at_from=<dateTime>&settled_at_from=<dateTime>&includes[]=<string>&includes[]=<string>&current_page=1&per_page=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "transactions"
+                  ],
+                  "query": [
+                    {
+                      "key": "bank_account_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iban",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status[]",
+                      "value": "completed"
+                    },
+                    {
+                      "key": "status[]",
+                      "value": "pending"
+                    },
+                    {
+                      "key": "updated_at_from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "settled_at_from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includes[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "includes[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "current_page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ]
+                },
+                "description": "OAuth scope: organization.read"
+              },
+              "response": [
+                {
+                  "id": "dfad99fe-de05-4891-a707-66fd1a9358a4",
+                  "name": "A paginated list of transactions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/transactions?bank_account_id=<string>&iban=<string>&status[]=pending&updated_at_from=<dateTime>&settled_at_from=<dateTime>&includes[]=<string>&current_page=1&per_page=100",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "transactions"
+                      ],
+                      "query": [
+                        {
+                          "key": "bank_account_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "iban",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "status[]",
+                          "value": "pending"
+                        },
+                        {
+                          "key": "updated_at_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "settled_at_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "includes[]",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "current_page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "per_page",
+                          "value": "100"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:32.000Z",
+                  "updatedAt": "2026-07-28T02:42:32.000Z",
+                  "uid": "35240-dfad99fe-de05-4891-a707-66fd1a9358a4"
+                },
+                {
+                  "id": "6139c1e2-b637-45a0-9993-53642e261870",
+                  "name": "Missing or invalid authentication",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/transactions?bank_account_id=<string>&iban=<string>&status[]=pending&updated_at_from=<dateTime>&settled_at_from=<dateTime>&includes[]=<string>&current_page=1&per_page=100",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "transactions"
+                      ],
+                      "query": [
+                        {
+                          "key": "bank_account_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "iban",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "status[]",
+                          "value": "pending"
+                        },
+                        {
+                          "key": "updated_at_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "settled_at_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "includes[]",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "current_page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "per_page",
+                          "value": "100"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:32.000Z",
+                  "updatedAt": "2026-07-28T02:42:32.000Z",
+                  "uid": "35240-6139c1e2-b637-45a0-9993-53642e261870"
+                },
+                {
+                  "id": "453c4f9c-1b37-4fb0-9f8a-c6bddb4f5926",
+                  "name": "Rate limit exceeded (1000 req/10s or 10000 req/10min per IP; or more than 200 requests returning 401 within 1 hour).",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/transactions?bank_account_id=<string>&iban=<string>&status[]=pending&updated_at_from=<dateTime>&settled_at_from=<dateTime>&includes[]=<string>&current_page=1&per_page=100",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "transactions"
+                      ],
+                      "query": [
+                        {
+                          "key": "bank_account_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "iban",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "status[]",
+                          "value": "pending"
+                        },
+                        {
+                          "key": "updated_at_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "settled_at_from",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "key": "includes[]",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "current_page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "per_page",
+                          "value": "100"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:32.000Z",
+                  "updatedAt": "2026-07-28T02:42:32.000Z",
+                  "uid": "35240-453c4f9c-1b37-4fb0-9f8a-c6bddb4f5926"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:32.000Z",
+              "updatedAt": "2026-07-28T02:42:32.000Z",
+              "uid": "35240-3a5eb195-3585-4fb9-a611-6e25d9537ad3"
+            }
+          ],
+          "id": "4c81940f-84ed-4091-a3df-faf1f485e301",
+          "createdAt": "2026-07-28T02:42:32.000Z",
+          "updatedAt": "2026-07-28T02:42:32.000Z",
+          "uid": "35240-4c81940f-84ed-4091-a3df-faf1f485e301"
+        },
+        {
+          "name": "statements",
+          "item": [
+            {
+              "name": "List statements",
+              "id": "2d27ed32-31ee-45e7-b948-b8b63394b26f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/statements",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "statements"
+                  ]
+                },
+                "description": "OAuth scope: organization.read"
+              },
+              "response": [
+                {
+                  "id": "0249d295-c23d-4b9a-91f2-e66ceefb488e",
+                  "name": "A list of account statements",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/statements",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "statements"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:32.000Z",
+                  "updatedAt": "2026-07-28T02:42:32.000Z",
+                  "uid": "35240-0249d295-c23d-4b9a-91f2-e66ceefb488e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:32.000Z",
+              "updatedAt": "2026-07-28T02:42:32.000Z",
+              "uid": "35240-2d27ed32-31ee-45e7-b948-b8b63394b26f"
+            }
+          ],
+          "id": "62b05a25-8eb4-413e-9478-43e3f988f207",
+          "createdAt": "2026-07-28T02:42:32.000Z",
+          "updatedAt": "2026-07-28T02:42:32.000Z",
+          "uid": "35240-62b05a25-8eb4-413e-9478-43e3f988f207"
+        }
+      ],
+      "id": "bc1dc114-331a-4614-af78-f8c104e55a19",
+      "createdAt": "2026-07-28T02:42:32.000Z",
+      "updatedAt": "2026-07-28T02:42:32.000Z",
+      "uid": "35240-bc1dc114-331a-4614-af78-f8c104e55a19"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thirdparty.qonto.com"
+    }
+  ]
+}

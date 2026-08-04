@@ -1,0 +1,180 @@
+{
+  "info": {
+    "_postman_id": "410af636-cabd-4482-ad06-ae3847cfe1a2",
+    "name": "Qonto Business Cards Payment Links API",
+    "description": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:27.000Z",
+    "updatedAt": "2026-07-28T02:42:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-410af636-cabd-4482-ad06-ae3847cfe1a2"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "payment_links",
+          "item": [
+            {
+              "name": "List payment links",
+              "id": "9db9e8b7-75c5-44a1-b9e7-d8221bc9892a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/payment_links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "payment_links"
+                  ]
+                },
+                "description": "OAuth scope: payment_link.read"
+              },
+              "response": [
+                {
+                  "id": "7616e905-0265-45aa-9cce-dde0f1331972",
+                  "name": "A list of payment links",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/payment_links",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "payment_links"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:27.000Z",
+                  "updatedAt": "2026-07-28T02:42:27.000Z",
+                  "uid": "35240-7616e905-0265-45aa-9cce-dde0f1331972"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:27.000Z",
+              "updatedAt": "2026-07-28T02:42:27.000Z",
+              "uid": "35240-9db9e8b7-75c5-44a1-b9e7-d8221bc9892a"
+            },
+            {
+              "name": "Create a payment link",
+              "id": "56b174dd-af7a-4f8c-970f-3e16e180bfe9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/payment_links",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "payment_links"
+                  ]
+                },
+                "description": "OAuth scope: payment_link.write"
+              },
+              "response": [
+                {
+                  "id": "2a5397df-58a6-4f91-b461-08437f50164d",
+                  "name": "Payment link created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/payment_links",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "payment_links"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:27.000Z",
+                  "updatedAt": "2026-07-28T02:42:27.000Z",
+                  "uid": "35240-2a5397df-58a6-4f91-b461-08437f50164d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:27.000Z",
+              "updatedAt": "2026-07-28T02:42:27.000Z",
+              "uid": "35240-56b174dd-af7a-4f8c-970f-3e16e180bfe9"
+            }
+          ],
+          "id": "c8a27960-1cdd-44fe-8e8f-3dbd25d3ef81",
+          "createdAt": "2026-07-28T02:42:27.000Z",
+          "updatedAt": "2026-07-28T02:42:27.000Z",
+          "uid": "35240-c8a27960-1cdd-44fe-8e8f-3dbd25d3ef81"
+        }
+      ],
+      "id": "a84caf2f-3849-4781-a1ab-403d377f0428",
+      "createdAt": "2026-07-28T02:42:27.000Z",
+      "updatedAt": "2026-07-28T02:42:27.000Z",
+      "uid": "35240-a84caf2f-3849-4781-a1ab-403d377f0428"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thirdparty.qonto.com"
+    }
+  ]
+}

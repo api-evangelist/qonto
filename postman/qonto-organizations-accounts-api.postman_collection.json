@@ -1,0 +1,583 @@
+{
+  "info": {
+    "_postman_id": "c62f6d32-493a-404b-9dab-cc88060a1655",
+    "name": "Qonto Business Cards Organizations & Accounts API",
+    "description": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:26.000Z",
+    "updatedAt": "2026-07-28T02:42:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c62f6d32-493a-404b-9dab-cc88060a1655"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "organization",
+          "item": [
+            {
+              "name": "Retrieve the authenticated organization and list bank accounts",
+              "id": "6f8653f7-0f71-45ad-8e0a-95c855f4a50f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/organization",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "organization"
+                  ]
+                },
+                "description": "OAuth scope: organization.read"
+              },
+              "response": [
+                {
+                  "id": "a9ac19c8-c42b-4e0f-8466-0a68ebb47972",
+                  "name": "Organization with bank accounts",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/organization",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "organization"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:26.000Z",
+                  "updatedAt": "2026-07-28T02:42:26.000Z",
+                  "uid": "35240-a9ac19c8-c42b-4e0f-8466-0a68ebb47972"
+                },
+                {
+                  "id": "847b7716-15c1-46b4-9a9d-b296c238671c",
+                  "name": "Missing or invalid authentication",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/organization",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "organization"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:26.000Z",
+                  "updatedAt": "2026-07-28T02:42:26.000Z",
+                  "uid": "35240-847b7716-15c1-46b4-9a9d-b296c238671c"
+                },
+                {
+                  "id": "e07f2094-a207-438a-a42e-95e84c3e3011",
+                  "name": "Rate limit exceeded (1000 req/10s or 10000 req/10min per IP; or more than 200 requests returning 401 within 1 hour).",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/organization",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "organization"
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:26.000Z",
+                  "updatedAt": "2026-07-28T02:42:26.000Z",
+                  "uid": "35240-e07f2094-a207-438a-a42e-95e84c3e3011"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:26.000Z",
+              "updatedAt": "2026-07-28T02:42:26.000Z",
+              "uid": "35240-6f8653f7-0f71-45ad-8e0a-95c855f4a50f"
+            }
+          ],
+          "id": "06e45639-ecc0-40d9-847f-61a01da054c8",
+          "createdAt": "2026-07-28T02:42:26.000Z",
+          "updatedAt": "2026-07-28T02:42:26.000Z",
+          "uid": "35240-06e45639-ecc0-40d9-847f-61a01da054c8"
+        },
+        {
+          "name": "memberships",
+          "item": [
+            {
+              "name": "List memberships",
+              "id": "7f16552b-356b-4344-95e1-3f68159e623f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/memberships?current_page=1&per_page=100",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "memberships"
+                  ],
+                  "query": [
+                    {
+                      "key": "current_page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "100"
+                    }
+                  ]
+                },
+                "description": "OAuth scope: organization.read"
+              },
+              "response": [
+                {
+                  "id": "cd630aa2-306b-400d-9e27-6ffc4ee87684",
+                  "name": "A paginated list of memberships",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/memberships?current_page=1&per_page=100",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "memberships"
+                      ],
+                      "query": [
+                        {
+                          "key": "current_page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "per_page",
+                          "value": "100"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:26.000Z",
+                  "updatedAt": "2026-07-28T02:42:26.000Z",
+                  "uid": "35240-cd630aa2-306b-400d-9e27-6ffc4ee87684"
+                },
+                {
+                  "id": "87fe22d2-f7e9-4e8a-afa0-ae1a47c0095b",
+                  "name": "Rate limit exceeded (1000 req/10s or 10000 req/10min per IP; or more than 200 requests returning 401 within 1 hour).",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/memberships?current_page=1&per_page=100",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "memberships"
+                      ],
+                      "query": [
+                        {
+                          "key": "current_page",
+                          "value": "1"
+                        },
+                        {
+                          "key": "per_page",
+                          "value": "100"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Too Many Requests",
+                  "code": 429,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:26.000Z",
+                  "updatedAt": "2026-07-28T02:42:26.000Z",
+                  "uid": "35240-87fe22d2-f7e9-4e8a-afa0-ae1a47c0095b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:26.000Z",
+              "updatedAt": "2026-07-28T02:42:26.000Z",
+              "uid": "35240-7f16552b-356b-4344-95e1-3f68159e623f"
+            },
+            {
+              "name": "Create a membership",
+              "id": "65882338-6513-4657-910e-3f568bcc45ec",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/memberships",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "memberships"
+                  ]
+                },
+                "description": "OAuth scope: membership.write"
+              },
+              "response": [
+                {
+                  "id": "a07a9993-84d7-4d3e-b86b-6bbd1925bf26",
+                  "name": "Membership created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/memberships",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "memberships"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:26.000Z",
+                  "updatedAt": "2026-07-28T02:42:26.000Z",
+                  "uid": "35240-a07a9993-84d7-4d3e-b86b-6bbd1925bf26"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:26.000Z",
+              "updatedAt": "2026-07-28T02:42:26.000Z",
+              "uid": "35240-65882338-6513-4657-910e-3f568bcc45ec"
+            }
+          ],
+          "id": "1cbff8dc-b572-4547-a9a6-4cd2bf212c11",
+          "createdAt": "2026-07-28T02:42:26.000Z",
+          "updatedAt": "2026-07-28T02:42:26.000Z",
+          "uid": "35240-1cbff8dc-b572-4547-a9a6-4cd2bf212c11"
+        },
+        {
+          "name": "labels",
+          "item": [
+            {
+              "name": "List labels",
+              "id": "2c358a59-9ee0-48ba-8ddb-d652f2f0bbe7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/labels",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "labels"
+                  ]
+                },
+                "description": "OAuth scope: organization.read"
+              },
+              "response": [
+                {
+                  "id": "237d633d-2bb6-43f3-a767-469c939868ad",
+                  "name": "A list of labels",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/labels",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "labels"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:26.000Z",
+                  "updatedAt": "2026-07-28T02:42:26.000Z",
+                  "uid": "35240-237d633d-2bb6-43f3-a767-469c939868ad"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:26.000Z",
+              "updatedAt": "2026-07-28T02:42:26.000Z",
+              "uid": "35240-2c358a59-9ee0-48ba-8ddb-d652f2f0bbe7"
+            }
+          ],
+          "id": "eb86995f-00a0-4033-8a2d-e967ac197870",
+          "createdAt": "2026-07-28T02:42:26.000Z",
+          "updatedAt": "2026-07-28T02:42:26.000Z",
+          "uid": "35240-eb86995f-00a0-4033-8a2d-e967ac197870"
+        },
+        {
+          "name": "teams",
+          "item": [
+            {
+              "name": "List teams",
+              "id": "fe71fa75-8780-448c-ba7a-29698c3ec218",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "teams"
+                  ]
+                },
+                "description": "OAuth scope: team.read"
+              },
+              "response": [
+                {
+                  "id": "9bfaa1c7-2acd-428f-b367-0de29db16bd8",
+                  "name": "A list of teams",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/teams",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "teams"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:26.000Z",
+                  "updatedAt": "2026-07-28T02:42:26.000Z",
+                  "uid": "35240-9bfaa1c7-2acd-428f-b367-0de29db16bd8"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:26.000Z",
+              "updatedAt": "2026-07-28T02:42:26.000Z",
+              "uid": "35240-fe71fa75-8780-448c-ba7a-29698c3ec218"
+            },
+            {
+              "name": "Create a team",
+              "id": "1b43a171-9a29-4178-a0d1-e57bf2b2c50b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "teams"
+                  ]
+                },
+                "description": "OAuth scope: team.write"
+              },
+              "response": [
+                {
+                  "id": "966154b5-a50c-4c0d-b6fa-76a386e2b088",
+                  "name": "Team created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/teams",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "teams"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:26.000Z",
+                  "updatedAt": "2026-07-28T02:42:26.000Z",
+                  "uid": "35240-966154b5-a50c-4c0d-b6fa-76a386e2b088"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:26.000Z",
+              "updatedAt": "2026-07-28T02:42:26.000Z",
+              "uid": "35240-1b43a171-9a29-4178-a0d1-e57bf2b2c50b"
+            }
+          ],
+          "id": "3505a37d-b75b-4163-9396-178563859f69",
+          "createdAt": "2026-07-28T02:42:26.000Z",
+          "updatedAt": "2026-07-28T02:42:26.000Z",
+          "uid": "35240-3505a37d-b75b-4163-9396-178563859f69"
+        }
+      ],
+      "id": "aa714601-7c01-449e-b5dc-a1fcd2a8f684",
+      "createdAt": "2026-07-28T02:42:26.000Z",
+      "updatedAt": "2026-07-28T02:42:26.000Z",
+      "uid": "35240-aa714601-7c01-449e-b5dc-a1fcd2a8f684"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thirdparty.qonto.com"
+    }
+  ]
+}

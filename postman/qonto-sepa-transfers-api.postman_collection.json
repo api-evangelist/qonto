@@ -1,0 +1,533 @@
+{
+  "info": {
+    "_postman_id": "29a54501-bf54-411e-8057-4399087d45d5",
+    "name": "Qonto Business Cards SEPA Transfers API",
+    "description": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:29.000Z",
+    "updatedAt": "2026-07-28T02:42:29.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-29a54501-bf54-411e-8057-4399087d45d5"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "sepa",
+          "item": [
+            {
+              "name": "transfers",
+              "item": [
+                {
+                  "name": "List SEPA transfers",
+                  "id": "e6204e57-aa63-41c0-9269-6d009745c19e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/sepa/transfers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "sepa",
+                        "transfers"
+                      ]
+                    },
+                    "description": "OAuth scope: organization.read"
+                  },
+                  "response": [
+                    {
+                      "id": "3e277ac9-9dad-4faa-962a-3e134dfcfc5a",
+                      "name": "A paginated list of SEPA transfers",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/sepa/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "sepa",
+                            "transfers"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:29.000Z",
+                      "updatedAt": "2026-07-28T02:42:29.000Z",
+                      "uid": "35240-3e277ac9-9dad-4faa-962a-3e134dfcfc5a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:42:29.000Z",
+                  "updatedAt": "2026-07-28T02:42:29.000Z",
+                  "uid": "35240-e6204e57-aa63-41c0-9269-6d009745c19e"
+                },
+                {
+                  "name": "Create a SEPA transfer",
+                  "id": "b2f7dc2f-53a8-4d9f-8377-7657fe17ca81",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Client-generated key to safely retry create requests without duplication.",
+                        "key": "X-Qonto-Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Strong Customer Authentication (SCA) session token for sensitive operations.",
+                        "key": "X-Qonto-Sca-Session-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Multi-factor authentication challenge header for sensitive operations.",
+                        "key": "X-Qonto-MFA",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"debit_iban\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"currency\": \"EUR\",\n  \"beneficiary_id\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"instant\": false,\n  \"scheduled_date\": \"<date>\",\n  \"attachment_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/sepa/transfers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "sepa",
+                        "transfers"
+                      ]
+                    },
+                    "description": "OAuth scope: payment.write. Creates a single SEPA credit transfer in EUR (standard or instant). Sensitive; requires Strong Customer Authentication (SCA) unless the beneficiary is trusted (Embed partners only)."
+                  },
+                  "response": [
+                    {
+                      "id": "a9c4190d-8379-4f0e-a4fa-bd7f7851b0ae",
+                      "name": "Transfer created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Client-generated key to safely retry create requests without duplication.",
+                            "key": "X-Qonto-Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Strong Customer Authentication (SCA) session token for sensitive operations.",
+                            "key": "X-Qonto-Sca-Session-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Multi-factor authentication challenge header for sensitive operations.",
+                            "key": "X-Qonto-MFA",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"debit_iban\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"currency\": \"EUR\",\n  \"beneficiary_id\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"instant\": false,\n  \"scheduled_date\": \"<date>\",\n  \"attachment_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/sepa/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "sepa",
+                            "transfers"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:29.000Z",
+                      "updatedAt": "2026-07-28T02:42:29.000Z",
+                      "uid": "35240-a9c4190d-8379-4f0e-a4fa-bd7f7851b0ae"
+                    },
+                    {
+                      "id": "9b65e1c6-000d-4489-a7b0-131092509fa6",
+                      "name": "Missing or invalid authentication",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Client-generated key to safely retry create requests without duplication.",
+                            "key": "X-Qonto-Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Strong Customer Authentication (SCA) session token for sensitive operations.",
+                            "key": "X-Qonto-Sca-Session-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Multi-factor authentication challenge header for sensitive operations.",
+                            "key": "X-Qonto-MFA",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"debit_iban\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"currency\": \"EUR\",\n  \"beneficiary_id\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"instant\": false,\n  \"scheduled_date\": \"<date>\",\n  \"attachment_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/sepa/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "sepa",
+                            "transfers"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:29.000Z",
+                      "updatedAt": "2026-07-28T02:42:29.000Z",
+                      "uid": "35240-9b65e1c6-000d-4489-a7b0-131092509fa6"
+                    },
+                    {
+                      "id": "db36840e-15fd-4be2-8e56-f1ccde3c9566",
+                      "name": "Validation error (e.g. insufficient limits)",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Client-generated key to safely retry create requests without duplication.",
+                            "key": "X-Qonto-Idempotency-Key",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Strong Customer Authentication (SCA) session token for sensitive operations.",
+                            "key": "X-Qonto-Sca-Session-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Multi-factor authentication challenge header for sensitive operations.",
+                            "key": "X-Qonto-MFA",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"debit_iban\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"currency\": \"EUR\",\n  \"beneficiary_id\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"instant\": false,\n  \"scheduled_date\": \"<date>\",\n  \"attachment_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/sepa/transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "sepa",
+                            "transfers"
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:29.000Z",
+                      "updatedAt": "2026-07-28T02:42:29.000Z",
+                      "uid": "35240-db36840e-15fd-4be2-8e56-f1ccde3c9566"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:42:29.000Z",
+                  "updatedAt": "2026-07-28T02:42:29.000Z",
+                  "uid": "35240-b2f7dc2f-53a8-4d9f-8377-7657fe17ca81"
+                }
+              ],
+              "id": "09cbad95-828a-4db9-b0c6-5e11ef96b670",
+              "createdAt": "2026-07-28T02:42:29.000Z",
+              "updatedAt": "2026-07-28T02:42:29.000Z",
+              "uid": "35240-09cbad95-828a-4db9-b0c6-5e11ef96b670"
+            },
+            {
+              "name": "bulk_transfers",
+              "item": [
+                {
+                  "name": "Create a bulk SEPA transfer",
+                  "id": "3da7b518-06fd-4e07-94bd-954827068d3f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Strong Customer Authentication (SCA) session token for sensitive operations.",
+                        "key": "X-Qonto-Sca-Session-Token",
+                        "value": "<string>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/sepa/bulk_transfers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "sepa",
+                        "bulk_transfers"
+                      ]
+                    },
+                    "description": "OAuth scope: payment.write"
+                  },
+                  "response": [
+                    {
+                      "id": "2a65b375-2862-4d7d-85b5-ea1d14745fe9",
+                      "name": "Bulk transfer created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Strong Customer Authentication (SCA) session token for sensitive operations.",
+                            "key": "X-Qonto-Sca-Session-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/sepa/bulk_transfers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "sepa",
+                            "bulk_transfers"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:29.000Z",
+                      "updatedAt": "2026-07-28T02:42:29.000Z",
+                      "uid": "35240-2a65b375-2862-4d7d-85b5-ea1d14745fe9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:42:29.000Z",
+                  "updatedAt": "2026-07-28T02:42:29.000Z",
+                  "uid": "35240-3da7b518-06fd-4e07-94bd-954827068d3f"
+                }
+              ],
+              "id": "32644966-7db0-4f71-b7c8-479b44e48576",
+              "createdAt": "2026-07-28T02:42:29.000Z",
+              "updatedAt": "2026-07-28T02:42:29.000Z",
+              "uid": "35240-32644966-7db0-4f71-b7c8-479b44e48576"
+            }
+          ],
+          "id": "2c7809e7-8751-433d-a0f2-a259cee89fde",
+          "createdAt": "2026-07-28T02:42:29.000Z",
+          "updatedAt": "2026-07-28T02:42:29.000Z",
+          "uid": "35240-2c7809e7-8751-433d-a0f2-a259cee89fde"
+        },
+        {
+          "name": "beneficiaries",
+          "item": [
+            {
+              "name": "List SEPA beneficiaries",
+              "id": "b80c3a68-efb7-467b-8edc-545a7584dac6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/beneficiaries",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "beneficiaries"
+                  ]
+                },
+                "description": "OAuth scope: organization.read"
+              },
+              "response": [
+                {
+                  "id": "c926e79d-7988-41f9-8934-1ae7a398659b",
+                  "name": "A list of SEPA beneficiaries",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/beneficiaries",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "beneficiaries"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:29.000Z",
+                  "updatedAt": "2026-07-28T02:42:29.000Z",
+                  "uid": "35240-c926e79d-7988-41f9-8934-1ae7a398659b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:29.000Z",
+              "updatedAt": "2026-07-28T02:42:29.000Z",
+              "uid": "35240-b80c3a68-efb7-467b-8edc-545a7584dac6"
+            }
+          ],
+          "id": "29f58fce-d8fc-4eb9-a133-fd865525a99a",
+          "createdAt": "2026-07-28T02:42:29.000Z",
+          "updatedAt": "2026-07-28T02:42:29.000Z",
+          "uid": "35240-29f58fce-d8fc-4eb9-a133-fd865525a99a"
+        }
+      ],
+      "id": "aa27478a-b4ea-4ae8-a43c-9cabbd93be40",
+      "createdAt": "2026-07-28T02:42:29.000Z",
+      "updatedAt": "2026-07-28T02:42:29.000Z",
+      "uid": "35240-aa27478a-b4ea-4ae8-a43c-9cabbd93be40"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thirdparty.qonto.com"
+    }
+  ]
+}

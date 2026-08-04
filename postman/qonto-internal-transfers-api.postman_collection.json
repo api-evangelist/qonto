@@ -1,0 +1,130 @@
+{
+  "info": {
+    "_postman_id": "1c7de734-18d8-4405-8279-122c82853fcf",
+    "name": "Qonto Business Cards Internal Transfers API",
+    "description": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:19.000Z",
+    "updatedAt": "2026-07-28T02:42:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1c7de734-18d8-4405-8279-122c82853fcf"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "internal_transfers",
+          "item": [
+            {
+              "name": "Create an internal transfer",
+              "id": "690374e4-b365-4f9e-9f1e-7a1c71676228",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Client-generated key to safely retry create requests without duplication.",
+                    "key": "X-Qonto-Idempotency-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/internal_transfers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "internal_transfers"
+                  ]
+                },
+                "description": "OAuth scope: internal_transfer.write"
+              },
+              "response": [
+                {
+                  "id": "f2a37482-f01c-4037-838b-858e145ec61e",
+                  "name": "Internal transfer created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Client-generated key to safely retry create requests without duplication.",
+                        "key": "X-Qonto-Idempotency-Key",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/internal_transfers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "internal_transfers"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:20.000Z",
+                  "updatedAt": "2026-07-28T02:42:20.000Z",
+                  "uid": "35240-f2a37482-f01c-4037-838b-858e145ec61e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:20.000Z",
+              "updatedAt": "2026-07-28T02:42:20.000Z",
+              "uid": "35240-690374e4-b365-4f9e-9f1e-7a1c71676228"
+            }
+          ],
+          "id": "34da5175-9078-4686-a864-22e050be8786",
+          "createdAt": "2026-07-28T02:42:20.000Z",
+          "updatedAt": "2026-07-28T02:42:20.000Z",
+          "uid": "35240-34da5175-9078-4686-a864-22e050be8786"
+        }
+      ],
+      "id": "3fdc7220-c063-4995-bf1c-d6eed3fa655b",
+      "createdAt": "2026-07-28T02:42:20.000Z",
+      "updatedAt": "2026-07-28T02:42:20.000Z",
+      "uid": "35240-3fdc7220-c063-4995-bf1c-d6eed3fa655b"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thirdparty.qonto.com"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "provider": "qonto",
+  "sources": [
+    "qonto-cards-api-openapi.yml",
+    "qonto-client-invoices-api-openapi.yml",
+    "qonto-internal-transfers-api-openapi.yml",
+    "qonto-international-transfers-api-openapi.yml",
+    "qonto-oauth-api-openapi.yml",
+    "qonto-organizations-accounts-api-openapi.yml",
+    "qonto-payment-links-api-openapi.yml",
+    "qonto-sepa-direct-debit-api-openapi.yml",
+    "qonto-sepa-transfers-api-openapi.yml",
+    "qonto-supplier-invoices-api-openapi.yml",
+    "qonto-terminals-api-openapi.yml",
+    "qonto-transactions-statements-api-openapi.yml",
+    "qonto-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "qonto-cards-api-openapi.yml",
+    "qonto-client-invoices-api-openapi.yml",
+    "qonto-internal-transfers-api-openapi.yml",
+    "qonto-international-transfers-api-openapi.yml",
+    "qonto-oauth-api-openapi.yml",
+    "qonto-organizations-accounts-api-openapi.yml",
+    "qonto-payment-links-api-openapi.yml",
+    "qonto-sepa-direct-debit-api-openapi.yml",
+    "qonto-sepa-transfers-api-openapi.yml",
+    "qonto-supplier-invoices-api-openapi.yml",
+    "qonto-terminals-api-openapi.yml",
+    "qonto-transactions-statements-api-openapi.yml",
+    "qonto-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

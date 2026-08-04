@@ -1,0 +1,202 @@
+{
+  "info": {
+    "_postman_id": "30cab049-db9b-4963-a808-1abd4e261531",
+    "name": "Qonto Business Cards International Transfers API",
+    "description": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:24.000Z",
+    "updatedAt": "2026-07-28T02:42:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-30cab049-db9b-4963-a808-1abd4e261531"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "international_transfers",
+          "item": [
+            {
+              "name": "currencies",
+              "item": [
+                {
+                  "name": "Get available currencies for international transfers",
+                  "id": "ae21f213-c02f-4962-a68f-42e31b922a74",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/international_transfers/currencies",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "international_transfers",
+                        "currencies"
+                      ]
+                    },
+                    "description": "OAuth scope: organization.read"
+                  },
+                  "response": [
+                    {
+                      "id": "3b24d935-8718-4cc9-8ce0-2f903016ba68",
+                      "name": "A list of supported currencies",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/international_transfers/currencies",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "international_transfers",
+                            "currencies"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:25.000Z",
+                      "updatedAt": "2026-07-28T02:42:25.000Z",
+                      "uid": "35240-3b24d935-8718-4cc9-8ce0-2f903016ba68"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:42:25.000Z",
+                  "updatedAt": "2026-07-28T02:42:25.000Z",
+                  "uid": "35240-ae21f213-c02f-4962-a68f-42e31b922a74"
+                }
+              ],
+              "id": "1086a151-454f-4d8d-8740-dda97bd50ef0",
+              "createdAt": "2026-07-28T02:42:25.000Z",
+              "updatedAt": "2026-07-28T02:42:25.000Z",
+              "uid": "35240-1086a151-454f-4d8d-8740-dda97bd50ef0"
+            },
+            {
+              "name": "Create an international transfer",
+              "id": "ec8541e4-96f4-45c8-a019-93b8fea05020",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Strong Customer Authentication (SCA) session token for sensitive operations.",
+                    "key": "X-Qonto-Sca-Session-Token",
+                    "value": "<string>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/international_transfers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "international_transfers"
+                  ]
+                },
+                "description": "OAuth scope: international_transfer.write"
+              },
+              "response": [
+                {
+                  "id": "5760d1a6-0566-4565-aad7-b3f307f5f7dd",
+                  "name": "International transfer created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Strong Customer Authentication (SCA) session token for sensitive operations.",
+                        "key": "X-Qonto-Sca-Session-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/international_transfers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "international_transfers"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:25.000Z",
+                  "updatedAt": "2026-07-28T02:42:25.000Z",
+                  "uid": "35240-5760d1a6-0566-4565-aad7-b3f307f5f7dd"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:25.000Z",
+              "updatedAt": "2026-07-28T02:42:25.000Z",
+              "uid": "35240-ec8541e4-96f4-45c8-a019-93b8fea05020"
+            }
+          ],
+          "id": "e003cb9f-b03b-4568-aa17-5a6aab6a26c9",
+          "createdAt": "2026-07-28T02:42:25.000Z",
+          "updatedAt": "2026-07-28T02:42:25.000Z",
+          "uid": "35240-e003cb9f-b03b-4568-aa17-5a6aab6a26c9"
+        }
+      ],
+      "id": "d5dcc1f8-a024-4974-9863-aee80bf28077",
+      "createdAt": "2026-07-28T02:42:25.000Z",
+      "updatedAt": "2026-07-28T02:42:25.000Z",
+      "uid": "35240-d5dcc1f8-a024-4974-9863-aee80bf28077"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thirdparty.qonto.com"
+    }
+  ]
+}

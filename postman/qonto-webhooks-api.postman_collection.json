@@ -1,0 +1,265 @@
+{
+  "info": {
+    "_postman_id": "5d1c71e4-4220-4479-8686-eba9a436ee15",
+    "name": "Qonto Business Cards Webhooks API",
+    "description": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:42:33.000Z",
+    "updatedAt": "2026-07-28T02:42:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5d1c71e4-4220-4479-8686-eba9a436ee15"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "webhook_subscriptions",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Delete a webhook subscription",
+                  "id": "0dc9e772-be4d-4e5b-b43c-88069b1a73bd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/webhook_subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "webhook_subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "08160982-d076-4f7e-afe3-623629b2d406",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "OAuth scope: webhook"
+                  },
+                  "response": [
+                    {
+                      "id": "6f738a2c-4966-4cb3-847a-5cbb8313f906",
+                      "name": "Deleted",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/webhook_subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "webhook_subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:42:33.000Z",
+                      "updatedAt": "2026-07-28T02:42:33.000Z",
+                      "uid": "35240-6f738a2c-4966-4cb3-847a-5cbb8313f906"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:42:33.000Z",
+                  "updatedAt": "2026-07-28T02:42:33.000Z",
+                  "uid": "35240-0dc9e772-be4d-4e5b-b43c-88069b1a73bd"
+                }
+              ],
+              "id": "657a65e6-0784-429b-9a4c-b2e9d165d785",
+              "createdAt": "2026-07-28T02:42:33.000Z",
+              "updatedAt": "2026-07-28T02:42:33.000Z",
+              "uid": "35240-657a65e6-0784-429b-9a4c-b2e9d165d785"
+            },
+            {
+              "name": "List webhook subscriptions",
+              "id": "8e1601eb-9bc8-4a07-86ff-4a8668a2a280",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/webhook_subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "webhook_subscriptions"
+                  ]
+                },
+                "description": "OAuth scope: webhook"
+              },
+              "response": [
+                {
+                  "id": "7a6ea467-04c9-4724-b3e9-e805fb711575",
+                  "name": "A list of webhook subscriptions",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/webhook_subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "webhook_subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:33.000Z",
+                  "updatedAt": "2026-07-28T02:42:33.000Z",
+                  "uid": "35240-7a6ea467-04c9-4724-b3e9-e805fb711575"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:33.000Z",
+              "updatedAt": "2026-07-28T02:42:33.000Z",
+              "uid": "35240-8e1601eb-9bc8-4a07-86ff-4a8668a2a280"
+            },
+            {
+              "name": "Create a webhook subscription",
+              "id": "43d349aa-c323-445e-9ce0-34ff9c1d9051",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/webhook_subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "webhook_subscriptions"
+                  ]
+                },
+                "description": "OAuth scope: webhook (plus the scope required for each subscribed event)"
+              },
+              "response": [
+                {
+                  "id": "9be4266d-ee46-4db6-9e95-ab518ddf295d",
+                  "name": "Webhook subscription created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/webhook_subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "webhook_subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:42:33.000Z",
+                  "updatedAt": "2026-07-28T02:42:33.000Z",
+                  "uid": "35240-9be4266d-ee46-4db6-9e95-ab518ddf295d"
+                }
+              ],
+              "createdAt": "2026-07-28T02:42:33.000Z",
+              "updatedAt": "2026-07-28T02:42:33.000Z",
+              "uid": "35240-43d349aa-c323-445e-9ce0-34ff9c1d9051"
+            }
+          ],
+          "id": "a62a8ea6-3499-4eff-b909-3388b8169185",
+          "createdAt": "2026-07-28T02:42:33.000Z",
+          "updatedAt": "2026-07-28T02:42:33.000Z",
+          "uid": "35240-a62a8ea6-3499-4eff-b909-3388b8169185"
+        }
+      ],
+      "id": "46693d09-84de-480a-8696-8e4e1e4dec55",
+      "createdAt": "2026-07-28T02:42:33.000Z",
+      "updatedAt": "2026-07-28T02:42:33.000Z",
+      "uid": "35240-46693d09-84de-480a-8696-8e4e1e4dec55"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://thirdparty.qonto.com"
+    }
+  ]
+}
