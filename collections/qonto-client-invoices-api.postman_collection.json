@@ -1,0 +1,189 @@
+{
+  "item": [
+    {
+      "id": "e40eaec3-c64e-436b-af4e-841029942aa9",
+      "name": "Client Invoices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9645d402-e88c-4562-8985-cdea46944eb8",
+          "name": "List client invoices",
+          "request": {
+            "name": "List client invoices",
+            "description": {
+              "content": "OAuth scope: client_invoices.read",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "client_invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "584c3ab8-7c20-4e46-b4f9-4dd5ee98b43c",
+              "name": "A paginated list of client invoices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "client_invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "82c172d9-6956-4b2f-92ed-7d41dd45df0b",
+          "name": "Create a client invoice",
+          "request": {
+            "name": "Create a client invoice",
+            "description": {
+              "content": "OAuth scope: client_invoice.write",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "client_invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "71878b4a-2ca9-4d47-9590-f83820bc1d5a",
+              "name": "Client invoice created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "client_invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://thirdparty.qonto.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2027b216-395a-4edf-8313-9de996385e0c",
+    "name": "Qonto Business Cards Client Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+      "type": "text/plain"
+    }
+  }
+}

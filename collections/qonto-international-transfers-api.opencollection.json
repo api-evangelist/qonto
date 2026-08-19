@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qonto Business Cards International Transfers API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "International Transfers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available currencies for international transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thirdparty.qonto.com/v2/international_transfers/currencies"
+          },
+          "docs": "OAuth scope: organization.read"
+        },
+        {
+          "info": {
+            "name": "Create an international transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thirdparty.qonto.com/v2/international_transfers",
+            "headers": [
+              {
+                "name": "X-Qonto-Sca-Session-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "OAuth scope: international_transfer.write"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

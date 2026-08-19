@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qonto Business Cards Transactions & Statements API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transactions & Statements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thirdparty.qonto.com/v2/transactions",
+            "params": [
+              {
+                "name": "bank_account_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "iban",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status[]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "updated_at_from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "settled_at_from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includes[]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "current_page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "OAuth scope: organization.read"
+        },
+        {
+          "info": {
+            "name": "Retrieve a transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thirdparty.qonto.com/v2/transactions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "OAuth scope: organization.read"
+        },
+        {
+          "info": {
+            "name": "List statements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thirdparty.qonto.com/v2/statements"
+          },
+          "docs": "OAuth scope: organization.read"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

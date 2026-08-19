@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qonto Business Cards Supplier Invoices API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Supplier Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supplier invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thirdparty.qonto.com/v2/supplier_invoices"
+          },
+          "docs": "OAuth scope: supplier_invoice.read"
+        },
+        {
+          "info": {
+            "name": "Create supplier invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thirdparty.qonto.com/v2/supplier_invoices"
+          },
+          "docs": "OAuth scope: supplier_invoice.write"
+        },
+        {
+          "info": {
+            "name": "Upload an attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thirdparty.qonto.com/v2/attachments",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "OAuth scope: attachment.write"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

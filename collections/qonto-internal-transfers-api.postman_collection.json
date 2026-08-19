@@ -1,0 +1,133 @@
+{
+  "item": [
+    {
+      "id": "4cb050f0-114f-4d24-a2e9-413177e57c90",
+      "name": "Internal Transfers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a152fd73-c66a-4239-8258-71447eb3a40a",
+          "name": "Create an internal transfer",
+          "request": {
+            "name": "Create an internal transfer",
+            "description": {
+              "content": "OAuth scope: internal_transfer.write",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "internal_transfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Client-generated key to safely retry create requests without duplication.",
+                "key": "X-Qonto-Idempotency-Key",
+                "value": "<string>"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26304b0d-2179-4b5e-a132-eed5c534735d",
+              "name": "Internal transfer created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "internal_transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Client-generated key to safely retry create requests without duplication.",
+                    "key": "X-Qonto-Idempotency-Key",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://thirdparty.qonto.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5b2d0fbb-ef40-42c8-8474-0ad710b1946a",
+    "name": "Qonto Business Cards Internal Transfers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+      "type": "text/plain"
+    }
+  }
+}

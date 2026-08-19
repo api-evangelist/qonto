@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qonto Business Cards SEPA Direct Debit API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SEPA Direct Debit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a SEPA Direct Debit mandate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thirdparty.qonto.com/v2/sepa/direct_debit_collections/mandates"
+          },
+          "docs": "OAuth scope: sepa_direct_debit.write"
+        },
+        {
+          "info": {
+            "name": "List SEPA Direct Debit collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thirdparty.qonto.com/v2/sepa/direct_debit_collections"
+          },
+          "docs": "OAuth scope: sepa_direct_debit.read"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

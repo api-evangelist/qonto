@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qonto Business Cards OAuth API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create or refresh OAuth 2.0 tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thirdparty.qonto.com/oauth2/token",
+            "body": {
+              "type": "form-urlencoded",
+              "data": [
+                {
+                  "name": "grant_type",
+                  "value": ""
+                },
+                {
+                  "name": "client_id",
+                  "value": ""
+                },
+                {
+                  "name": "client_secret",
+                  "value": ""
+                },
+                {
+                  "name": "code",
+                  "value": ""
+                },
+                {
+                  "name": "refresh_token",
+                  "value": ""
+                },
+                {
+                  "name": "redirect_uri",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Exchange an authorization code (or a refresh token) for an access token (valid 1 hour), plus a refresh token (valid 90 days) when offline_access is requested and an ID token when openid is requested. Must be called from your backend so the client secret is never exposed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

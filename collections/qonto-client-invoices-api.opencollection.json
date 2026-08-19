@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qonto Business Cards Client Invoices API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Client Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List client invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thirdparty.qonto.com/v2/client_invoices"
+          },
+          "docs": "OAuth scope: client_invoices.read"
+        },
+        {
+          "info": {
+            "name": "Create a client invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thirdparty.qonto.com/v2/client_invoices"
+          },
+          "docs": "OAuth scope: client_invoice.write"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

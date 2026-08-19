@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qonto Business Cards SEPA Transfers API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SEPA Transfers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List SEPA transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thirdparty.qonto.com/v2/sepa/transfers"
+          },
+          "docs": "OAuth scope: organization.read"
+        },
+        {
+          "info": {
+            "name": "Create a SEPA transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thirdparty.qonto.com/v2/sepa/transfers",
+            "headers": [
+              {
+                "name": "X-Qonto-Idempotency-Key",
+                "value": ""
+              },
+              {
+                "name": "X-Qonto-Sca-Session-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Qonto-MFA",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "OAuth scope: payment.write. Creates a single SEPA credit transfer in EUR (standard or instant). Sensitive; requires Strong Customer Authentication (SCA) unless the beneficiary is trusted (Embed partners only)."
+        },
+        {
+          "info": {
+            "name": "Create a bulk SEPA transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thirdparty.qonto.com/v2/sepa/bulk_transfers",
+            "headers": [
+              {
+                "name": "X-Qonto-Sca-Session-Token",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "OAuth scope: payment.write"
+        },
+        {
+          "info": {
+            "name": "List SEPA beneficiaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thirdparty.qonto.com/v2/beneficiaries"
+          },
+          "docs": "OAuth scope: organization.read"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

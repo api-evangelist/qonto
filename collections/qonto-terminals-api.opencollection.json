@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Qonto Business Cards Terminals API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Terminals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List terminals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://thirdparty.qonto.com/v2/terminals"
+          },
+          "docs": "OAuth scope: terminal.read"
+        },
+        {
+          "info": {
+            "name": "Create a terminal payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://thirdparty.qonto.com/v2/terminal_payments"
+          },
+          "docs": "OAuth scope: terminal.write"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

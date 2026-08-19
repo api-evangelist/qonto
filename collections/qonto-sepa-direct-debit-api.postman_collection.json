@@ -1,0 +1,195 @@
+{
+  "item": [
+    {
+      "id": "09dba0b3-4f4f-4fee-a143-fe1705a4ac11",
+      "name": "SEPA Direct Debit",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "76439a1e-a904-4a71-acf8-2eae0da260ea",
+          "name": "Create a SEPA Direct Debit mandate",
+          "request": {
+            "name": "Create a SEPA Direct Debit mandate",
+            "description": {
+              "content": "OAuth scope: sepa_direct_debit.write",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "sepa",
+                "direct_debit_collections",
+                "mandates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d96863dc-ef71-4c6a-9d94-2b70317708e9",
+              "name": "Mandate created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "sepa",
+                    "direct_debit_collections",
+                    "mandates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0aab9a2-f362-4581-9675-108b0d616306",
+          "name": "List SEPA Direct Debit collections",
+          "request": {
+            "name": "List SEPA Direct Debit collections",
+            "description": {
+              "content": "OAuth scope: sepa_direct_debit.read",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "sepa",
+                "direct_debit_collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49f93c53-68cb-4161-8f8c-92169b83f281",
+              "name": "A list of SDD collections",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "sepa",
+                    "direct_debit_collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://thirdparty.qonto.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1708b783-b0d7-4bf5-87cc-71a2bd1d7222",
+    "name": "Qonto Business Cards SEPA Direct Debit API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.\n\nContact Support:\n Name: Qonto Developers",
+      "type": "text/plain"
+    }
+  }
+}
