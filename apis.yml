@@ -273,6 +273,8 @@ apis:
   humanURL: https://docs.qonto.com/get-started/business-api/overview
   baseURL: https://thirdparty.qonto.com/v2
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
@@ -739,6 +741,8 @@ apis:
   humanURL: https://docs.qonto.com/get-started/business-api/overview
   baseURL: https://thirdparty.qonto.com/v2
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
