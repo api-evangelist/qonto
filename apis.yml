@@ -808,6 +808,9 @@ apis:
     url: >-
       https://docs.qonto.com/api-reference/business-api/endpoints/encoded-requests/introduction
 common:
+- type: CapabilityMap
+  url: capabilities/qonto-capability-edges.yml
+  name: Qonto Business Capability Map
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/qonto/overview
 - type: OAuthScopes

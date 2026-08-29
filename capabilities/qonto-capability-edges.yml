@@ -1,0 +1,56 @@
+slug: qonto
+provider: Qonto
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: SEPA Transfers
+  spec_file: qonto-sepa-transfers-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /v2/sepa/transfers  createSepaTransfer  Create a SEPA transfer; schema SepaTransferRequest;
+    GET /v2/beneficiaries listBeneficiaries
+  reason: Operations capture and submit SEPA credit transfer instructions, including bulk transfers and
+    beneficiary lists — payment instruction capture and authorisation.
+- tag: International Transfers
+  spec_file: qonto-international-transfers-api-openapi.yml
+  capability_id: BC-1340.40
+  capability_id_l1: BC-1340
+  capability_name: Cross-Border Payment Management
+  confidence: 0.8
+  evidence: POST /v2/international_transfers createInternationalTransfer Create an international transfer;
+    GET /v2/international_transfers/currencies Get available currencies for international transfers
+  reason: Initiation of cross-border payments with multi-currency support, matching Cross-Border Payment
+    Management (international payments, FX).
+- tag: SEPA Direct Debit
+  spec_file: qonto-sepa-direct-debit-api-openapi.yml
+  capability_id: BC-1340
+  capability_id_l1: BC-1340
+  capability_name: Payments & Card Management
+  confidence: 0.8
+  evidence: POST /v2/sepa/direct_debit_collections/mandates  createSddMandate  Create a SEPA Direct Debit
+    mandate
+  reason: Mandate creation and listing of SEPA Direct Debit collections is plainly payments management
+    on a SEPA rail; ambiguity between payment initiation and clearing/settlement sub-capabilities means
+    only the L1 is asserted.
+- tag: Supplier Invoices
+  spec_file: qonto-supplier-invoices-api-openapi.yml
+  capability_id: BC-200.20
+  capability_id_l1: BC-200
+  capability_name: Accounts Payable Management
+  confidence: 0.7
+  evidence: GET /v2/supplier_invoices  listSupplierInvoices  List supplier invoices / POST /v2/supplier_invoices  createSupplierInvoices
+  reason: Ingesting and managing supplier (incoming) invoices with attachments is invoice processing on
+    the payables side for the account holder, i.e. accounts payable. Moderate confidence as the surface
+    is thin and payment execution sits in other tags.
