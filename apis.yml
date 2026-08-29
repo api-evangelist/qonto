@@ -8,6 +8,18 @@ description: Qonto is a European business banking / neobank platform for freelan
   accounts, EUR transactions, SEPA and international transfers, cards, client and supplier
   invoices, SEPA Direct Debit, payment links, terminals, webhooks, and partner-led
   company onboarding, authenticated by a login+secret-key API key or OAuth 2.0.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
