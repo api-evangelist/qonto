@@ -279,66 +279,6 @@ apis:
   - type: APIReference
     url: >-
       https://docs.qonto.com/api-reference/business-api/endpoints/encoded-requests/introduction
-- aid: qonto:qonto-oauth-api
-  name: Qonto OAuth API
-  description: The OAuth API from Qonto — 1 operation(s) for oauth.
-  humanURL: https://docs.qonto.com/get-started/business-api/overview
-  baseURL: https://thirdparty.qonto.com/v2
-  tags:
-  - Authentication
-  tags_raw:
-  - OAuth
-  properties:
-  - type: OpenAPI
-    url: openapi/qonto-oauth-api-openapi.yml
-  - type: Documentation
-    url: https://docs.qonto.com/api-reference/introduction
-  - type: APIReference
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/accounts-organizations/organizations/retrieve-the-authenticated-organization-and-list-bank-accounts
-  - type: PostmanCollection
-    url: collections/qonto.postman_collection.json
-  - type: APIReference
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/transactions-statements/transactions/list-transactions
-  - type: Documentation
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-transfers/introduction
-  - type: Documentation
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/payments-transfers/international-transfers/introduction
-  - type: APIReference
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/payments-transfers/internal-transfers/create-an-internal-transfer
-  - type: APIReference
-    url: https://docs.qonto.com/api-reference/business-api/cards/list-cards
-  - type: Documentation
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/expense-management/client-quotes-notes/introduction-factur-x
-  - type: APIReference
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/expense-management/supplier-invoices/list-supplier-invoices
-  - type: Documentation
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-direct-debit/introduction
-  - type: Documentation
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/payments-transfers/payment-links/introduction
-  - type: Documentation
-    url: https://docs.qonto.com/api-reference/business-api/terminals/introduction
-  - type: Documentation
-    url: https://docs.qonto.com/api-reference/business-api/webhooks/overview
-  - type: APIReference
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/webhooks/supported-webhooks/v1-transactions
-  - type: APIReference
-    url: >-
-      https://docs.qonto.com/api-reference/onboarding-api/endpoints/registrations/create-a-registration
-  - type: Documentation
-    url: https://docs.qonto.com/api-reference/sdk-libraries/doc-pages/overview
-  - type: APIReference
-    url: >-
-      https://docs.qonto.com/api-reference/business-api/endpoints/encoded-requests/introduction
 - aid: qonto:qonto-organizations-accounts-api
   name: Qonto Organizations & Accounts API
   description: >-
@@ -688,17 +628,18 @@ apis:
   - type: APIReference
     url: >-
       https://docs.qonto.com/api-reference/business-api/endpoints/encoded-requests/introduction
-- aid: qonto:qonto-transactions-statements-api
-  name: Qonto Transactions & Statements API
-  description: >-
-    The Transactions & Statements API from Qonto — 3 operation(s) for transactions & statements.
+- aid: qonto:qonto-webhooks-api
+  name: Qonto Webhooks API
+  description: The Webhooks API from Qonto — 2 operation(s) for webhooks.
   humanURL: https://docs.qonto.com/get-started/business-api/overview
   baseURL: https://thirdparty.qonto.com/v2
   tags:
-  - Transactions & Statements
+  - Webhook
+  tags_raw:
+  - Webhooks
   properties:
   - type: OpenAPI
-    url: openapi/qonto-transactions-statements-api-openapi.yml
+    url: openapi/qonto-webhooks-api-openapi.yml
   - type: Documentation
     url: https://docs.qonto.com/api-reference/introduction
   - type: APIReference
@@ -747,18 +688,75 @@ apis:
   - type: APIReference
     url: >-
       https://docs.qonto.com/api-reference/business-api/endpoints/encoded-requests/introduction
-- aid: qonto:qonto-webhooks-api
-  name: Qonto Webhooks API
-  description: The Webhooks API from Qonto — 2 operation(s) for webhooks.
+- aid: qonto:qonto-oauth-api
+  name: Qonto O Auth API
+  description: The OAuth API from Qonto — 1 operation(s) for oauth.
   humanURL: https://docs.qonto.com/get-started/business-api/overview
   baseURL: https://thirdparty.qonto.com/v2
   tags:
-  - Webhook
-  tags_raw:
-  - Webhooks
+  - OAuth
   properties:
   - type: OpenAPI
-    url: openapi/qonto-webhooks-api-openapi.yml
+    url: openapi/qonto-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://docs.qonto.com/api-reference/introduction
+  - type: APIReference
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/accounts-organizations/organizations/retrieve-the-authenticated-organization-and-list-bank-accounts
+  - type: PostmanCollection
+    url: collections/qonto.postman_collection.json
+  - type: APIReference
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/transactions-statements/transactions/list-transactions
+  - type: Documentation
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-transfers/introduction
+  - type: Documentation
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/payments-transfers/international-transfers/introduction
+  - type: APIReference
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/payments-transfers/internal-transfers/create-an-internal-transfer
+  - type: APIReference
+    url: https://docs.qonto.com/api-reference/business-api/cards/list-cards
+  - type: Documentation
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/expense-management/client-quotes-notes/introduction-factur-x
+  - type: APIReference
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/expense-management/supplier-invoices/list-supplier-invoices
+  - type: Documentation
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-direct-debit/introduction
+  - type: Documentation
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/payments-transfers/payment-links/introduction
+  - type: Documentation
+    url: https://docs.qonto.com/api-reference/business-api/terminals/introduction
+  - type: Documentation
+    url: https://docs.qonto.com/api-reference/business-api/webhooks/overview
+  - type: APIReference
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/webhooks/supported-webhooks/v1-transactions
+  - type: APIReference
+    url: >-
+      https://docs.qonto.com/api-reference/onboarding-api/endpoints/registrations/create-a-registration
+  - type: Documentation
+    url: https://docs.qonto.com/api-reference/sdk-libraries/doc-pages/overview
+  - type: APIReference
+    url: >-
+      https://docs.qonto.com/api-reference/business-api/endpoints/encoded-requests/introduction
+- aid: qonto:qonto-transactions-and-statements-api
+  name: Qonto Transactions and Statements API
+  description: >-
+    The Transactions and Statements API from Qonto — 3 operation(s) for transactions and statements.
+  humanURL: https://docs.qonto.com/get-started/business-api/overview
+  baseURL: https://thirdparty.qonto.com/v2
+  tags:
+  - Transactions and Statements
+  properties:
+  - type: OpenAPI
+    url: openapi/qonto-transactions-and-statements-api-openapi.yml
   - type: Documentation
     url: https://docs.qonto.com/api-reference/introduction
   - type: APIReference
