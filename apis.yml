@@ -576,6 +576,8 @@ apis:
   humanURL: https://docs.qonto.com/get-started/business-api/overview
   baseURL: https://thirdparty.qonto.com/v2
   tags:
+  - Terminal
+  tags_raw:
   - Terminals
   properties:
   - type: OpenAPI
@@ -694,6 +696,8 @@ apis:
   humanURL: https://docs.qonto.com/get-started/business-api/overview
   baseURL: https://thirdparty.qonto.com/v2
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
