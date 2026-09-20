@@ -1,138 +1,105 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Qonto
-providerId: qonto
-created: '2026-07-17'
-modified: '2026-07-17'
-reconciled: true
-tags:
-- Business Banking
-- Fintech
-- Payments
-- Plans
-currency: EUR
-description: >-
-  Qonto monetizes via monthly business-account subscription plans (priced in EUR,
-  excluding VAT), not via metered API pricing. API access and integrations are
-  included across all plans - the Business API and OAuth apps let customers connect
-  Qonto to third-party tools. Freelancer/solo plans are Basic, Smart, and Premium;
-  company/team plans are Essential, Business, and Enterprise. Individual actions
-  (extra SEPA transfers beyond plan allowance, cards, cash deposits, instant
-  transfers, international/FX transfers) may carry per-use fees on top of the
-  subscription.
-notes: >-
-  Prices confirmed from the Qonto pricing page on 2026-07-17 (EUR, excl. VAT) and
-  vary by country market. Verify current allowances and per-action fees on the
-  live pricing page during reconciliation.
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-09-20'
+method: searched
+source: https://qonto.com/en/pricing
 sources:
 - https://qonto.com/en/pricing
-- https://docs.qonto.com/get-started/business-api/overview
+provenance:
+  tool: planning/api-economics/harvest_pricing.py
+  run: 20260920T120546
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+published: true
+note: Business banking pricing page with tiered monthly subscriptions plus transaction-based fees (SEPA
+  transfers, direct debits, FX 0.56%-1.8%, card acceptance 0.7%/2.6%) and paid add-ons. API integrations
+  mentioned as a feature, not separately priced.
+plan_count: 10
+currency: EUR
 plans:
-- id: qonto-basic
-  name: Basic
-  type: subscription
-  description: Entry solo/freelancer plan. Includes API integrations.
-  entries:
-  - label: Monthly subscription
-    name: basic_monthly
-    type: flat
-    metric: subscription
-    limit: 1
-    timeFrame: month
-    geo: eu
-    unit: 1
-    price: EUR 9 / month (excl. VAT)
-    userMultiplied: false
-  elements:
-  - name: API integrations
-  - name: External account syncing
-- id: qonto-smart
-  name: Smart
-  type: subscription
-  description: Mid-tier solo/freelancer plan. Includes API integrations.
-  entries:
-  - label: Monthly subscription
-    name: smart_monthly
-    type: flat
-    metric: subscription
-    limit: 1
-    timeFrame: month
-    geo: eu
-    unit: 1
-    price: EUR 19 / month (excl. VAT)
-    userMultiplied: false
-  elements:
-  - name: API integrations
-- id: qonto-premium
-  name: Premium
-  type: subscription
-  description: Top solo/freelancer plan. Includes API integrations.
-  entries:
-  - label: Monthly subscription
-    name: premium_monthly
-    type: flat
-    metric: subscription
-    limit: 1
-    timeFrame: month
-    geo: eu
-    unit: 1
-    price: EUR 39 / month (excl. VAT)
-    userMultiplied: false
-  elements:
-  - name: API integrations
-- id: qonto-essential
-  name: Essential
-  type: subscription
-  description: Entry company/team plan. Includes API integrations.
-  entries:
-  - label: Monthly subscription
-    name: essential_monthly
-    type: flat
-    metric: subscription
-    limit: 1
-    timeFrame: month
-    geo: eu
-    unit: 1
-    price: EUR 49 / month (excl. VAT)
-    userMultiplied: false
-  elements:
-  - name: API integrations
-- id: qonto-business
-  name: Business
-  type: subscription
-  description: Mid-tier company/team plan. Includes API integrations.
-  entries:
-  - label: Monthly subscription
-    name: business_monthly
-    type: flat
-    metric: subscription
-    limit: 1
-    timeFrame: month
-    geo: eu
-    unit: 1
-    price: EUR 99 / month (excl. VAT)
-    userMultiplied: false
-  elements:
-  - name: API integrations
-- id: qonto-enterprise
-  name: Enterprise
-  type: subscription
-  description: Top company/team plan. Includes API integrations and advanced controls.
-  entries:
-  - label: Monthly subscription
-    name: enterprise_monthly
-    type: flat
-    metric: subscription
-    limit: 1
-    timeFrame: month
-    geo: eu
-    unit: 1
-    price: EUR 199 / month (excl. VAT)
-    userMultiplied: false
-  elements:
-  - name: API integrations
-  - name: External account syncing
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+- name: Basic
+  price_text: €9 /month (excl. VAT)*
+  price: 9
+  currency: EUR
+  period: month
+  unit: account
+  included_quota: Business account with local IBAN, 30 transfers /month, 1 physical payment card + 2 virtual
+    cards, payment links, Tap to Pay & POS, e-invoicing, 24/7 support, Qonto AI agent & Claude MCP
+  overage: Then €0.20 per additional transaction; virtual cards then €2/month per additional card
+- name: Smart
+  price_text: €19 /month (excl. VAT)*
+  price: 19
+  currency: EUR
+  period: month
+  unit: account
+  included_quota: 1 sub-account, 100 transfers /month, 2 physical + 50 virtual cards, cash-flow forecasting,
+    accountant access; 5% AER for 2 months then 1.5% AER
+  overage: Then €0.20 per additional transaction; €1/month per additional virtual card
+- name: Premium
+  price_text: €39 /month (excl. VAT)*
+  price: 39
+  currency: EUR
+  period: month
+  unit: account
+  included_quota: 4 sub-accounts, 200 transfers /month, 2 physical + 50 virtual + 50 Instant cards, FX
+    0.56%, priority support
+  overage: Then €0.10 per additional transaction
+- name: Essential
+  price_text: €49 /month (excl. VAT)*
+  price: 49
+  currency: EUR
+  period: month
+  unit: account
+  included_quota: 250 transfers /month, 5 physical + 50 virtual cards, unlimited team members, 9 sub-accounts
+  overage: Then €0.15 per additional transaction; €1/month per additional virtual card; €5 per month per
+    extra user
+- name: Business
+  price_text: €109 /month (excl. VAT)*
+  price: 109
+  currency: EUR
+  period: month
+  unit: account
+  included_quota: 500 transfers /month, 10 physical + unlimited virtual cards, 29 sub-accounts, dedicated
+    support, EBICS
+  overage: Then €0.15 per additional transaction
+- name: Enterprise
+  price_text: €199 /month (excl. VAT)*
+  price: 199
+  currency: EUR
+  period: month
+  unit: account
+  included_quota: 10,000 transfers /month, 30 physical + unlimited virtual cards, up to 99 sub-accounts
+  overage: Then €0.10 per additional transaction
+- name: Invoice Automation (add-on)
+  price_text: €12 /month (excl. VAT)
+  price: 12
+  currency: EUR
+  period: month
+  unit: add-on
+  included_quota: Billed annually at €144
+- name: Project Tracking (add-on)
+  price_text: €20 /month (excl. VAT)
+  price: 20
+  currency: EUR
+  period: month
+  unit: add-on
+  included_quota: Billed annually at €240
+- name: Team Spend Controls (add-on)
+  price_text: €39 /month (excl. VAT)
+  price: 39
+  currency: EUR
+  period: month
+  unit: add-on
+  included_quota: Billed annually at €468
+- name: Custom plan
+  price_text: Contact us
+  period: none
+  included_quota: Build a custom plan with your own limits and tools
+rate_limit_statements:
+- 30 transfers /month
+- 100 transfers /month
+- 200 transfers /month
+- 250 transfers /month
+- 500 transfers /month
+- 10,000 transfers /month
+- 'Unlimited: a fair usage policy applies.'
