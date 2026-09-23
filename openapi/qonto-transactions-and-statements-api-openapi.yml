@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Qonto Business Cards Transactions & Statements API
+  title: Qonto Business Transactions & Statements API
   description: Business banking API for Qonto - programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, and webhooks. Authenticated with a login+secret-key API key or OAuth 2.0. Modeled from public documentation.
   version: v2
   contact:
@@ -16,13 +16,13 @@ security:
 - SecretKey: []
 - OAuth: []
 tags:
-- name: Transactions & Statements
+- name: Transactions and Statements
 paths:
   /v2/transactions:
     get:
       operationId: listTransactions
       tags:
-      - Transactions & Statements
+      - Transactions and Statements
       summary: List transactions
       description: 'OAuth scope: organization.read'
       parameters:
@@ -73,7 +73,7 @@ paths:
     get:
       operationId: getTransaction
       tags:
-      - Transactions & Statements
+      - Transactions and Statements
       summary: Retrieve a transaction
       description: 'OAuth scope: organization.read'
       parameters:
@@ -91,7 +91,7 @@ paths:
     get:
       operationId: listStatements
       tags:
-      - Transactions & Statements
+      - Transactions and Statements
       summary: List statements
       description: 'OAuth scope: organization.read'
       responses:
@@ -99,6 +99,13 @@ paths:
           description: A list of account statements
 components:
   parameters:
+    CurrentPage:
+      name: current_page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
     PerPage:
       name: per_page
       in: query
@@ -107,18 +114,11 @@ components:
         minimum: 1
         maximum: 100
         default: 100
-    CurrentPage:
-      name: current_page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
   responses:
-    Unauthorized:
-      description: Missing or invalid authentication
     TooManyRequests:
       description: Rate limit exceeded (1000 req/10s or 10000 req/10min per IP; or more than 200 requests returning 401 within 1 hour).
+    Unauthorized:
+      description: Missing or invalid authentication
   securitySchemes:
     SecretKey:
       type: apiKey

@@ -1,12 +1,15 @@
-generated: '2026-07-17'
+generated: '2026-09-19'
 method: searched
-note: >-
-  Probed the /.well-known/ discovery surface on the API host
-  (thirdparty.qonto.com), the corporate host (qonto.com), and the OAuth host
-  (oauth.qonto.com). Only the RFC 9116 security.txt on qonto.com returned 200;
-  it is saved verbatim as qonto-security.txt. OAuth/OIDC discovery documents are
-  not published at the standard well-known paths (the token/authorize URLs are
-  documented in the API reference instead).
+note: 'Probed the /.well-known/ discovery surface on the API host (thirdparty.qonto.com), the corporate
+  host (qonto.com), and the OAuth host (oauth.qonto.com). Only the RFC 9116 security.txt on qonto.com
+  returned 200; it is saved verbatim as qonto-security.txt. OAuth/OIDC discovery documents are not published
+  at the standard well-known paths (the token/authorize URLs are documented in the API reference instead).
+
+
+  MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s primary
+  hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed and
+  were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'
 hosts:
 - host: https://qonto.com
   documents:
@@ -37,3 +40,26 @@ hosts:
   documents:
   - path: /.well-known/oauth-authorization-server
     status: 404
+- host: https://mcp.qonto.com
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: qonto-mcp-oauth-protected-resource.json
+    bytes: 153
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: qonto-mcp-oauth-authorization-server.json
+    bytes: 390
+  path_echo_control: passed
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://mcp.qonto.com
+    path: /.well-known/oauth-protected-resource
+    file: qonto-mcp-oauth-protected-resource.json
+  - host: https://mcp.qonto.com
+    path: /.well-known/oauth-authorization-server
+    file: qonto-mcp-oauth-authorization-server.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host

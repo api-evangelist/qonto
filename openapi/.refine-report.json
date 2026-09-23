@@ -1,19 +1,7 @@
 {
   "provider": "qonto",
   "sources": [
-    "qonto-cards-api-openapi.yml",
-    "qonto-client-invoices-api-openapi.yml",
-    "qonto-internal-transfers-api-openapi.yml",
-    "qonto-international-transfers-api-openapi.yml",
-    "qonto-oauth-api-openapi.yml",
-    "qonto-organizations-accounts-api-openapi.yml",
-    "qonto-payment-links-api-openapi.yml",
-    "qonto-sepa-direct-debit-api-openapi.yml",
-    "qonto-sepa-transfers-api-openapi.yml",
-    "qonto-supplier-invoices-api-openapi.yml",
-    "qonto-terminals-api-openapi.yml",
-    "qonto-transactions-statements-api-openapi.yml",
-    "qonto-webhooks-api-openapi.yml"
+    "_original/qonto-openapi.yml"
   ],
   "outputs": [
     "qonto-cards-api-openapi.yml",
@@ -30,9 +18,30 @@
     "qonto-transactions-statements-api-openapi.yml",
     "qonto-webhooks-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "qonto-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "superseded outputs removed: qonto-o-auth-api-openapi.yml, qonto-transactions-and-statements-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 13 total)"
+  ],
+  "skipped": [
+    "qonto-cards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-client-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-internal-transfers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-international-transfers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-o-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-organizations-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-payment-links-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-sepa-direct-debit-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-sepa-transfers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-supplier-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-terminals-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-transactions-and-statements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "qonto-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
