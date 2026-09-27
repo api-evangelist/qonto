@@ -86,6 +86,11 @@ paths:
         '201':
           description: Team created
 components:
+  responses:
+    TooManyRequests:
+      description: Rate limit exceeded (1000 req/10s or 10000 req/10min per IP; or more than 200 requests returning 401 within 1 hour).
+    Unauthorized:
+      description: Missing or invalid authentication
   parameters:
     CurrentPage:
       name: current_page
@@ -102,11 +107,6 @@ components:
         minimum: 1
         maximum: 100
         default: 100
-  responses:
-    TooManyRequests:
-      description: Rate limit exceeded (1000 req/10s or 10000 req/10min per IP; or more than 200 requests returning 401 within 1 hour).
-    Unauthorized:
-      description: Missing or invalid authentication
   securitySchemes:
     SecretKey:
       type: apiKey
