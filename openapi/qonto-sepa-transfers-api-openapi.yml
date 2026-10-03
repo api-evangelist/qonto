@@ -75,16 +75,16 @@ paths:
           description: A list of SEPA beneficiaries
 components:
   parameters:
-    MfaHeader:
-      name: X-Qonto-MFA
-      in: header
-      description: Multi-factor authentication challenge header for sensitive operations.
-      schema:
-        type: string
     IdempotencyKey:
       name: X-Qonto-Idempotency-Key
       in: header
       description: Client-generated key to safely retry create requests without duplication.
+      schema:
+        type: string
+    MfaHeader:
+      name: X-Qonto-MFA
+      in: header
+      description: Multi-factor authentication challenge header for sensitive operations.
       schema:
         type: string
     ScaSessionToken:
