@@ -53,3 +53,17 @@ deployment:
   probe: gated
   checked: '2026-08-12'
   source: catalog MCP census
+rfc9728:
+  endpoint: https://mcp.qonto.com/mcp
+  metadata_url: https://mcp.qonto.com/.well-known/oauth-protected-resource
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://mcp.qonto.com
+    authorization_servers:
+    - https://mcp.qonto.com
+    bearer_methods_supported:
+    - header
+    resource_name: Qonto MCP
