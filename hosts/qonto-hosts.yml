@@ -1,0 +1,133 @@
+generated: '2026-10-12'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 10
+  own: 7
+  other_domain: 0
+  platform: 3
+  roles:
+  - identity
+  - legal
+  - other
+  - portal
+  - source
+  - status
+  - support
+  - website
+hosts:
+- host: app.qonto.com
+  found_by:
+  - pointer
+  types:
+  - SignUp
+  serves: []
+  registrable_domain: qonto.com
+  role: identity
+  relation: own
+- host: docs.qonto.com
+  found_by:
+  - pointer
+  - apis[]
+  - vendor-detect
+  types:
+  - Deprecation
+  - DeveloperPortal
+  - Documentation
+  - APIReference
+  - GettingStarted
+  serves:
+  - docs
+  - hosting
+  vendor: vercel
+  registrable_domain: qonto.com
+  role: portal
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: help.qonto.com
+  found_by:
+  - pointer
+  types:
+  - Support
+  serves: []
+  registrable_domain: qonto.com
+  role: support
+  relation: own
+- host: legal.qonto.com
+  found_by:
+  - pointer
+  types:
+  - TermsOfService
+  - PrivacyPolicy
+  serves: []
+  registrable_domain: qonto.com
+  role: legal
+  relation: own
+- host: qonto.com
+  found_by:
+  - pointer
+  - vendor-detect
+  types:
+  - Newsroom
+  - Leadership
+  - Security
+  - Website
+  - Pricing
+  - Blog
+  serves:
+  - cdn
+  vendor: cloudfront
+  registrable_domain: qonto.com
+  role: website
+  relation: own
+- host: status.qonto.com
+  found_by:
+  - pointer
+  - vendor-detect
+  types:
+  - StatusPage
+  serves:
+  - cdn
+  vendor: cloudflare
+  registrable_domain: qonto.com
+  role: status
+  relation: own
+- host: thirdparty.qonto.com
+  found_by:
+  - apis[]
+  - vendor-detect
+  types: []
+  serves:
+  - api
+  - api-gateway
+  vendor: tyk
+  registrable_domain: qonto.com
+  role: other
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: www.postman.com
+  found_by:
+  - pointer
+  types:
+  - PostmanWorkspace
+  serves: []
+  registrable_domain: postman.com
+  role: other
+  relation: platform

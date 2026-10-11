@@ -2,6 +2,7 @@
 generated: '2026-09-20'
 method: searched
 source: https://docs.qonto.com/faq-articles/api-questions/api-questions-api-usage
+name: Qonto API Rate Limits
 sources:
 - https://docs.qonto.com/faq-articles/api-questions/api-questions-api-usage
 provenance:

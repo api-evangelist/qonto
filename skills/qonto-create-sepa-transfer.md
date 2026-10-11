@@ -1,5 +1,5 @@
 ---
-name: Create a Qonto SEPA transfer
+name: qonto-create-sepa-transfer
 description: Look up the organization and beneficiaries, then create a EUR SEPA credit transfer safely with an idempotency key and Strong Customer Authentication.
 api: openapi/qonto-openapi.yml
 operations: [getOrganization, listBeneficiaries, createSepaTransfer]

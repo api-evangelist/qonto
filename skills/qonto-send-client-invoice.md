@@ -1,5 +1,5 @@
 ---
-name: Create and list Qonto client invoices
+name: qonto-send-client-invoice
 description: Create a client (customer) invoice and list existing client invoices for accounts-receivable automation.
 api: openapi/qonto-openapi.yml
 operations: [createClientInvoice, listClientInvoices]

@@ -1,5 +1,5 @@
 ---
-name: Issue a Qonto card
+name: qonto-issue-card
 description: List existing cards and issue a new virtual or physical card idempotently.
 api: openapi/qonto-openapi.yml
 operations: [getOrganization, listCards, createCard]

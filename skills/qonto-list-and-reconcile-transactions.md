@@ -1,5 +1,5 @@
 ---
-name: List and reconcile Qonto transactions
+name: qonto-list-and-reconcile-transactions
 description: Retrieve the authenticated organization and its bank accounts, list transactions with filters, fetch a single transaction, and pull statements for reconciliation.
 api: openapi/qonto-openapi.yml
 operations: [getOrganization, listTransactions, getTransaction, listStatements]

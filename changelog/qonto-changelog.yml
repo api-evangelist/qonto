@@ -1,21 +1,54 @@
-generated: '2026-07-17'
+generated: '2026-10-12'
 method: searched
 source: https://updates.qonto.com/
-note: >-
-  Qonto publishes product releases and changelogs at updates.qonto.com. API-level
-  breaking changes are handled through URI-path versioning (see
-  lifecycle/qonto-lifecycle.yml): a new major version is released for each
-  breaking change, and non-breaking additions ship continuously within a version.
-  A dated, structured API-only changelog feed was not published as machine-
-  readable entries at author time, so specific entries are not enumerated here to
-  avoid fabrication.
+note: 'Qonto publishes product releases and changelogs at updates.qonto.com. API-level breaking changes are handled through URI-path versioning (see lifecycle/qonto-lifecycle.yml): a new major version is released for each breaking change, and non-breaking additions ship continuously within a version. A dated, structured API-only changelog feed was not published as machine- readable entries at author time, so specific entries are not enumerated here to avoid fabrication. Entries below (2026-10-12) are the dated product releases read from updates.qonto.com; dates are as printed (month-only where the page gives no day).'
 versioning_scheme: uri-path (v1, v2, ...)
 current_version: v2
 release_notes_url: https://updates.qonto.com/
 non_breaking_changes:
-  policy: >-
-    Introduced at any time within a version - new endpoints, new response fields,
-    new optional request parameters, expanded enums, reordered elements, and
-    changed identifier formats. Integrations should tolerate these.
+  policy: Introduced at any time within a version - new endpoints, new response fields, new optional request parameters, expanded enums, reordered elements, and changed identifier formats. Integrations should tolerate these.
 breaking_changes:
   policy: A new API version is released whenever a breaking change is introduced.
+entries:
+- version: null
+  date: 2026-03
+  breaking: false
+  highlights:
+  - Advanced filters in Expected transactions
+  scope: product
+- version: null
+  date: '2025-11-06'
+  breaking: false
+  highlights:
+  - Plan and track cash flow in Google Sheets
+  scope: product
+- version: null
+  date: 2025-09
+  breaking: false
+  highlights:
+  - Your Qonto accounts, now remunerated
+  scope: product
+- version: null
+  date: '2025-07-11'
+  breaking: false
+  highlights:
+  - Automatically organize your transactions
+  scope: product
+- version: null
+  date: '2025-06-27'
+  breaking: false
+  highlights:
+  - Stay ready for anything with forecast scenarios
+  scope: product
+- version: null
+  date: '2025-05-12'
+  breaking: false
+  highlights:
+  - 'Effortless Insurance: click, compare, covered.'
+  scope: product
+- version: null
+  date: '2025-05-09'
+  breaking: false
+  highlights:
+  - 'Developer Portal: recharged and ready - better documentation, 20 new endpoints, and an integrated workflow for customers and partners'
+  scope: api

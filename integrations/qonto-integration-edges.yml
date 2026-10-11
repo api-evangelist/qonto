@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/qonto/integrations
 - https://n8n.io/integrations/qonto/
@@ -9,8 +9,88 @@ checked:
 - https://composio.dev/toolkits/qonto
 - https://monid.ai/tools/qonto
 - https://n8n.io/integrations/qonto/
+- https://qonto.com/en/integrations
+- https://www.make.com/en/integrations/qonto
 - https://zapier.com/apps/qonto/integrations
-summary: null
+summary: '31 edges: 11 partners named on qonto.com/en/integrations (page claims 2,000+ / 4790 integrations), Qonto
+  app on Zapier with triggers+actions and 19 listed app pairings.'
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: Declarando
+  partner: null
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Accounting
+- partner_name: Google Sheets
+  partner: google-sheets
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Productivity
+- partner_name: Regate by Qonto
+  partner: null
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Accounting
+- partner_name: Zapier
+  partner: null
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Productivity
+- partner_name: DATEV Belegbilderservice-Rechnungswesen
+  partner: null
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Accounting
+- partner_name: DATEV Rechnungsdatenservice 1.0
+  partner: null
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Accounting
+- partner_name: DATEV RZ-Bankinfo
+  partner: null
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Banks
+- partner_name: Dougs
+  partner: null
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Accounting
+- partner_name: Google Drive
+  partner: google-drive
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Cloud and Storage
+- partner_name: Make
+  partner: make
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Productivity
+- partner_name: Notion
+  partner: notion
+  type: claimed
+  evidence: https://qonto.com/en/integrations
+  marketplace: null
+  direction: unknown
+  category: Productivity
 templates: []

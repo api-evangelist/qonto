@@ -1,13 +1,8 @@
 generated: '2026-07-17'
 method: derived
-source: >-
-  openapi/qonto-openapi.yml, authentication/qonto-authentication.yml, and
-  https://qonto.com/en/security
-note: >-
-  Which cross-cutting standards the Qonto Business API conforms to, derived from
-  the OpenAPI security schemes and conventions and from Qonto's published
-  regulatory/security posture. Compliance program claims (GDPR, PSD2/SCA) are
-  captured in security/qonto-trust-center.yml.
+source: openapi/qonto-openapi.yml, authentication/qonto-authentication.yml, and https://qonto.com/en/security
+note: Which cross-cutting standards the Qonto Business API conforms to, derived from the OpenAPI security schemes and conventions and from Qonto's
+  published regulatory/security posture. Compliance program claims (GDPR, PSD2/SCA) are captured in security/qonto-trust-center.yml.
 standards:
 - id: oauth2
   conforms: true
@@ -17,10 +12,8 @@ standards:
   evidence: openid scope issues an ID token; supportsOpenIdConnect noted in the auth profile.
 - id: psd2
   conforms: true
-  evidence: >-
-    EU-passported payment institution (ACPR 16958); PSD2 Strong Customer
-    Authentication enforced on money movement; QSealC certificate identification
-    for regulated TPPs.
+  evidence: EU-passported payment institution (ACPR 16958); PSD2 Strong Customer Authentication enforced on money movement; QSealC certificate
+    identification for regulated TPPs.
 - id: sca
   conforms: true
   evidence: X-Qonto-Sca-Session-Token / X-Qonto-MFA required on SEPA and international transfers.
@@ -42,3 +35,12 @@ standards:
   conforms: false
 - id: odata
   conforms: false
+- id: openapi-3.2
+  conforms: true
+  evidence: the document declares 3.2.0
+- id: rfc9457
+  conforms: false
+  evidence: no response declares application/problem+json
+- id: pagination
+  conforms: true
+  evidence: list operations take current_page, per_page

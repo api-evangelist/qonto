@@ -1,0 +1,26 @@
+generated: '2026-10-12'
+method: derived
+generator: derive-vocabulary.py
+source:
+- openapi/qonto-cards-api-openapi.yml
+- openapi/qonto-client-invoices-api-openapi.yml
+- openapi/qonto-internal-transfers-api-openapi.yml
+- openapi/qonto-international-transfers-api-openapi.yml
+- openapi/qonto-oauth-api-openapi.yml
+vocabulary:
+  name: Qonto Domain Vocabulary
+  description: 'Terms declared by Qonto''s own API contract: its resource groups, objects and enumerations, with the contract''s definitions.
+    Derived, not authored.'
+  version: '2026-10-12'
+  terms:
+  - term: TokenSet
+    definition: 'Object declared by the contract with fields: access_token, token_type, expires_in, refresh_token, id_token, scope.'
+    tags:
+    - Object
+    source: openapi/qonto-oauth-api-openapi.yml#/components/schemas/TokenSet
+  - term: SepaTransferRequest
+    definition: 'Object declared by the contract with fields: debit_iban, beneficiary_id, amount, currency, reference, instant, scheduled_date,
+      attachment_ids.'
+    tags:
+    - Object
+    source: openapi/qonto-sepa-transfers-api-openapi.yml#/components/schemas/SepaTransferRequest

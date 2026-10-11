@@ -1,0 +1,10 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://qonto.com/accessibility
+- https://qonto.com/legal/subprocessors
+- https://qonto.com/legal/dpa
+- https://qonto.com/transparency
+- https://qonto.com/security/sbom
+note: Conventional regulatory-signal paths on qonto.com all returned 404 on 2026-10-12; no signal recorded.
+signals: {}
