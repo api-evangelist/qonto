@@ -1,0 +1,70 @@
+arazzo: 1.0.1
+info:
+  title: Qonto Transaction to Notion Page
+  summary: Record a Qonto transaction as a page in a Notion database.
+  version: 1.0.0
+x-integration:
+  partner: notion
+  template: null
+  edge_evidence: https://qonto.com/en/integrations
+  edge_type: claimed
+  method: generated
+  generated: '2026-10-12'
+  generator: pipeline step 25b (payments-integration-arazzo)
+sourceDescriptions:
+  - name: qontoTransactionsApi
+    url: https://raw.githubusercontent.com/api-evangelist/qonto/refs/heads/main/openapi/qonto-transactions-and-statements-api-openapi.yml
+    type: openapi
+  - name: notionPagesApi
+    url: https://raw.githubusercontent.com/api-evangelist/notion/refs/heads/main/openapi/notion-pages-api-openapi.yml
+    type: openapi
+workflows:
+  - workflowId: qonto-transaction-to-notion-page
+    summary: Read a Qonto transaction and create a Notion database page for it.
+    inputs:
+      type: object
+      required: [transactionId, databaseId]
+      properties:
+        transactionId: {type: string}
+        databaseId: {type: string}
+    steps:
+      - stepId: get-transaction
+        description: Retrieve the Qonto transaction.
+        operationId: $sourceDescriptions.qontoTransactionsApi.getTransaction
+        parameters:
+          - name: id
+            in: path
+            value: $inputs.transactionId
+        successCriteria:
+          - condition: $statusCode == 200
+        outputs:
+          label: $response.body#/transaction/label
+          amount: $response.body#/transaction/amount
+          currency: $response.body#/transaction/currency
+          settledAt: $response.body#/transaction/settled_at
+      - stepId: create-page
+        description: Create a page in the target Notion database.
+        operationId: $sourceDescriptions.notionPagesApi.createPage
+        parameters:
+          - name: Notion-Version
+            in: header
+            value: '2022-06-28'
+        requestBody:
+          contentType: application/json
+          payload:
+            parent:
+              database_id: $inputs.databaseId
+            properties:
+              Name:
+                title:
+                  - text:
+                      content: $steps.get-transaction.outputs.label
+              Amount:
+                number: $steps.get-transaction.outputs.amount
+        successCriteria:
+          - condition: $statusCode == 200
+        outputs:
+          pageId: $response.body#/id
+    outputs:
+      label: $steps.get-transaction.outputs.label
+      pageId: $steps.create-page.outputs.pageId

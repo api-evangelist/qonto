@@ -20,8 +20,8 @@
   type: claimed
   evidence: https://qonto.com/en/integrations
   source: edge
-  status: pending-generation
-  arazzo: null
+  arazzo: qonto-google-sheets-transaction-row.yml
+  status: arazzo
 - slug: qonto-regate-by-qonto
   label: Regate by Qonto
   partner_name: Regate by Qonto
@@ -85,8 +85,8 @@
   type: claimed
   evidence: https://qonto.com/en/integrations
   source: edge
-  status: pending-generation
-  arazzo: null
+  arazzo: qonto-google-drive-transaction-folder.yml
+  status: arazzo
 - slug: qonto-make
   label: Make
   partner: make
@@ -95,8 +95,8 @@
   type: claimed
   evidence: https://qonto.com/en/integrations
   source: edge
-  status: pending-generation
-  arazzo: null
+  arazzo: qonto-make-transaction-scenario.yml
+  status: arazzo
 - slug: qonto-notion
   label: Notion
   partner: notion
@@ -105,5 +105,5 @@
   type: claimed
   evidence: https://qonto.com/en/integrations
   source: edge
-  status: pending-generation
-  arazzo: null
+  arazzo: qonto-notion-transaction-page.yml
+  status: arazzo

@@ -1,0 +1,73 @@
+arazzo: 1.0.1
+info:
+  title: Qonto Transaction to Google Sheets Row
+  summary: Append a Qonto transaction as a row in a Google Sheet.
+  version: 1.0.0
+x-integration:
+  partner: google-sheets
+  template: null
+  edge_evidence: https://qonto.com/en/integrations
+  edge_type: claimed
+  method: generated
+  generated: '2026-10-12'
+  generator: pipeline step 25b (payments-integration-arazzo)
+sourceDescriptions:
+  - name: qontoTransactionsApi
+    url: https://raw.githubusercontent.com/api-evangelist/qonto/refs/heads/main/openapi/qonto-transactions-and-statements-api-openapi.yml
+    type: openapi
+  - name: googleSheetsValuesApi
+    url: https://raw.githubusercontent.com/api-evangelist/google-sheets/refs/heads/main/openapi/google-sheets-values-api-openapi.yml
+    type: openapi
+workflows:
+  - workflowId: qonto-transaction-to-google-sheets-row
+    summary: Read a Qonto transaction and append it to a spreadsheet.
+    inputs:
+      type: object
+      required: [transactionId, spreadsheetId, range]
+      properties:
+        transactionId: {type: string}
+        spreadsheetId: {type: string}
+        range: {type: string}
+    steps:
+      - stepId: get-transaction
+        description: Retrieve the Qonto transaction.
+        operationId: $sourceDescriptions.qontoTransactionsApi.getTransaction
+        parameters:
+          - name: id
+            in: path
+            value: $inputs.transactionId
+        successCriteria:
+          - condition: $statusCode == 200
+        outputs:
+          label: $response.body#/transaction/label
+          amount: $response.body#/transaction/amount
+          currency: $response.body#/transaction/currency
+          settledAt: $response.body#/transaction/settled_at
+      - stepId: append-row
+        description: Append the transaction as a row.
+        operationId: $sourceDescriptions.googleSheetsValuesApi.appendValues
+        parameters:
+          - name: spreadsheetId
+            in: path
+            value: $inputs.spreadsheetId
+          - name: range
+            in: path
+            value: $inputs.range
+          - name: valueInputOption
+            in: query
+            value: USER_ENTERED
+        requestBody:
+          contentType: application/json
+          payload:
+            values:
+              - - $steps.get-transaction.outputs.settledAt
+                - $steps.get-transaction.outputs.label
+                - $steps.get-transaction.outputs.amount
+                - $steps.get-transaction.outputs.currency
+        successCriteria:
+          - condition: $statusCode == 200
+        outputs:
+          updatedRange: $response.body#/updates/updatedRange
+    outputs:
+      label: $steps.get-transaction.outputs.label
+      updatedRange: $steps.append-row.outputs.updatedRange

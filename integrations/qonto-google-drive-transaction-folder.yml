@@ -1,0 +1,60 @@
+arazzo: 1.0.1
+info:
+  title: Qonto Transaction Folder in Google Drive
+  summary: Create a Google Drive folder to hold a Qonto transaction's documents.
+  version: 1.0.0
+x-integration:
+  partner: google-drive
+  template: null
+  edge_evidence: https://qonto.com/en/integrations
+  edge_type: claimed
+  method: generated
+  generated: '2026-10-12'
+  generator: pipeline step 25b (payments-integration-arazzo)
+sourceDescriptions:
+  - name: qontoTransactionsApi
+    url: https://raw.githubusercontent.com/api-evangelist/qonto/refs/heads/main/openapi/qonto-transactions-and-statements-api-openapi.yml
+    type: openapi
+  - name: googleDriveFilesApi
+    url: https://raw.githubusercontent.com/api-evangelist/google-drive/refs/heads/main/openapi/google-drive-files-api-openapi.yml
+    type: openapi
+workflows:
+  - workflowId: qonto-transaction-to-google-drive-folder
+    summary: Read a Qonto transaction and create a named Drive folder for its receipts.
+    inputs:
+      type: object
+      required: [transactionId, parentFolderId]
+      properties:
+        transactionId: {type: string}
+        parentFolderId: {type: string}
+    steps:
+      - stepId: get-transaction
+        description: Retrieve the Qonto transaction.
+        operationId: $sourceDescriptions.qontoTransactionsApi.getTransaction
+        parameters:
+          - name: id
+            in: path
+            value: $inputs.transactionId
+        successCriteria:
+          - condition: $statusCode == 200
+        outputs:
+          label: $response.body#/transaction/label
+          amount: $response.body#/transaction/amount
+          currency: $response.body#/transaction/currency
+          settledAt: $response.body#/transaction/settled_at
+      - stepId: create-folder
+        description: Create the Drive folder (metadata-only file).
+        operationId: $sourceDescriptions.googleDriveFilesApi.createFile
+        requestBody:
+          contentType: application/json
+          payload:
+            name: $steps.get-transaction.outputs.label
+            mimeType: application/vnd.google-apps.folder
+            parents:
+              - $inputs.parentFolderId
+        successCriteria:
+          - condition: $statusCode == 200
+        outputs:
+          folderId: $response.body#/id
+    outputs:
+      folderId: $steps.create-folder.outputs.folderId
