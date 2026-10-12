@@ -33,13 +33,12 @@
   arazzo: null
 - slug: qonto-zapier
   label: Zapier
-  partner: zapier
   partner_name: Zapier
   category: Productivity
   type: claimed
   evidence: https://qonto.com/en/integrations
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: qonto-datev-belegbilderservice-rechnungswesen
   label: DATEV Belegbilderservice-Rechnungswesen
