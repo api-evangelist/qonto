@@ -94,3 +94,8 @@ edges:
   direction: unknown
   category: Productivity
 templates: []
+skips:
+- label: Zapier
+  cause: partner-contract
+  why: Zapier's public API only manages Zaps, templates and runs. It has no operation that takes a Qonto record
+    as data, so any flow would have been invented.
