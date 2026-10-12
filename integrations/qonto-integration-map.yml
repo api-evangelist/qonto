@@ -1,0 +1,169 @@
+# DERIVED by derive-integration-map.py (roadmap#949): each integration workflow, step by step,
+# resolved to spec file -> tag -> business capability (Turbo EA, CC BY 4.0) and the operation's
+# phrasing intent. Read from our own files; an unmapped link says why.
+slug: qonto
+workflows:
+- file: qonto-google-drive-transaction-folder.yml
+  title: Qonto Transaction Folder in Google Drive
+  partner: google-drive
+  template: null
+  repos:
+  - qonto
+  - google-drive
+  steps:
+  - step: get-transaction
+    repo: qonto
+    spec_file: qonto-transactions-and-statements-api-openapi.yml
+    operationId: getTransaction
+    tag: Transactions and Statements
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: Get one transaction's details
+    effect: read
+    unmapped: no capability edge for this spec file
+  - step: create-folder
+    repo: google-drive
+    spec_file: google-drive-files-api-openapi.yml
+    operationId: createFile
+    tag: Files
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  connects:
+    qonto:
+      capabilities: []
+      tags:
+      - Transactions and Statements
+    google-drive:
+      capabilities: []
+      tags:
+      - Files
+  intents:
+  - Get one transaction's details
+- file: qonto-google-sheets-transaction-row.yml
+  title: Qonto Transaction to Google Sheets Row
+  partner: google-sheets
+  template: null
+  repos:
+  - qonto
+  - google-sheets
+  steps:
+  - step: get-transaction
+    repo: qonto
+    spec_file: qonto-transactions-and-statements-api-openapi.yml
+    operationId: getTransaction
+    tag: Transactions and Statements
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: Get one transaction's details
+    effect: read
+    unmapped: no capability edge for this spec file
+  - step: append-row
+    repo: google-sheets
+    spec_file: google-sheets-values-api-openapi.yml
+    operationId: appendValues
+    tag: Values
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  connects:
+    qonto:
+      capabilities: []
+      tags:
+      - Transactions and Statements
+    google-sheets:
+      capabilities: []
+      tags:
+      - Values
+  intents:
+  - Get one transaction's details
+- file: qonto-make-transaction-scenario.yml
+  title: Qonto Transaction to Make Scenario
+  partner: make
+  template: null
+  repos:
+  - qonto
+  - make
+  steps:
+  - step: get-transaction
+    repo: qonto
+    spec_file: qonto-transactions-and-statements-api-openapi.yml
+    operationId: getTransaction
+    tag: Transactions and Statements
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: Get one transaction's details
+    effect: read
+    unmapped: no capability edge for this spec file
+  - step: run-scenario
+    repo: make
+    spec_file: make-scenario-execution-api-openapi.yml
+    operationId: runScenario
+    tag: Scenario Execution
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  connects:
+    qonto:
+      capabilities: []
+      tags:
+      - Transactions and Statements
+    make:
+      capabilities: []
+      tags:
+      - Scenario Execution
+  intents:
+  - Get one transaction's details
+- file: qonto-notion-transaction-page.yml
+  title: Qonto Transaction to Notion Page
+  partner: notion
+  template: null
+  repos:
+  - qonto
+  - notion
+  steps:
+  - step: get-transaction
+    repo: qonto
+    spec_file: qonto-transactions-and-statements-api-openapi.yml
+    operationId: getTransaction
+    tag: Transactions and Statements
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: Get one transaction's details
+    effect: read
+    unmapped: no capability edge for this spec file
+  - step: create-page
+    repo: notion
+    spec_file: notion-pages-api-openapi.yml
+    operationId: createPage
+    tag: Pages
+    capability_id: null
+    capability: null
+    capability_l1: null
+    intent: null
+    effect: null
+    unmapped: no capability edge for this spec file
+  connects:
+    qonto:
+      capabilities: []
+      tags:
+      - Transactions and Statements
+    notion:
+      capabilities: []
+      tags:
+      - Pages
+  intents:
+  - Get one transaction's details
