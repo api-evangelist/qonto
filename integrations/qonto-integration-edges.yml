@@ -10,8 +10,11 @@ checked:
 - https://composio.dev/toolkits/qonto
 - https://monid.ai/tools/qonto
 - https://n8n.io/integrations/qonto/
+- https://peppol.org/members/peppol-certified-service-providers/
 - https://qonto.com/en/integrations
+- https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees
 - https://www.make.com/en/integrations/qonto
+- https://www.streamlinedsalestax.org/certified-service-providers/certified-service-providers-list
 - https://zapier.com/apps/qonto/integrations
 summary: '31 edges: 11 partners named on qonto.com/en/integrations (page claims 2,000+ / 4790 integrations), Qonto
   app on Zapier with triggers+actions and 19 listed app pairings.'
@@ -126,6 +129,92 @@ edges:
     detected_by: sweep-ai-agents.py
     detected: '2026-10-15'
   detected_by: sweep-ai-agents.py
+  first_seen: '2026-10-15'
+- partner_name: OpenPeppol (certified service providers)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://peppol.org/members/peppol-certified-service-providers/
+  category: Peppol service provider
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
+    spec_file: null
+    standard: Peppol
+    role: peppol-certified-service-provider
+    registered_name: Qonto
+    legal_name: Olinda SAS (Qonto)
+    matched_domain: qonto.com
+    matched_by: domain
+    domain_source: contact email domain
+    peppol_authorities:
+    - DGFIP
+    countries:
+    - France
+    certified_products:
+    - product: Access Point
+      lapsed: false
+    - product: SMP
+      lapsed: false
+    signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and
+      countries are context, never read
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-15'
+  detected_by: sweep-einvoicing-tax.py
+  first_seen: '2026-10-15'
+- partner_name: OpenPeppol (certified service providers)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://peppol.org/members/peppol-certified-service-providers/
+  category: Peppol service provider
+  channel: standard-directory
+  relationship: compatible
+  shape: peppol
+  evidence_kind: conformance-register
+  degree: certified
+  report_only: true
+  contract_reference:
+    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
+    spec_file: null
+    standard: Peppol
+    role: peppol-certified-service-provider
+    registered_name: Qonto
+    matched_domain: qonto.com
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-15'
+  detected_by: sweep-einvoicing-tax.py
+  first_seen: '2026-10-15'
+- partner_name: DGFiP plateformes agreees (France e-invoicing reform)
+  partner: null
+  partner_match: register
+  type: register
+  direction: partner-built
+  evidence: https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees
+  category: French e-invoicing platform
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: DGFiP liste des plateformes agreees (impots.gouv.fr)
+    spec_file: null
+    standard: France e-invoicing (plateforme agreee)
+    role: plateforme-agreee
+    registered_name: QONTO
+    website: https://qonto.com/fr
+    matched_domain: qonto.com
+    matched_by: domain
+    certified_products:
+    - product: plateforme agreee (PA)
+      lapsed: false
+      registered: '2025-12-18'
+    signal_note: certified_products = the immatriculation (one per operator); an operator awaiting the interop tests
+      is participation only
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-15'
+  detected_by: sweep-einvoicing-tax.py
   first_seen: '2026-10-15'
 templates: []
 skips:

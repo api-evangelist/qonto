@@ -106,3 +106,87 @@
   source: edge
   arazzo: qonto-notion-transaction-page.yml
   status: arazzo
+- slug: qonto-a2a-protocol-own-agent-card
+  label: A2A protocol (own Agent Card)
+  partner_name: A2A protocol (own Agent Card)
+  category: A2A agent
+  type: register
+  channel: provider-built
+  evidence: https://docs.qonto.com/.well-known/agent-card.json
+  source: edge
+  relationship: compatible
+  contract_reference:
+    register: provider's own /.well-known/agent-card.json
+    spec_file: null
+    standard: A2A
+    role: a2a-agent-card
+    registered_name: Qonto
+    organization: Qonto
+    matched_domain: qonto.com
+    matched_by: own-domain
+    detected_by: sweep-ai-agents.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: qonto-openpeppol-certified-service-providers
+  label: OpenPeppol (certified service providers)
+  partner_name: OpenPeppol (certified service providers)
+  category: Peppol service provider
+  type: register
+  channel: standard-directory
+  evidence: https://peppol.org/members/peppol-certified-service-providers/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: OpenPeppol certified service providers (peppol.org/members/peppol-certified-service-providers)
+    spec_file: null
+    standard: Peppol
+    role: peppol-certified-service-provider
+    registered_name: Qonto
+    legal_name: Olinda SAS (Qonto)
+    matched_domain: qonto.com
+    matched_by: domain
+    domain_source: contact email domain
+    peppol_authorities:
+    - DGFIP
+    countries:
+    - France
+    certified_products:
+    - product: Access Point
+      lapsed: false
+    - product: SMP
+      lapsed: false
+    signal_note: certified_products = one entry per Peppol-certified SERVICE (Access Point, SMP); authorities and
+      countries are context, never read
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: qonto-dgfip-plateformes-agreees-france-e-invoicing-reform
+  label: DGFiP plateformes agreees (France e-invoicing reform)
+  partner_name: DGFiP plateformes agreees (France e-invoicing reform)
+  category: French e-invoicing platform
+  type: register
+  channel: standard-directory
+  evidence: https://www.impots.gouv.fr/je-consulte-la-liste-des-plateformes-agreees
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: DGFiP liste des plateformes agreees (impots.gouv.fr)
+    spec_file: null
+    standard: France e-invoicing (plateforme agreee)
+    role: plateforme-agreee
+    registered_name: QONTO
+    website: https://qonto.com/fr
+    matched_domain: qonto.com
+    matched_by: domain
+    certified_products:
+    - product: plateforme agreee (PA)
+      lapsed: false
+      registered: '2025-12-18'
+    signal_note: certified_products = the immatriculation (one per operator); an operator awaiting the interop tests
+      is participation only
+    detected_by: sweep-einvoicing-tax.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
