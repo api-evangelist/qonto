@@ -103,10 +103,10 @@ components:
         minimum: 1
         default: 1
   responses:
-    TooManyRequests:
-      description: Rate limit exceeded (1000 req/10s or 10000 req/10min per IP; or more than 200 requests returning 401 within 1 hour).
     Unauthorized:
       description: Missing or invalid authentication
+    TooManyRequests:
+      description: Rate limit exceeded (1000 req/10s or 10000 req/10min per IP; or more than 200 requests returning 401 within 1 hour).
   securitySchemes:
     SecretKey:
       type: apiKey
