@@ -19,6 +19,7 @@ checked:
 - https://www.make.com/en/integrations/qonto
 - https://www.streamlinedsalestax.org/certified-service-providers/certified-service-providers-list
 - https://zapier.com/apps/qonto/integrations
+- slack/integrations/slack-integration-edges.yml
 summary: '31 edges: 11 partners named on qonto.com/en/integrations (page claims 2,000+ / 4790 integrations), Qonto
   app on Zapier with triggers+actions and 19 listed app pairings.'
 marketplace_apps: []
@@ -278,6 +279,23 @@ edges:
     builder: 'community (Meltano Hub variant maintainers: airbyte)'
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A04TYPEL8HK-qonto-requests
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Qonto requests
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
 templates: []
 skips:
 - label: Zapier
