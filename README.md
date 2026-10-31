@@ -1,4 +1,4 @@
-# Qonto (qonto)
+# Qonto
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,330 +66,222 @@
 
 Qonto is a European business banking / neobank platform for freelancers and SMEs, founded in Paris in 2016 and operating on an EU-passported payment institution licence. Its Business API and Onboarding API give programmatic access to business accounts, EUR transactions, SEPA and international transfers, cards, client and supplier invoices, SEPA Direct Debit, payment links, terminals, webhooks, and partner-led company onboarding, authenticated by a login+secret-key API key or OAuth 2.0.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/qonto/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/qonto/refs/heads/main/apis.yml)
+**Areas:** Business Banking · Neobank · Fintech · Payments · SEPA · Open Banking · EUR · Europe
 
-## Tags
+## Qonto on APIs.io
 
-- Business Banking
-- Neobank
-- Fintech
-- Payments
-- SEPA
-- Open Banking
-- EUR
-- Europe
+Everything profiled for Qonto is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/qonto/](https://apis.io/providers/qonto/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (13)
 
-- **Created:** 2026-07-17
-- **Modified:** 2026-07-17
+- [Qonto Cards API](https://apis.io/apis/qonto/qonto-cards-api/) — The Cards API from Qonto — 1 operation(s) for cards.
+- [Qonto Client Invoices API](https://apis.io/apis/qonto/qonto-client-invoices-api/) — The Client Invoices API from Qonto — 1 operation(s) for client invoices.
+- [Qonto Internal Transfers API](https://apis.io/apis/qonto/qonto-internal-transfers-api/) — The Internal Transfers API from Qonto — 1 operation(s) for internal transfers.
+- [Qonto International Transfers API](https://apis.io/apis/qonto/qonto-international-transfers-api/) — The International Transfers API from Qonto — 2 operation(s) for international transfers.
+- [Qonto Organizations & Accounts API](https://apis.io/apis/qonto/qonto-organizations-accounts-api/) — The Organizations & Accounts API from Qonto — 4 operation(s) for organizations & accounts.
+- [Qonto Payment Links API](https://apis.io/apis/qonto/qonto-payment-links-api/) — The Payment Links API from Qonto — 1 operation(s) for payment links.
+- [Qonto SEPA Direct Debit API](https://apis.io/apis/qonto/qonto-sepa-direct-debit-api/) — The SEPA Direct Debit API from Qonto — 2 operation(s) for sepa direct debit.
+- [Qonto SEPA Transfers API](https://apis.io/apis/qonto/qonto-sepa-transfers-api/) — The SEPA Transfers API from Qonto — 3 operation(s) for sepa transfers.
+- [Qonto Supplier Invoices API](https://apis.io/apis/qonto/qonto-supplier-invoices-api/) — The Supplier Invoices API from Qonto — 2 operation(s) for supplier invoices.
+- [Qonto Terminals API](https://apis.io/apis/qonto/qonto-terminals-api/) — The Terminals API from Qonto — 2 operation(s) for terminals.
+- [Qonto Webhooks API](https://apis.io/apis/qonto/qonto-webhooks-api/) — The Webhooks API from Qonto — 2 operation(s) for webhooks.
+- [Qonto O Auth API](https://apis.io/apis/qonto/qonto-oauth-api/) — The OAuth API from Qonto — 1 operation(s) for oauth.
+- [Qonto Transactions and Statements API](https://apis.io/apis/qonto/qonto-transactions-and-statements-api/) — The Transactions and Statements API from Qonto — 3 operation(s) for transactions and statements.
 
-## Authentication & Base URLs
+### Published properties
 
-- **Production base URL:** `https://thirdparty.qonto.com/v2`
-- **Sandbox base URL:** `https://thirdparty-sandbox.staging.qonto.co/v2`
-- **API key:** `Authorization: {sign-in}:{secret-key}` — the organization sign-in and secret key concatenated with a colon. This resembles HTTP Basic auth but is **not** (no Base64 encoding).
-- **OAuth 2.0:** authorization code flow via `POST https://thirdparty.qonto.com/oauth2/token`; access tokens valid 1 hour, refresh tokens 90 days, per-resource scopes. OAuth is the recommended method for SaaS integrations.
-- **PSD2 / TPP:** regulated third parties can identify via a QSeal certificate (QSealC).
-- **SCA:** Strong Customer Authentication is required for sensitive operations (e.g. transfers) via `X-Qonto-Sca-Session-Token` / `X-Qonto-MFA` headers.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Qonto Business API
+Event-driven and webhook contracts.
 
-Core Business API surface for retrieving the authenticated organization and its bank accounts, plus memberships, teams, labels, and the current subscription plan.
+- [Qonto Webhooks](https://apis.io/asyncapis/qonto/qonto-webhooks/)
 
-- **Human URL:** [https://docs.qonto.com/get-started/business-api/overview](https://docs.qonto.com/get-started/business-api/overview)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
+#### MCP servers (1)
 
-#### Tags
+Model Context Protocol servers that expose the API to agents.
 
-- Organizations
-- Accounts
-- Memberships
-- Teams
-- Labels
+- [qonto](https://apis.io/servers/qonto/qonto/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://docs.qonto.com/api-reference/introduction)
-- [API Reference](https://docs.qonto.com/api-reference/business-api/accounts-organizations/organizations/retrieve-the-authenticated-organization-and-list-bank-accounts)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### Qonto Transactions & Statements API
+- [Qonto Agentic Access](https://apis.io/agentic-access/qonto/qonto-agentic-access/)
 
-List and retrieve account transactions with rich filtering (status, dates, side, operation type), account statements, and cash flow category assignment.
+#### JSON Schema (2)
 
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/transactions-statements/transactions/list-transactions](https://docs.qonto.com/api-reference/business-api/transactions-statements/transactions/list-transactions)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
+The data models the API reads and writes.
 
-#### Tags
+- [SepaTransferRequest](https://apis.io/schemas/qonto/qonto-sepa-transfer-request/)
+- [TokenSet](https://apis.io/schemas/qonto/qonto-token-set/)
 
-- Transactions
-- Statements
-- Cash Flow
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [API Reference](https://docs.qonto.com/api-reference/business-api/transactions-statements/transactions/list-transactions)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Qonto Context](https://apis.io/jsonld/qonto/qonto-context/)
 
-### Qonto SEPA Transfers API
+#### Collections (26)
 
-Create single, bulk, and recurring SEPA credit transfers in EUR (standard or instant), manage SEPA beneficiaries, and run Verification of Payee (VoP) checks. Sensitive operations require Strong Customer Authentication (SCA).
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-transfers/sepa-transfers/create](https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-transfers/sepa-transfers/create)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
+- [Qonto Business Cards API](https://apis.io/collections/qonto/open-qonto-cards-api/)
+- [Qonto Business Cards Client Invoices API](https://apis.io/collections/qonto/open-qonto-client-invoices-api/)
+- [Qonto Business Cards Internal Transfers API](https://apis.io/collections/qonto/open-qonto-internal-transfers-api/)
+- [Qonto Business Cards International Transfers API](https://apis.io/collections/qonto/open-qonto-international-transfers-api/)
+- [Qonto Business Cards OAuth API](https://apis.io/collections/qonto/open-qonto-oauth-api/)
+- [Qonto Business Cards Organizations & Accounts API](https://apis.io/collections/qonto/open-qonto-organizations-accounts-api/)
+- [Qonto Business Cards Payment Links API](https://apis.io/collections/qonto/open-qonto-payment-links-api/)
+- [Qonto Business Cards SEPA Direct Debit API](https://apis.io/collections/qonto/open-qonto-sepa-direct-debit-api/)
+- [Qonto Business Cards SEPA Transfers API](https://apis.io/collections/qonto/open-qonto-sepa-transfers-api/)
+- [Qonto Business Cards Supplier Invoices API](https://apis.io/collections/qonto/open-qonto-supplier-invoices-api/)
+- [Qonto Business Cards Terminals API](https://apis.io/collections/qonto/open-qonto-terminals-api/)
+- [Qonto Business Cards Transactions & Statements API](https://apis.io/collections/qonto/open-qonto-transactions-statements-api/)
+- [Qonto Business Cards Webhooks API](https://apis.io/collections/qonto/open-qonto-webhooks-api/)
+- [Qonto Business Cards API](https://apis.io/collections/qonto/postman-qonto-cards-api/)
+- [Qonto Business Cards Client Invoices API](https://apis.io/collections/qonto/postman-qonto-client-invoices-api/)
+- [Qonto Business Cards Internal Transfers API](https://apis.io/collections/qonto/postman-qonto-internal-transfers-api/)
+- [Qonto Business Cards International Transfers API](https://apis.io/collections/qonto/postman-qonto-international-transfers-api/)
+- [Qonto Business Cards OAuth API](https://apis.io/collections/qonto/postman-qonto-oauth-api/)
+- [Qonto Business Cards Organizations & Accounts API](https://apis.io/collections/qonto/postman-qonto-organizations-accounts-api/)
+- [Qonto Business Cards Payment Links API](https://apis.io/collections/qonto/postman-qonto-payment-links-api/)
+- [Qonto Business Cards SEPA Direct Debit API](https://apis.io/collections/qonto/postman-qonto-sepa-direct-debit-api/)
+- [Qonto Business Cards SEPA Transfers API](https://apis.io/collections/qonto/postman-qonto-sepa-transfers-api/)
+- [Qonto Business Cards Supplier Invoices API](https://apis.io/collections/qonto/postman-qonto-supplier-invoices-api/)
+- [Qonto Business Cards Terminals API](https://apis.io/collections/qonto/postman-qonto-terminals-api/)
+- [Qonto Business Cards Transactions & Statements API](https://apis.io/collections/qonto/postman-qonto-transactions-statements-api/)
+- …and 1 more published on APIs.io
 
-#### Tags
+#### Overlays (14)
 
-- SEPA
-- Transfers
-- Payments
-- Beneficiaries
+OpenAPI overlays, including conversational phrasing for each operation.
 
-#### Properties
+- [Qonto Cards Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-cards-api-phrasing-overlay/)
+- [Qonto Client Invoices Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-client-invoices-api-phrasing-overlay/)
+- [Qonto Internal Transfers Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-internal-transfers-api-phrasing-overlay/)
+- [Qonto International Transfers Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-international-transfers-api-phrasing-overlay/)
+- [Qonto Oauth Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-oauth-api-phrasing-overlay/)
+- [Qonto Openapi Overlay](https://apis.io/overlays/qonto/qonto-openapi-overlay/)
+- [Qonto Organizations Accounts Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-organizations-accounts-api-phrasing-overlay/)
+- [Qonto Payment Links Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-payment-links-api-phrasing-overlay/)
+- [Qonto Sepa Direct Debit Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-sepa-direct-debit-api-phrasing-overlay/)
+- [Qonto Sepa Transfers Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-sepa-transfers-api-phrasing-overlay/)
+- [Qonto Supplier Invoices Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-supplier-invoices-api-phrasing-overlay/)
+- [Qonto Terminals Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-terminals-api-phrasing-overlay/)
+- [Qonto Transactions And Statements Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-transactions-and-statements-api-phrasing-overlay/)
+- [Qonto Webhooks Api Phrasing Overlay](https://apis.io/overlays/qonto/qonto-webhooks-api-phrasing-overlay/)
 
-- [Documentation](https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-transfers/introduction)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+#### Governance rules (1)
 
-### Qonto International Transfers API
+Spectral rulesets for the provider's contracts.
 
-Check eligibility, list available currencies, create quotes, manage international beneficiaries, and initiate non-EUR / cross-border transfers.
+- [Qonto API Rules](https://apis.io/rules/qonto/qonto-rules/)
 
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/payments-transfers/international-transfers/introduction](https://docs.qonto.com/api-reference/business-api/payments-transfers/international-transfers/introduction)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
+#### Security (4)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- International
-- FX
-- Cross Border
-- Beneficiaries
+- [Qonto Authentication](https://apis.io/security/qonto/qonto-authentication/)
+- [Qonto Domain Security](https://apis.io/security/qonto/qonto-domain-security/)
+- [Qonto Trust Center](https://apis.io/security/qonto/qonto-trust-center/)
+- [Qonto Vulnerability Disclosure](https://apis.io/security/qonto/qonto-vulnerability-disclosure/)
 
-#### Properties
+#### OAuth scopes (1)
 
-- [Documentation](https://docs.qonto.com/api-reference/business-api/payments-transfers/international-transfers/introduction)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+The permissions the API asks for.
 
-### Qonto Internal Transfers API
+- [Qonto Scopes](https://apis.io/scopes/qonto/qonto-scopes/)
 
-Move funds between the organization's own Qonto bank accounts.
+#### Plans and pricing (2)
 
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/payments-transfers/internal-transfers/create-an-internal-transfer](https://docs.qonto.com/api-reference/business-api/payments-transfers/internal-transfers/create-an-internal-transfer)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
+Published plans, tiers and prices.
 
-#### Tags
+- [Qonto Plans Pricing](https://apis.io/plans/qonto/qonto-plans-pricing/)
+- [Qonto Price Estimates](https://apis.io/plans/qonto/qonto-price-estimates/)
 
-- Internal Transfers
-- Accounts
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [API Reference](https://docs.qonto.com/api-reference/business-api/payments-transfers/internal-transfers/create-an-internal-transfer)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Qonto Rate Limits](https://apis.io/rate-limits/qonto/qonto-rate-limits/)
 
-### Qonto Cards API
+#### FinOps (1)
 
-Issue single or bulk virtual and physical cards, set and update limits, lock/unlock, discard, report lost/stolen, manage options and restrictions, and retrieve a card iframe URL.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/cards/list-cards](https://docs.qonto.com/api-reference/business-api/cards/list-cards)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
+- [Qonto Finops](https://apis.io/finops/qonto/qonto-finops/)
 
-#### Tags
+## Where to find this API
 
-- Cards
-- Virtual Cards
-- Physical Cards
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [API Reference](https://docs.qonto.com/api-reference/business-api/cards/list-cards)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### Qonto Client Invoices & Quotes API
-
-Create, finalize, send, and manage client (customer) invoices, quotes, and credit notes, including bulk import, e-invoicing dispatch, and Factur-X PDF generation. Manage clients (customers) and products.
-
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/expense-management/client-quotes-notes/client-invoices/list-client-invoices](https://docs.qonto.com/api-reference/business-api/expense-management/client-quotes-notes/client-invoices/list-client-invoices)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
-
-#### Tags
-
-- Invoicing
-- Accounts Receivable
-- Quotes
-- Credit Notes
-- Factur-X
-
-#### Properties
-
-- [Documentation](https://docs.qonto.com/api-reference/business-api/expense-management/client-quotes-notes/introduction-factur-x)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### Qonto Supplier Invoices API
-
-Bulk-create, list, retrieve, and mark supplier (vendor) invoices as paid or rejected, and attach supporting documents to transactions.
-
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/expense-management/supplier-invoices/list-supplier-invoices](https://docs.qonto.com/api-reference/business-api/expense-management/supplier-invoices/list-supplier-invoices)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
-
-#### Tags
-
-- Invoicing
-- Accounts Payable
-- Attachments
-
-#### Properties
-
-- [API Reference](https://docs.qonto.com/api-reference/business-api/expense-management/supplier-invoices/list-supplier-invoices)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### Qonto SEPA Direct Debit API
-
-Collect EUR payments from customers via SEPA Direct Debit - manage mandates, one-off collections, and recurring subscriptions.
-
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-direct-debit/introduction](https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-direct-debit/introduction)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
-
-#### Tags
-
-- SEPA Direct Debit
-- SDD
-- Collections
-- Mandates
-
-#### Properties
-
-- [Documentation](https://docs.qonto.com/api-reference/business-api/payments-transfers/sepa-direct-debit/introduction)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### Qonto Payment Links API
-
-Connect a payment links provider and create, list, and deactivate secure customizable payment links, with available payment methods and per-link payments.
-
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/payments-transfers/payment-links/introduction](https://docs.qonto.com/api-reference/business-api/payments-transfers/payment-links/introduction)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
-
-#### Tags
-
-- Payment Links
-- Checkout
-- Getting Paid
-
-#### Properties
-
-- [Documentation](https://docs.qonto.com/api-reference/business-api/payments-transfers/payment-links/introduction)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### Qonto Terminals API
-
-Push payments from your POS system directly to physical Qonto payment terminals and retrieve terminal payment status.
-
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/terminals/introduction](https://docs.qonto.com/api-reference/business-api/terminals/introduction)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
-
-#### Tags
-
-- Terminals
-- In-Person Payments
-- POS
-
-#### Properties
-
-- [Documentation](https://docs.qonto.com/api-reference/business-api/terminals/introduction)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### Qonto Webhooks API
-
-Create, list, update, and delete webhook subscriptions to receive real-time signed HTTP callbacks for transactions, cards, invoices, SEPA Direct Debit, payment links, terminals, memberships, and consent revocations.
-
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/webhooks/overview](https://docs.qonto.com/api-reference/business-api/webhooks/overview)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
-
-#### Tags
-
-- Webhooks
-- Events
-- Real Time
-
-#### Properties
-
-- [Documentation](https://docs.qonto.com/api-reference/business-api/webhooks/overview)
-- [API Reference](https://docs.qonto.com/api-reference/business-api/webhooks/supported-webhooks/v1-transactions)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### Qonto Onboarding API
-
-Partner-facing API to create and track organization registrations (including company creation flows), upload and manage KYC files, and subscribe to onboarding webhook events.
-
-- **Human URL:** [https://docs.qonto.com/get-started/onboarding-api/overview](https://docs.qonto.com/get-started/onboarding-api/overview)
-- **Base URL:** `https://thirdparty.qonto.com`
-
-#### Tags
-
-- Onboarding
-- KYC
-- Company Creation
-- Partners
-
-#### Properties
-
-- [API Reference](https://docs.qonto.com/api-reference/onboarding-api/endpoints/registrations/create-a-registration)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-### Qonto Embed SDK & Hosted Pages API
-
-Create Embed Auth Links to authenticate end customers into Qonto Hosted Pages and proxy encoded API requests dispatched by the Embed SDK for embedded banking experiences.
-
-- **Human URL:** [https://docs.qonto.com/api-reference/business-api/endpoints/embed-auth-links/introduction](https://docs.qonto.com/api-reference/business-api/endpoints/embed-auth-links/introduction)
-- **Base URL:** `https://thirdparty.qonto.com/v2`
-
-#### Tags
-
-- Embedded Finance
-- Embed SDK
-- Hosted Pages
-
-#### Properties
-
-- [Documentation](https://docs.qonto.com/api-reference/sdk-libraries/doc-pages/overview)
-- [API Reference](https://docs.qonto.com/api-reference/business-api/endpoints/encoded-requests/introduction)
-- [OpenAPI](openapi/qonto-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/qonto.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/qonto)
-- [LinkedIn](https://www.linkedin.com/company/qonto)
 - [Website](https://qonto.com/)
 - [Documentation](https://docs.qonto.com/)
-- [Plans](plans/qonto-plans-pricing.yml)
-- [Rate Limits](rate-limits/qonto-rate-limits.yml)
-- [Fin Ops](finops/qonto-finops.yml)
+- [Getting started](https://docs.qonto.com/get-started/business-api/overview)
+- [API reference](https://docs.qonto.com/api-reference/introduction)
+- [Pricing](https://qonto.com/en/pricing)
+- [Sign up](https://app.qonto.com/signup)
+- [Support](https://help.qonto.com/)
+- [Blog](https://qonto.com/en/blog)
+- [Security](https://qonto.com/en/security)
+- [Terms of service](https://legal.qonto.com/en)
+- [Privacy policy](https://legal.qonto.com/en)
+- [GitHub](https://github.com/qonto)
+- [Status](https://status.qonto.com/)
 
-## Notes
+## API Evangelist rating
 
-- **Company:** French B2B fintech founded 2016, HQ Paris; 600,000+ business customers. Operates on an EU-passported payment institution licence (obtained 2018) and filed for a French banking licence in 2025.
-- **Markets:** France (largest), Germany, Spain, Italy, plus Austria, Belgium, Netherlands, and Portugal (entered late 2024).
-- **Acquisitions:** Penta (German business-banking competitor, 2022) and Regate (accounting / financial automation, 2024). Regate operates its own separate public API at docs.regate.io.
-- **Currency:** EUR.
-- **Deprecations:** the `/v1/organizations/{slug}` and `/v2/organizations/{slug}` endpoints are deprecated with sunset on 2026-11-15; migrate to `GET /v2/organization`.
+**Kin Score 72.3** — exemplar · rubric 0.25.0 · scored 2026-10-23
 
-## Maintainers
+| Facet | Score |
+|---|---|
+| Discoverability | 78.3 |
+| Contract quality | 65.7 |
+| Contract governance | 22.0 |
+| Operational transparency | 92.1 |
+| Developer ergonomics | 72.0 |
+| Access clarity | 78.9 |
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Agent readiness 57.9** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | verified |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 46.5** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/qonto/](https://apis.io/providers/qonto/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Qonto: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/qonto/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
